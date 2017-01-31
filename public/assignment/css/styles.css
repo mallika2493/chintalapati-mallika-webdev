@@ -6,6 +6,8 @@ textarea {
 body {
     padding-top: 60px;
     padding-bottom: 55px;
+    overflow: auto;
+    overflow-x: hidden;
 }
 
 .no-left-padding {
@@ -37,6 +39,16 @@ body {
     overflow-y: auto;
 }
 
+.jga-toolbar {
+    position: absolute;
+    right: 15px;
+    background-color: white;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border-bottom-left-radius: 5px;
+    opacity: 0.7;
+}
+
 .navbar-default {
     background-color: #555555;
     border-color: #e7e7e7;
@@ -48,6 +60,10 @@ body {
 
 .navbar a {
     color: white;
+}
+
+.mc-bg-header-footer{
+    background-color: silver;
 }
 
 
