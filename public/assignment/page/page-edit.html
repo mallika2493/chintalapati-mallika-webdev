@@ -17,13 +17,13 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="row container-fluid bg-primary">
         <div class="col-sm-4 hidden-xs">
-            <a href="page-list.html" class="glyphicon glyphicon-chevron-left pull-left navbar-brand"></a>
+            <a href="../websites/website-list.html" class="glyphicon glyphicon-chevron-left pull-left navbar-brand"></a>
             <div class="navbar-header">
                 <a class="navbar-brand">
                     Pages
                 </a>
             </div>
-            <a href="#" class="glyphicon glyphicon-plus pull-right navbar-brand"></a>
+            <a href="page-new.html" class="glyphicon glyphicon-plus pull-right navbar-brand"></a>
         </div>
         <div class="col-sm-8">
             <a href="page-list.html" class="glyphicon glyphicon-chevron-left pull-left navbar-brand visible-xs"></a>
@@ -47,7 +47,7 @@
 
                     </div>
                     <div class="col-xs-2">
-                        <a href="website-new.html" class="pull-right">
+                        <a href="page-edit.html" class="pull-right">
                             <span class="glyphicon glyphicon-cog"></span>
                         </a>
                     </div>
@@ -59,7 +59,7 @@
                         <a href="page-list.html">Blogs</a>
                     </div>
                     <div class="col-xs-2">
-                        <a href="website-new.html" class="pull-right">
+                        <a href="#" class="pull-right">
                             <span class="glyphicon glyphicon-cog"></span>
                         </a>
                     </div>
@@ -71,7 +71,7 @@
                         <a href="page-list.html">Home</a>
                     </div>
                     <div class="col-xs-2">
-                        <a href="website-new.html" class="pull-right">
+                        <a href="#" class="pull-right">
                             <span class="glyphicon glyphicon-cog"></span>
                         </a>
                     </div>
@@ -83,7 +83,7 @@
                         <a href="page-list.html">About</a>
                     </div>
                     <div class="col-xs-2">
-                        <a href="website-new.html" class="pull-right">
+                        <a href="#" class="pull-right">
                             <span class="glyphicon glyphicon-cog"></span>
                         </a>
                     </div>
@@ -95,7 +95,7 @@
                         <a href="page-list.html">Contact Us</a>
                     </div>
                     <div class="col-xs-2">
-                        <a href="website-new.html" class="pull-right">
+                        <a href="#" class="pull-right">
                             <span class="glyphicon glyphicon-cog"></span>
                         </a>
                     </div>
@@ -104,18 +104,20 @@
         </ul>
     </div>
     <div class="col-sm-8 col-xs-12 wbdv-right-pane">
+        <form>
         <label for="page-name">Name</label>
         <input placeholder="Blog Post"
                class="form-control"
                id="page-name"/>
 
         <label for="page-description">Title</label>
-        <textarea placeholder="Page Title"
+        <input placeholder="Page Title"
                   class="form-control"
-                  id="page-description"></textarea>
+                  id="page-description"></input>
         <a href="page-list.html" class="btn btn-danger btn-block">
             Delete
         </a>
+        </form>
     </div>
 </div>
 
