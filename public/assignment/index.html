@@ -1,10 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="WebAppMaker">
 <head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <link href="css/styles.css" rel="stylesheet"/>
+    <script
+            src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+
+    <!-- controllers -->
+    <script src="views/user/controllers/login.controller.client.js"></script>
+    <script src="views/user/controllers/profile.controller.client.js"></script>
+    <script src="views/user/controllers/register.controller.client.js"></script>
+    <script src="views/websites/controllers/website-list.controller.client.js"></script>
+    <script src="views/websites/controllers/website-new.controller.client.js"></script>
+    <script src="views/websites/controllers/website-edit.controller.client.js"></script>
+    <script src="views/page/controllers/page-list.controller.client.js"></script>
+    <script src="views/page/controllers/page-new.controller.client.js"></script>
+    <script src="views/page/controllers/page-edit.controller.client.js"></script>
+    <script src="views/widget/controllers/widget-list.controller.client.js"></script>
+    <script src="views/widget/controllers/widget-new.controller.client.js"></script>
+    <script src="views/widget/controllers/widget-edit.controller.client.js"></script>
+
+    <!-- services -->
+    <script src="services/user.service.client.js"></script>
+    <script src="services/website.service.client.js"></script>
+    <script src="services/page.service.client.js"></script>
+    <script src="services/widget.service.client.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <title>Assignment Home Page</title>
+
+    <title>Title</title>
+
 </head>
 <body>
-    <h1>Assignment Home Page</h1>
+    <div ng-view></div>
 </body>
 </html>

@@ -1,0 +1,72 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid bg-primary">
+
+        <div>
+
+            <a class="navbar-brand">
+                Profile</a>
+            <a ng-click="model.update(model.user)" class="glyphicon glyphicon-ok pull-right navbar-brand"></a>
+
+        </div>
+
+
+
+    </div>
+</nav>
+
+
+    <div class="container">
+        <div class="alert alert-danger" ng-show="model.error">
+            {{model.error}}
+        </div>
+
+        <div class="alert alert-success" ng-show="model.message">
+            {{model.message}}
+        </div>
+
+        <form>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input ng-model="model.user.username" type="text" class="form-control" id="username" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input ng-model="model.user.email" type="email" class="form-control" id="email" placeholder="alice@wonderland.com">
+            </div>
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input ng-model="model.user.firstName" type="text" class="form-control" id="first-name" placeholder="Alice">
+            </div>
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input ng-model="model.user.lastName" type="text" class="form-control" id="last-name" placeholder="Wonderland">
+            </div>
+        </form>
+
+        <a class="btn btn-primary btn-block"
+           href="#/user/{{model.user._id}}/website">Websites</a>
+
+        <a ng-click="model.update(model.user)"
+           class="btn btn-success btn-block">
+            Update
+        </a>
+
+        <a class="btn btn-danger  btn-block"
+           href="#/login">Logout</a>
+
+        <a ng-click="model.deleteUser()"
+           class="btn btn-warning btn-block">
+            Unregister
+        </a>
+    </div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid bg-primary">
+
+        <a href="#/user/{{model.user._id}}" class="navbar-link navbar-brand pull-right">
+          <span class="glyphicon glyphicon-user">
+          </span>
+        </a>
+
+    </div>
+</nav>
