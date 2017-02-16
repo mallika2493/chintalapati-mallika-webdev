@@ -43,7 +43,6 @@
                     newWidget.text = "Default Text";
                     break;
             }
-            // console.log(newWidget);
             WidgetService.createWidget(vm.pageId, newWidget);
             $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + newWidget._id);
         }

@@ -23,7 +23,7 @@
         init();
 
         function getEditorTemplateUrl(type) {
-            console.log(type);
+
             var url="views/widget/templates/editors/widget-"+type+"-editor.view.client.html";
             return url;
         }
@@ -35,7 +35,7 @@
 
         function updateWidget(){
             WidgetService.updateWidget(vm.widgetId,vm.widget);
-            console.log(vm.widget);
+
             $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
         }
     }

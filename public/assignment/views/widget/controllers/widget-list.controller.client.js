@@ -22,7 +22,6 @@
 
 
         function getWidgetTemplateUrl(widgetType) {
-            console.log(widgetType);
             var url = 'views/widget/templates/widget-'+widgetType+'.view.client.html';
             return url;
         }

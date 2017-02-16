@@ -48,7 +48,6 @@
                     widgets[w].widgetType = widget.widgetType;
                     widgets[w].size = widget.size;
                     widgets[w].text = widget.text;
-                    console.log(widgets[w]);
                     return widgets[w];
                 }
             }
@@ -62,13 +61,10 @@
                     widgets_list.push(widgets[w]);
                 }
             }
-            console.log("in Service");
-            console.log(widgets_list);
             return widgets_list;
         }
 
         function findWidgetById(widgetId) {
-            console.log(widgetId);
             var widget_list=[];
             for(var w in widgets) {
                 if(widgets[w]._id === widgetId) {

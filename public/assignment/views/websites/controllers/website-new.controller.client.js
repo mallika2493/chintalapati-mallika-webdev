@@ -19,7 +19,6 @@
             if (website != null) {
 
                 WebsiteService.createWebsite(vm.userId, website);
-                console.log(website._id);
                 //vm.websites = WebsiteService.findAllWebsitesForUser(vm.userId);
                 $location.url("/user/" + vm.userId + "/website");
             }
