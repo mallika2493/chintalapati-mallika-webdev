@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="00f0d394-06f9-47da-8407-8724cc140359" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/services/widget.service.client.js" afterPath="$PROJECT_DIR$/public/assignment/services/widget.service.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/views/websites/controllers/website-new.controller.client.js" afterPath="$PROJECT_DIR$/public/assignment/views/websites/controllers/website-new.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/views/widget/controllers/widget-edit.controller.client.js" afterPath="$PROJECT_DIR$/public/assignment/views/widget/controllers/widget-edit.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/views/widget/controllers/widget-list.controller.client.js" afterPath="$PROJECT_DIR$/public/assignment/views/widget/controllers/widget-list.controller.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/views/widget/controllers/widget-new.controller.client.js" afterPath="$PROJECT_DIR$/public/assignment/views/widget/controllers/widget-new.controller.client.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,16 +26,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="371">
               <caret line="30" column="18" lean-forward="true" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/assignment/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -74,11 +61,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="widget.service.client.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="widget.service.client.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/assignment/services/widget.service.client.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="485">
               <caret line="67" column="17" lean-forward="false" selection-start-line="67" selection-start-column="17" selection-end-line="67" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="395">
+              <caret line="36" column="21" lean-forward="true" selection-start-line="35" selection-start-column="57" selection-end-line="36" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -161,7 +158,6 @@
         <option value="$PROJECT_DIR$/public/assignment/widget/widget-heading.html" />
         <option value="$PROJECT_DIR$/public/assignment/widget/widget-youtube.html" />
         <option value="$PROJECT_DIR$/public/assignment/widget/widget-image.html" />
-        <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/public/assignment/views/websites/controllers/website-list.controller.client.js" />
         <option value="$PROJECT_DIR$/public/assignment/views/user/templates/login.view.client.html" />
         <option value="$PROJECT_DIR$/public/assignment/views/user/controllers/login.controller.client.js" />
@@ -208,6 +204,7 @@
         <option value="$PROJECT_DIR$/public/assignment/views/websites/controllers/website-new.controller.client.js" />
         <option value="$PROJECT_DIR$/public/assignment/views/widget/controllers/widget-list.controller.client.js" />
         <option value="$PROJECT_DIR$/public/assignment/services/widget.service.client.js" />
+        <option value="$PROJECT_DIR$/public/index.html" />
       </list>
     </option>
   </component>
@@ -426,12 +423,12 @@
       <workItem from="1485806738119" duration="58361000" />
       <workItem from="1486594755367" duration="117000" />
       <workItem from="1487101175880" duration="32757000" />
-      <workItem from="1487147492875" duration="41797000" />
+      <workItem from="1487147492875" duration="42007000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="158892000" />
+    <option name="totallyTimeSpent" value="159102000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -557,14 +554,6 @@
           <folding>
             <element signature="e#0#45#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="35" column="57" lean-forward="false" selection-start-line="35" selection-start-column="57" selection-end-line="35" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -848,6 +837,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="485">
           <caret line="67" column="17" lean-forward="false" selection-start-line="67" selection-start-column="17" selection-end-line="67" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="36" column="21" lean-forward="true" selection-start-line="35" selection-start-column="57" selection-end-line="36" selection-end-column="21" />
           <folding />
         </state>
       </provider>
