@@ -26,7 +26,6 @@
 
 
         function createWidget(widgetType) {
-            console.log("widget in controller");
             newWidget = {};
             newWidget._id = (new Date()).getTime().toString();
             newWidget.widgetType = widgetType;

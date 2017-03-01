@@ -86,6 +86,7 @@
         }
 
         function sortWidgets(pageId, index1, index2) {
+            console.log(pageId);
             return $http.put("/page/" + pageId + "/widget?initial=" + index1 + "&final=" + index2);
         }
 

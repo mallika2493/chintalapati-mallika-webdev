@@ -87,6 +87,7 @@ module.exports=function (app) {
 
     function sortWidget(req, res) {
         var pid = req.params['pageId'];
+        console.log(pid);
         var i1 = parseInt(req.query.initial);
         var i2 = parseInt(req.query.final);
 
@@ -97,13 +98,13 @@ module.exports=function (app) {
             }
         }
 
-        for (var i = index1; i < index2; i++) {
+        for (var i = i1; i < i2; i++) {
             var temp = widgets[widgetsForGivenPage[i]];
             widgets[widgetsForGivenPage[i]] = widgets[widgetsForGivenPage[i+1]];
             widgets[widgetsForGivenPage[i+1]] = temp;
         }
 
-        for (var i = index1; i > index2; i--) {
+        for (var i = i1; i > i2; i--) {
             var temp = widgets[widgetsForGivenPage[i]];
             widgets[widgetsForGivenPage[i]] = widgets[widgetsForGivenPage[i-1]];
             widgets[widgetsForGivenPage[i-1]] = temp;
