@@ -18,25 +18,38 @@
         vm.deletePage=deletePage;
 
         function init() {
-            vm.pages = PageService.findPageByWebsiteId(vm.websiteId);
-            vm.page = PageService.findPageById(vm.pageId);
+            var promise1 = PageService.findPageById(vm.pageId)
+                .success(function (page) {
+                    vm.page = page;
+                });
+
+            var promise2 = PageService.findAllPagesForWebsite(vm.websiteId)
+                .success(function (pages) {
+                    vm.pages=pages;
+                });
         }
 
         init();
 
         function updatePage() {
-
-
-                PageService.updatePage(vm.pageId, vm.page);
-
-                //vm.websites = WebsiteService.findAllWebsitesForUser(vm.userId);
-                $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
-                ///user/:uid/website/:wid/page
-
+            PageService.updatePage(vm.pageId, vm.page)
+                .success(function (page) {
+                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+                })
+                .error(function () {
+                    vm.error="Sorry could not create page";
+                });
         };
+
         function deletePage() {
-            PageService.deletePage(vm.pageId);
-            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+            PageService.deletePage(vm.pageId)
+                .success(function (page) {
+                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+                })
+                .error(function () {
+                    vm.error="Sorry could not delete page";
+                });;
+
         };
     }
 })();

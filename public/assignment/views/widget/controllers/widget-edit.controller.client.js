@@ -17,26 +17,34 @@
             vm.websiteId = $routeParams.wid;
             vm.pageId = $routeParams.pid;
             vm.widgetId = $routeParams.wgid;
-            vm.widget=WidgetService.findWidgetById(vm.widgetId);
-            vm.widgets=WidgetService.findWidgetsByPageId(vm.pageId);
+            WidgetService.findWidgetById(vm.widgetId)
+                .success(function (widget) {
+                    vm.widget=widget;
+                });
+            WidgetService.findAllWidgetsForPage(vm.pageId)
+                .success(function (widget) {
+                    vm.widgets=widget;
+                });
         }
         init();
 
         function getEditorTemplateUrl(type) {
-
             var url="views/widget/templates/editors/widget-"+type+"-editor.view.client.html";
             return url;
         }
 
         function deleteWidget(){
-            WidgetService.deleteWidget(vm.widgetId);
-            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
+            WidgetService.deleteWidget(vm.widgetId)
+                .success(function (widget) {
+                    $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
+                });
         }
 
         function updateWidget(){
-            WidgetService.updateWidget(vm.widgetId,vm.widget);
-
-            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
+            WidgetService.updateWidget(vm.widgetId,vm.widget)
+                .success(function (widget) {
+                    $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
+                });
         }
     }
 })();

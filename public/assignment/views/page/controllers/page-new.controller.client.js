@@ -15,21 +15,23 @@
         vm.createPage=createpage;
 
         function init() {
-            vm.pages = PageService.findPageByWebsiteId(vm.websiteId);
+             PageService.findAllPagesForWebsite(vm.websiteId)
+                 .success(function (page) {
+                     vm.pages=page;
+                 });
         }
 
         init();
 
         function createpage(page) {
-            if (page != null) {
+            PageService.createPage(vm.websiteId, page)
+                .success(function (website) {
+                    $location.url("/user/" + vm.userId + "/website/"+vm.websiteId+"/page");
 
-                PageService.createPage(vm.websiteId, page);
-
-                //vm.websites = WebsiteService.findAllWebsitesForUser(vm.userId);
-                $location.url("/user/" + vm.userId + "/website/"+vm.websiteId+"/page");
-                ///user/:uid/website/:wid/page
-            }
-        }
-        ;
+                })
+                .error(function () {
+                    vm.error="Sorry could not create page";
+                })
+        };
     }
 })();

@@ -9,20 +9,29 @@
         vm.createWebsite = createWebsite;
 
         function init() {
+            var promise = WebsiteService.findAllWebsitesForUser(vm.userId)
+                .success(function (websites) {
 
-            vm.websites = WebsiteService.findWebsitesByUser(vm.userId);
+                    vm.websites=websites;
+                });
         }
 
         init();
 
         function createWebsite(website) {
-            if (website != null) {
+                   WebsiteService
+                            .createWebsite(vm.userId,website)
+                            .success(function (website) {
+                                $location.url("/user/" + vm.userId + "/website");
 
-                WebsiteService.createWebsite(vm.userId, website);
-                //vm.websites = WebsiteService.findAllWebsitesForUser(vm.userId);
-                $location.url("/user/" + vm.userId + "/website");
-            }
-        }
-    ;
+                            })
+                            .error(function () {
+                                vm.error="Sorry could not create website";
+                            })
+
+
+
+
+        };
     }
 })();

@@ -14,12 +14,15 @@
         vm.userId = $routeParams.uid;
         vm.websiteId = $routeParams.wid;
         vm.pageId = $routeParams.pid;
+        function init() {
+            var promise= WidgetService.findAllWidgetsForPage(vm.pageId)
+                .success(function (widget) {
+                    vm.widgets=widget;
 
-            vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
+                });
+        }
 
-
-
-
+        init();
 
         function getWidgetTemplateUrl(widgetType) {
             var url = 'views/widget/templates/widget-'+widgetType+'.view.client.html';

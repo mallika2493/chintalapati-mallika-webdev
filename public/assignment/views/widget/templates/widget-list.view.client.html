@@ -18,6 +18,7 @@
 </nav>
 
 <div class="container-fluid">
+    <div class="widget-list" wbdv-sortable="">
     <div ng-repeat="widget in model.widgets">
         <div class="jga-toolbar">
             <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
@@ -42,6 +43,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="row container-fluid bg-primary">

@@ -11,19 +11,40 @@
         vm.updateWebsite = updateWebsite;
 
         function init() {
-            vm.websites = WebsiteService.findWebsitesByUser(vm.userId);
-            vm.website = WebsiteService.findWebsiteById(vm.websiteId);
+            var promise1 = WebsiteService.findWebsiteById(vm.websiteId)
+                .success(function (website) {
+                    vm.website = website;
+                });
+
+            var promise2 = WebsiteService.findAllWebsitesForUser(vm.userId)
+                .success(function (websites) {
+
+                    vm.websites=websites;
+                });
         }
         init();
 
         function deleteWebsite () {
-            WebsiteService.deleteWebsite(vm.websiteId);
-            $location.url("/user/"+vm.userId+"/website");
-        };
+            WebsiteService.deleteWebsite(vm.websiteId)
+                .success(function (website) {
+                    $location.url("/user/"+vm.userId+"/website");
+                })
+                .error(function () {
+                    vm.error="Sorry could not delete website";
+                });
+        }
 
-        function updateWebsite(website) {
-            WebsiteService.updateWebsite(vm.websiteId, website);
-            $location.url("/user/"+vm.userId+"/website");
-        };
+        function updateWebsite() {
+            WebsiteService.updateWebsite(vm.websiteId, vm.website)
+                .success(function (website)
+                {
+                    $location.url("/user/"+vm.userId+"/website");
+
+                })
+                .error(function () {
+                    vm.error="Sorry could not create website";
+                });
+
+        }
     }
 })();

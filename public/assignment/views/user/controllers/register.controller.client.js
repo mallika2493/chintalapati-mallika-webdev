@@ -11,15 +11,23 @@
         vm.register = register;
 
         function register(user) {
-            var loginUser = UserService.findUserByCredentials(user.username,user.password);
-            if(loginUser == null){
-                loginUser= UserService.createUser(user);
-                $location.url('/user/' + loginUser._id);
-            }
-            else{
-             //alert user already exists
-            }
 
+            UserService.findUserByUsername(user.username)
+                .success(function (user) {
+                    vm.error="sorry username is taken";
+                })
+                .error(function () {
+                    UserService
+                        .createUser(user)
+                        .success(function (user) {
+                            $location.url('/user/' + user._id);
+
+                        })
+                        .error(function () {
+                            vm.error="Sorry could not register";
+                        })
+
+                })
 
         }
 

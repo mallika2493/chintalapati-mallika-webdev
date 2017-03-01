@@ -9,32 +9,45 @@
 
     function profileController($routeParams, $location,UserService) {
         var vm = this;
-        vm.updateUser = updateUser;
+        //vm.updateUser = updateUser;
         vm.deleteUser = deleteUser;
         var userId = $routeParams['uid'];
+
         vm.update = function (newUser) {
-            var user = UserService.updateUser(userId, newUser);
-            if(user == null) {
-                vm.error = "unable to update user";
-            } else {
-                vm.message = "user successfully updated"
-            }
-        };
+            var user = UserService.updateUser(userId, newUser)
+                .success(function (response) {
+                    vm.message = "user successfully updated"
+                })
+                .error(function () {
+                    vm.error = "unable to update user";
 
-        var user = UserService.findUserById(userId);
-        vm.user = user;
+                });
 
-        function updateUser(newUser) {
-            var user = UserService.updateUser(userId, newUser);
-            if(user == null) {
-                vm.error = "unable to update user";
-            } else {
-                vm.message = "user successfully updated"
-            }
         };
-        function deleteUser(){
-            var user = UserService.deleteUser(userId);
-            $location.url("/login");
+        function init() {
+
+            var promise = UserService
+                .findUserById(userId)
+                .success(function (user) {
+                    vm.user=user;
+                });
+
+        }
+        init();
+
+        function deleteUser(user){
+            var answer = confirm("Are you sure?");
+            console.log(answer);
+            if(answer) {
+                UserService
+                    .deleteUser(user._id)
+                    .success(function () {
+                        $location.url("/login");
+                    })
+                    .error(function () {
+                        vm.error = 'unable to remove user';
+                    });
+            }
         }
 
 

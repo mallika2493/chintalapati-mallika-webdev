@@ -10,18 +10,23 @@
         var vm = this;
         vm.userId = $routeParams.uid;
         vm.pageId = $routeParams.pid;
-        vm.websiteId = $routeParams.wid
+        vm.websiteId = $routeParams.wid;
         vm.widgetId = $routeParams.wgid;
         vm.createWidget = createWidget;
 
         function init() {
-            vm.widgets = WidgetService.findWidgetsByPageId(vm.pageId);
+
+           var promise= WidgetService.findAllWidgetsForPage(vm.pageId)
+                .success(function (widget) {
+                    vm.widgets=widget;
+                });
         }
 
         init();
 
 
         function createWidget(widgetType) {
+            console.log("widget in controller");
             newWidget = {};
             newWidget._id = (new Date()).getTime().toString();
             newWidget.widgetType = widgetType;
@@ -43,8 +48,13 @@
                     newWidget.text = "Default Text";
                     break;
             }
-            WidgetService.createWidget(vm.pageId, newWidget);
-            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + newWidget._id);
+
+            WidgetService.createWidget(vm.pageId, newWidget)
+
+                .success(function (widget) {
+                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + newWidget._id);
+                });
+
         }
     }
 
