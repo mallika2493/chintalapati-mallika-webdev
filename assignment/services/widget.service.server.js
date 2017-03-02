@@ -133,18 +133,22 @@ module.exports=function (app) {
         var width = req.body.width;
         var userId = req.body.userId;
         var websiteId = req.body.websiteId;
-        var myFile = req.file;
-        var destination = myFile.destination; // folder where file is saved to
 
-        for (var i in widgets) {
-            if (widgets[i]._id === widgetId) {
-                widgets[i].width = width;
-                widgets[i].url = req.protocol + '://' + req.get('host') + "/uploads/" + myFile.filename;
-                pageId = widgets[i].pageId;
+        if (req.file != null) {
+            var myFile = req.file;
+            var destination = myFile.destination; // folder where file is saved to
+
+            for (var i in widgets) {
+                if (widgets[i]._id === widgetId) {
+                    widgets[i].width = width;
+                    widgets[i].url = req.protocol + '://' + req.get('host') + "/uploads/" + myFile.filename;
+
+                    pageId = widgets[i].pageId;
+                }
             }
-        }
 
-        res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/");
+            res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/");
+        }
     }
 
 }
