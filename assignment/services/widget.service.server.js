@@ -8,6 +8,24 @@ module.exports=function (app) {
     app.put("/api/widget/:widgetId",updateWidget);
     app.delete("/api/widget/:widgetId",deleteWidget);
     app.put("/page/:pageId/widget", sortWidget);
+
+
+    var multer = require('multer');
+
+    var storage = multer.diskStorage({
+        destination: function (req, file, cb) {
+            cb(null, __dirname + "/../../public/uploads")
+        },
+        filename: function (req, file, cb) {
+            var extArray = file.mimetype.split("/");
+            var extension = extArray[extArray.length - 1];
+            cb(null, 'widget_image_' + Date.now() + '.' + extension)
+        }
+    });
+    var upload = multer({storage: storage});
+    app.post("/api/upload", upload.single('myFile'), uploadImage);
+
+
     var widgets = [
         { "_id": "123", "widgetType": "HEADER", "pageId": "321", "size": 2, "text": "GIZMODO"},
         { "_id": "234", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
@@ -109,6 +127,24 @@ module.exports=function (app) {
 
         res.sendStatus(200);
     }
+    function uploadImage(req, res) {
+        var pageId = null;
+        var widgetId = req.body.widgetId;
+        var width = req.body.width;
+        var userId = req.body.userId;
+        var websiteId = req.body.websiteId;
+        var myFile = req.file;
+        var destination = myFile.destination; // folder where file is saved to
 
+        for (var i in widgets) {
+            if (widgets[i]._id === widgetId) {
+                widgets[i].width = width;
+                widgets[i].url = req.protocol + '://' + req.get('host') + "/uploads/" + myFile.filename;
+                pageId = widgets[i].pageId;
+            }
+        }
+
+        res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/");
+    }
 
 }
