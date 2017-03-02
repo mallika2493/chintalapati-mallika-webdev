@@ -120,6 +120,7 @@ module.exports=function (app) {
                 var newUser=req.body;
                 users[u].firstName = newUser.firstName;
                 users[u].lastName = newUser.lastName;
+                users[u].email=newUser.email;
                 res.sendStatus(200);
                 return;
             }
