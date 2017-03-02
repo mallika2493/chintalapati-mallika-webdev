@@ -24,8 +24,6 @@ module.exports=function (app) {
 
 
     function createWidget(req,res) {
-
-        console.log("in widget server");
         var newWidget = req.body;
         newWidget.pageId = req.params['pageId'];
         widgets.push(newWidget);
@@ -87,7 +85,6 @@ module.exports=function (app) {
 
     function sortWidget(req, res) {
         var pid = req.params['pageId'];
-        console.log(pid);
         var i1 = parseInt(req.query.initial);
         var i2 = parseInt(req.query.final);
 

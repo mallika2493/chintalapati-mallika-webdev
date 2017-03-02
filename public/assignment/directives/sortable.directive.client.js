@@ -8,7 +8,7 @@
 
 
         function linkFunc(scope, element, attributes) {
-            console.log(pid);
+
             var pid = $routeParams.pid;
             var index1,index2;
             element.sortable({
@@ -18,7 +18,7 @@
                 },
                 stop:function (event,ui) {
                     index2=ui.item.index();
-                    console.log(index2);
+
                     WidgetService.sortWidgets(pid,index1,index2)
                         .success(function () {
                             

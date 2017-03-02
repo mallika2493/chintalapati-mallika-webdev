@@ -106,7 +106,6 @@ module.exports=function (app) {
     function createUser(req,res) {
 
         var newuser=req.body;
-        console.log("in service server:"+newuser);
         newuser._id=(new Date()).getTime().toString();
         users.push(newuser);
         res.json(newuser);

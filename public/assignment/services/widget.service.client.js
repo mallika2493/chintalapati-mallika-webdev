@@ -30,63 +30,31 @@
         return api;
 
         function createWidget(pageId,widget) {
-            console.log("in widget client");
-            //
-            //widget.pageId = pageId;
-            //widget._id = (new Date()).getTime().toString();
             return $http.post("/api/page/"+pageId+"/widget",widget);
 
-            //return widgets;
         }
 
         function deleteWidget(widgetId) {
             return $http.delete('/api/widget/'+widgetId);
-            /*for(var w in widgets) {
-                if(widgets[w]._id === widgetId) {
-                    widgets.splice(w, 1);
-                    res.sendStatus(200);
-                }
-            }*/
+
         }
 
         function updateWidget(widgetId,widget) {
             return $http.put("/api/widget/"+widgetId,widget);
-            /*for(var w in widgets){
-                var widget_var=widgets[w];
-                if(widget_var._id === widgetId){
-                    widgets[w].widgetType = widget.widgetType;
-                    widgets[w].size = widget.size;
-                    widgets[w].text = widget.text;
-                    return widgets[w];
-                }
-            }
-            return null;*/
+
         }
 
         function findAllWidgetsForPage(pageId) {
             return $http.get("/api/page/"+pageId+"/widget");
-            /*var widgets_list=[];
-            for(var w in widgets) {
-                if(widgets[w].pageId === pageId) {
-                    widgets_list.push(widgets[w]);
-                }
-            }
-            return widgets_list;*/
+
         }
 
         function findWidgetById(widgetId) {
             return $http.get("/api/widget/"+widgetId);
-            /*var widget_list=[];
-            for(var w in widgets) {
-                if(widgets[w]._id === widgetId) {
-                    return angular.copy(widgets[w]);
-                }
-            }
-            return null;*/
+
         }
 
         function sortWidgets(pageId, index1, index2) {
-            console.log(pageId);
             return $http.put("/page/" + pageId + "/widget?initial=" + index1 + "&final=" + index2);
         }
 
