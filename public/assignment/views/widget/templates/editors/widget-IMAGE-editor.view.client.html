@@ -80,7 +80,6 @@
                         placeholder="width"
                         id="widget-image-width"/>
             </div>
-
                 <input  name="myFile"    type="file" class="form-control"/>
                 <input  name="width"     value="{{model.widget.width}}" style="display: none"/>
                 <input  name="userId"    value="{{model.userId}}"   style="display: none"/>
@@ -93,7 +92,11 @@
                 <a ng-click="model.deleteWidget()" class="btn btn-danger btn-block">
                     Delete
                 </a>
+                <a ng-click="model.searchImage()" class="btn btn-success btn-block">
+                    Search
+                </a>
             </div>
+
         </form>
     </div>
 </div>

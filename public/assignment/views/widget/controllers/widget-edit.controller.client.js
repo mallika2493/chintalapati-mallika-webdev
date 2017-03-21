@@ -11,6 +11,7 @@
         vm.getEditorTemplateUrl = getEditorTemplateUrl;
         vm.updateWidget=updateWidget;
         vm.deleteWidget=deleteWidget;
+        vm.searchImage=searchImage;
 
         function init() {
             vm.userId = $routeParams.uid;
@@ -45,6 +46,10 @@
                 .success(function (widget) {
                     $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
                 });
+        }
+
+        function searchImage() {
+            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+vm.widgetId+"/flickr");
         }
     }
 })();

@@ -30,6 +30,7 @@
                 .findUserById(userId)
                 .success(function (user) {
                     vm.user=user;
+                    console.log(vm.user+"oooooo");
                 });
 
         }
