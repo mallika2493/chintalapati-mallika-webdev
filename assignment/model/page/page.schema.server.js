@@ -10,7 +10,7 @@ module.exports = function () {
         name: String,
         title: String,
         description: String,
-        //widgets: [{type: mongoose.Schema.Types.ObjectId, ref:'WidgetModel'}],
+        widgets: [{type: mongoose.Schema.Types.ObjectId, ref:'WidgetModel'}],
         dateCreated: {type: Date, default: Date.now()}
     },{collections:'assignment.mongo.pages'});
     return PageSchema;

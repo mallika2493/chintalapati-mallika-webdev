@@ -1,7 +1,8 @@
 /**
  * Created by mallika2493 on 2/24/17.
  */
-module.exports=function (app) {
+module.exports=function (app,model) {
+    var WidgetModel = model.WidgetModel;
     app.get("/api/page/:pageId/widget",findAllWidgetsForPage);
     app.post("/api/page/:pageId/widget",createWidget);
     app.get("/api/widget/:widgetId",findWidgetById);
@@ -43,9 +44,18 @@ module.exports=function (app) {
 
     function createWidget(req,res) {
         var newWidget = req.body;
-        newWidget.pageId = req.params['pageId'];
-        widgets.push(newWidget);
-        res.sendStatus(200);
+        var pageId = req.params['pageId'];
+        //newWidget.pageId=pageId;
+        // widgets.push(newWidget);
+        // res.sendStatus(200);
+        WidgetModel
+            .createWidget(pageId, newWidget)
+            .then(function (widget) {
+                res.json(widget);
+            }, function (err) {
+                res.sendStatus(404);
+            });
+
     }
 
     function deleteWidget(req,res) {
@@ -63,7 +73,8 @@ module.exports=function (app) {
 
         var widgetId=req.params['widgetId'];
         var widget=req.body;
-        for(var w in widgets){
+
+        /*for(var w in widgets){
             var widget_var=widgets[w];
             if(widget_var._id === widgetId){
                 widgets[w].widgetType = widget.widgetType;
@@ -73,31 +84,46 @@ module.exports=function (app) {
                 res.send(widgets[w]);
                 return;
             }
-        }
+        }*/
+        WidgetModel.updateWidget(widgetId,widget)
+            .then(
+                function (response) {
+                    console.log("yahhhooooooooooo");
+                    if (response.ok === 1 && response.n === 1) {
+
+                        res.sendStatus(200);
+                    }
+                    else {
+                        res.sendStatus(404);
+                    }
+                }, function (err) {
+                    console.log("hjdhsjkhfjk");
+                    res.sendStatus(err);
+                }
+            );
 
     }
 
     function findAllWidgetsForPage(req,res) {
-        var pageId=req.params['pageId'];
-        var widgets_list=[];
-        for(var w in widgets) {
-            if(widgets[w].pageId === pageId) {
-                widgets_list.push(widgets[w]);
-            }
-        }
-
-        res.send(widgets_list);
+        var pageId = req.params.pageId;
+        WidgetModel
+            .findAllWidgetsForPage(pageId)
+            .then(function (widgets) {
+                res.json(widgets);
+            }, function (err) {
+                res.sendStatus(404);
+            });
     }
 
     function findWidgetById(req,res) {
-        var widgetId = req.params['widgetId'];
-        var widget_list=[];
-        for(var w in widgets) {
-            if(widgets[w]._id === widgetId) {
-                res.send(widgets[w]);
-                return;
-            }
-        }
+        var widgetId = req.params.widgetId;
+        WidgetModel
+            .findWidgetById(widgetId)
+            .then(function (widget) {
+                res.json(widget);
+            }, function (err) {
+                res.sendStatus(404);
+            });
 
     }
 

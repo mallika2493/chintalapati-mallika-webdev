@@ -6,20 +6,20 @@ module.exports = function () {
     var UserModel = require("./user/user.model.server")();
     var WebsiteModel = require("./website/website.model.server")();
     var PageModel = require("./page/page.model.server")();
+    var WidgetModel = require("./widget/widget.model.server")();
     var model = {
         UserModel: UserModel,
         WebsiteModel: WebsiteModel,
-        PageModel: PageModel
-        //widgetModel: widgetModel
+        PageModel: PageModel,
+        WidgetModel: WidgetModel
     };
-
-    //widgetModel.setModel(model);
 
     WebsiteModel.setModel(model);
     UserModel.setModel(model);
     PageModel.setModel(model);
+    WidgetModel.setModel(model);
     mongoose.connection.on('connected', function(){
-        console.log("Hi");
+
     });
     return model;
 };

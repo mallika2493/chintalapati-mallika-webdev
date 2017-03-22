@@ -27,13 +27,14 @@
 
         function createWidget(widgetType) {
             newWidget = {};
-            newWidget._id = (new Date()).getTime().toString();
-            newWidget.widgetType = widgetType;
-            newWidget.pageId = vm.pageId;
+           // newWidget._id = (new Date()).getTime().toString();
+            newWidget.type = widgetType;
+            //newWidget.pageId = vm.pageId;
             switch (widgetType) {
                 case "HEADER":
                     newWidget.text = "Default Text";
                     newWidget.size = 3;
+
                     break;
                 case "IMAGE":
                     newWidget.url = "https://i.ytimg.com/vi/fFi4BhD_DUw/maxresdefault.jpg";
@@ -51,7 +52,7 @@
             WidgetService.createWidget(vm.pageId, newWidget)
 
                 .success(function (widget) {
-                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + newWidget._id);
+                    $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget/" + widget._id);
                 });
 
         }

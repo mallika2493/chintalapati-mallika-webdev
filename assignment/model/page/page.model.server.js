@@ -41,7 +41,6 @@ module.exports = function () {
             });
     }
 
-
     function findAllPagesForWebsite(websiteId) {
         return PageModel.find({"_website": websiteId});
     }
