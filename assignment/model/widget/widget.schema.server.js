@@ -22,6 +22,8 @@ module.exports = function () {
         formatted: Boolean,
         dateCreated: {type: Date, default: Date.now()}
     },{collections:'assignment.mongo.widgets'});
+
+
     return WidgetSchema;
 };
 

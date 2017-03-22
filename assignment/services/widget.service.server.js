@@ -50,16 +50,6 @@ module.exports=function (app,model) {
 
     }
 
-    function deleteWidget(req,res) {
-        var widgetId=req.params['widgetId'];
-        for(var w in widgets) {
-            if(widgets[w]._id === widgetId) {
-                widgets.splice(w, 1);
-                res.sendStatus(200);
-
-            }
-        }
-    }
 
     function updateWidget(req,res) {
 
@@ -189,6 +179,22 @@ module.exports=function (app,model) {
             pageId = req.body.pageId;
             res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/"+widgetId);
         }
+    }
+
+    function deleteWidget(req, res) {
+
+        var widgetId = req.params.widgetId;
+
+        WidgetModel
+            .deleteWidget(widgetId)
+            .then(
+                function (status) {
+                    res.sendStatus(200);
+                },
+                function (error) {
+                    res.sendStatus(400).send(error);
+                }
+            );
     }
 
 

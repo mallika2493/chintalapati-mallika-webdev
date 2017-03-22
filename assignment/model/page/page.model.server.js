@@ -9,7 +9,8 @@ module.exports = function () {
         findAllPagesForWebsite: findAllPagesForWebsite,
         createPage: createPage,
         setModel: setModel,
-        updatePage: updatePage
+        updatePage: updatePage,
+        getModel: getModel
 
     };
     var model = null;
@@ -52,6 +53,10 @@ module.exports = function () {
 
     function setModel(_model) {
         model = _model;
+    }
+
+    function getModel() {
+        model = PageModel;
     }
 
     function updatePage(pageId, updatedPage) {
