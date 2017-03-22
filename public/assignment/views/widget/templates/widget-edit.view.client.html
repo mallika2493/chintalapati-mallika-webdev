@@ -35,6 +35,10 @@
             <div ng-include="model.getEditorTemplateUrl(model.widget.type)"></div>
         </div>
 
+        <div ng-switch-when="TEXT">
+            <div ng-include="model.getEditorTemplateUrl(model.widget.type)"></div>
+        </div>
+
     </div>
 </div>
 

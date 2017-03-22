@@ -32,13 +32,14 @@ module.exports = function () {
     }
 
     function createWidget(pageId,widget) {
-
+        console.log(pageId);
         return WidgetModel.create(widget)
             .then(
                 function (widget) {
                     return model.PageModel
                         .findPageById(pageId)
                         .then(function (page) {
+                            console.log("pageId:"+pageId);
                             widget._page = page._id;
                             page.widgets.push(widget._id);
                             widget.save();

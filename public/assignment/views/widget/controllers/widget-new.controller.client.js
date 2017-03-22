@@ -47,6 +47,14 @@
                 case "HTML":
                     newWidget.text = "Default Text";
                     break;
+                case "TEXT":
+                    /* type: widget.type,
+                     text: widget.text,
+                     rows: widget.rows,
+                     placeholder: widget.placeholder,
+                     formatted: widget.formatted};*/
+                    newWidget.text = "Default Text";
+                    break;
             }
 
             WidgetService.createWidget(vm.pageId, newWidget)

@@ -27,33 +27,25 @@ module.exports=function (app,model) {
     app.post("/api/upload", upload.single('myFile'), uploadImage);
 
 
-    var widgets = [
-        { "_id": "123", "widgetType": "HEADER", "pageId": "321", "size": 2, "text": "GIZMODO"},
-        { "_id": "234", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
-        { "_id": "345", "widgetType": "IMAGE", "pageId": "321", "width": "100%",
-            "url": "https://i.kinja-img.com/gawker-media/image/upload/s--UE7cu6DV--/c_scale,fl_progressive,q_80,w_800/xoo0evqxzxrrmrn4ayoq.jpg"},
-        { "_id": "456", "widgetType": "HTML", "pageId": "321", "text": '<p>Anker’s kevlar-reinforced PowerLine cables are ' +
-        '<a href="http://gear.lifehacker.com/your-favorite-lightning-cables-anker-powerline-and-pow-1782036601" target="_blank" rel="noopener">far and away our readers’ top choice for charging their gadgets</a>, and you can save on several models today, including some from the nylon-wrapped PowerLine+ collection. I use these cables every single day, and I’ve never had one fray or stop working. Just be sure to note the promo codes below.' +
-        '<br></p>'},
-        { "_id": "567", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
-        { "_id": "678", "widgetType": "YOUTUBE", "pageId": "321", "width": "100%",
-            "url": "https://youtu.be/AM2Ivdi9c4E"},
-        { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
-    ];
+
 
 
     function createWidget(req,res) {
         var newWidget = req.body;
         var pageId = req.params['pageId'];
+        console.log(newWidget);
         //newWidget.pageId=pageId;
         // widgets.push(newWidget);
         // res.sendStatus(200);
         WidgetModel
             .createWidget(pageId, newWidget)
             .then(function (widget) {
+                console.log("in service server:"+pageId);
                 res.json(widget);
             }, function (err) {
-                res.sendStatus(404);
+                console.log("in service server error:"+pageId);
+
+                res.sendStatus(err);
             });
 
     }
@@ -88,7 +80,7 @@ module.exports=function (app,model) {
         WidgetModel.updateWidget(widgetId,widget)
             .then(
                 function (response) {
-                    console.log("yahhhooooooooooo");
+
                     if (response.ok === 1 && response.n === 1) {
 
                         res.sendStatus(200);
@@ -153,12 +145,13 @@ module.exports=function (app,model) {
 
         res.sendStatus(200);
     }
-    function uploadImage(req, res) {
+    /*function uploadImage(req, res) {
         var pageId = null;
         var widgetId = req.body.widgetId;
         var width = req.body.width;
         var userId = req.body.userId;
         var websiteId = req.body.websiteId;
+
 
         if (req.file != null) {
             var myFile = req.file;
@@ -179,6 +172,52 @@ module.exports=function (app,model) {
             pageId = req.body.pageId;
             res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/"+widgetId);
         }
+    }*/
+
+    function uploadImage(req, res) {
+        var pageId = null;
+        var widgetId = req.body.widgetId;
+        var width = req.body.width;
+        var userId = req.body.userId;
+        var websiteId = req.body.websiteId;
+        var imgWidget ={
+            width:width,
+            _id:widgetId
+        }
+        if(req.file!=null) {
+            var myFile = req.file;
+            var destination = myFile.destination;
+
+            imgWidget.url = req.protocol + '://' + req.get('host') + "/uploads/" + myFile.filename;
+
+            WidgetModel
+                .updateWidget(widgetId, imgWidget)
+                .then(function (response) {
+                    if(response.ok===1&&response.n===1){
+
+                        console.log("in hereeeee1");
+                        WidgetModel
+                            .findWidgetById(widgetId)
+                            .then(function (newResponse) {
+                                console.log("in hereeeee2");
+                                pageId = newResponse._page;
+                                res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget");
+
+                            });
+                    }
+                    else{
+                        res.sendStatus(404);
+                    }
+                },function(err){
+                    res.sendStatus(404);
+                });
+
+        }
+        else{
+            pageId = req.body.pageId;
+            res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/"+widgetId);
+        }
     }
+
 
 }

@@ -1,0 +1,101 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="row container-fluid bg-primary">
+        <div class="col-sm-4 hidden-xs">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="glyphicon glyphicon-chevron-left pull-left navbar-brand"></a>
+            <div class="navbar-header">
+                <a class="navbar-brand">
+                    Widgets
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="glyphicon glyphicon-chevron-left pull-left navbar-brand visible-xs"></a>
+            <a ng-click="model.updateWidget()" class="glyphicon glyphicon-ok pull-right navbar-brand"></a>
+            <div class="navbar-header">
+                <a class="navbar-brand no-left-margin">
+                    Widget Edit
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="row container-fluid">
+    <div class="col-sm-4 hidden-xs">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a ng-click="model.createWidget('HEADER')">Header</a>
+            </li>
+
+            <li class="list-group-item">
+                <a ng-click="model.createWidget('HTML')">HTML</a>
+            </li>
+
+            <li class="list-group-item">
+
+                <a ng-click="model.createWidget('IMAGE')">Image</a>
+
+            </li>
+            <li class="list-group-item">
+
+                <a ng-click="model.createWidget('YOUTUBE')">YouTube</a>
+
+            </li>
+            <li class="list-group-item">
+
+                <a ng-click="model.createWidget('TEXT')">Text</a>
+
+            </li>
+        </ul>
+    </div>
+    <div class="col-sm-8 col-xs-12 wbdv-right-pane">
+        <form>
+            <div class="form-group">
+                <label for="widget-text">Text</label>
+                <input ng-model="model.widget.text"
+                       value=""
+                       class="form-control"
+                       placeholder="Text"
+                       id="widget-text"/>
+            </div>
+            <div class="form-group">
+                <label for="widget-rows">Rows</label>
+                <input ng-model="model.widget.rows"
+                       value=""
+                       class="form-control"
+                       type="number"
+                       placeholder="Rows"
+                       id="widget-rows"/>
+            </div>
+
+            <div>
+                <label for="widget-placeholder">Placeholder</label>
+                <input ng-model="model.widget.placeholder"
+                       value=""
+                       class="form-control"
+                       type="Text"
+                       placeholder="placeholder"
+                       id="widget-placeholder"/>
+            </div>
+
+
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"
+                           ng-model="model.widget.formatted"> Formatted
+                </label>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid bg-primary">
+
+        <a href="#/user/{{model.userId}}" class="navbar-link navbar-brand pull-right">
+          <span class="glyphicon glyphicon-user">
+          </span>
+        </a>
+
+    </div>
+</nav>
