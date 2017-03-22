@@ -145,34 +145,6 @@ module.exports=function (app,model) {
 
         res.sendStatus(200);
     }
-    /*function uploadImage(req, res) {
-        var pageId = null;
-        var widgetId = req.body.widgetId;
-        var width = req.body.width;
-        var userId = req.body.userId;
-        var websiteId = req.body.websiteId;
-
-
-        if (req.file != null) {
-            var myFile = req.file;
-            var destination = myFile.destination; // folder where file is saved to
-
-            for (var i in widgets) {
-                if (widgets[i]._id === widgetId) {
-                    widgets[i].width = width;
-                    widgets[i].url = req.protocol + '://' + req.get('host') + "/uploads/" + myFile.filename;
-
-                    pageId = widgets[i].pageId;
-                }
-            }
-
-            res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/");
-        }
-        else{
-            pageId = req.body.pageId;
-            res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/"+widgetId);
-        }
-    }*/
 
     function uploadImage(req, res) {
         var pageId = null;

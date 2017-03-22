@@ -45,37 +45,18 @@
         </ul>
     </div>
     <div class="col-sm-8 col-xs-12 wbdv-right-pane">
-        <form>
+        <div class="container-fluid">
             <div class="form-group">
-                <label for="widget-name">Name</label>
-                <input ng-model="model.widget.name"
-                       value=""
-                       class="form-control"
-                       placeholder="Name"
-                       id="widget-name"/>
+                <div ng-model="model.widget.text"
+                     text-angular
+                     ta-toolbar="[['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'quote'],
+            ['bold','italics','underline','strikeThrough', 'ul', 'ol', 'redo', 'undo', 'clear'],
+            ['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+            ['indent','outdent'],['html', 'insertImage','insertLink', 'wordcount', 'charcount']]">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="widget-text">Text</label>
-                <input  ng-model="model.widget.text"
-                        value="US Senator reaches compromise on emergency"
-                        class="form-control"
-                        placeholder="Text"
-                        id="widget-text"></input>
-            </div>
-            <div class="form-group">
-                <label for="widget-size">Size</label>
-                <input  ng-model="model.widget.size"
-                        value="3"
-                        class="form-control"
-                        placeholder="size"
-                        id="widget-size"/>
-            </div>
-            <div class="form-group">
-                <a ng-click="model.deleteWidget()" class="btn btn-danger btn-block">
-                    Delete
-                </a>
-            </div>
-        </form>
+            <a class="btn btn-danger btn-block" ng-click="model.deleteWidget()">Delete</a>
+        </div>
     </div>
 </div>
 

@@ -41,7 +41,7 @@
                     newWidget.width = "100%";
                     break;
                 case "YOUTUBE":
-                    newWidget.url = "https://i.ytimg.com/vi/fFi4BhD_DUw/maxresdefault.jpg";
+                    newWidget.url = "https://youtu.be/AM2Ivdi9c4E";
                     newWidget.width = "100%";
                     break;
                 case "HTML":

@@ -11,5 +11,6 @@ module.exports = function () {
         pages:  [{type: mongoose.Schema.Types.ObjectId, ref:'PageModel'}],
         dateCreated: {type: Date, default: Date.now()}
     },{collections:'assignment.mongo.websites'});
+
     return WebsiteSchema;
 };
