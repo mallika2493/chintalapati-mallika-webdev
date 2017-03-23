@@ -20,7 +20,6 @@
                     UserService
                         .createUser(user)
                         .success(function (user) {
-                            console.log(user+"hhhh");
                             $location.url('/user/' + user._id);
 
                         })

@@ -66,7 +66,7 @@ module.exports = function () {
         return PageModel.findById(pageId).populate('_website').then(function (page) {
             page._website.pages.splice(page._website.pages.indexOf(pageId),1);
             page._website.save();
-            console.log("deleted pageId:"+pageId);
+
             return deletePageAndChildren(pageId);
         }, function (err) {
             return err;
@@ -77,7 +77,7 @@ module.exports = function () {
         // Delete the page and its children (widgets)
         return PageModel.findById({_id: pageId})
             .then(function (page) {
-                console.log("page and children:"+page);
+
                 var widgetsOfPage = page.widgets;
 
                 return recursiveDelete(widgetsOfPage, pageId);

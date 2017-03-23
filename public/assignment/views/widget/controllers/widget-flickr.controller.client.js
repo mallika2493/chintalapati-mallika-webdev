@@ -42,7 +42,6 @@
             WidgetService
                 .updateWidget(vm.widgetId,widget)
                 .then(function (){
-                    console.log(widget);
                     $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
                 });
         }

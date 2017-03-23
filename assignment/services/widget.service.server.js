@@ -33,17 +33,14 @@ module.exports=function (app,model) {
     function createWidget(req,res) {
         var newWidget = req.body;
         var pageId = req.params['pageId'];
-        console.log(newWidget);
         //newWidget.pageId=pageId;
         // widgets.push(newWidget);
         // res.sendStatus(200);
         WidgetModel
             .createWidget(pageId, newWidget)
             .then(function (widget) {
-                console.log("in service server:"+pageId);
                 res.json(widget);
             }, function (err) {
-                console.log("in service server error:"+pageId);
 
                 res.sendStatus(err);
             });
@@ -79,7 +76,6 @@ module.exports=function (app,model) {
                         res.sendStatus(404);
                     }
                 }, function (err) {
-                    console.log("hjdhsjkhfjk");
                     res.sendStatus(err);
                 }
             );
