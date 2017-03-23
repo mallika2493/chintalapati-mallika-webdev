@@ -97,15 +97,19 @@ module.exports=function (app,model) {
 
     }
 
-    function deletePage(req,res) {
-        var pageId= req.params['pageId'];
-        for(var p in pages) {
-            if(pages[p]._id === pageId) {
-                pages.splice(p, 1);
-                res.send(200);
-            }
-        }
-        res.sendStatus(404).send("page not found to delete");
-
+    function deletePage(req, res){
+        var pageId = req.params.pageId;
+        PageModel
+            .deletePage(pageId)
+            .then(function (response) {
+                if(response.result.n == 1 && response.result.ok == 1){
+                    res.sendStatus(200);
+                }
+                else{
+                    res.sendStatus(404);
+                }
+            }, function (err) {
+                res.sendStatus(404);
+            });
     }
 }

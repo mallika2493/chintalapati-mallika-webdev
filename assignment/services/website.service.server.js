@@ -80,16 +80,20 @@ module.exports = function (app, model) {
             });
     }
 
-    function deleteWebsite(req, res) {
-        var websiteId = req.params['websiteId'];
-        for (var w in websites) {
-            if (websites[w]._id === websiteId) {
-                websites.splice(w, 1);
-                res.send(200);
-                return;
-            }
-        }
-        res.sendStatus(404).send("website not found to delete");
+    function deleteWebsite(req, res){
+        var websiteId = req.params.websiteId;
+        WebsiteModel
+            .deleteWebsite(websiteId)
+            .then(function (response) {
+                if(response.result.n == 1 && response.result.ok == 1){
+                    res.sendStatus(200);
+                }
+                else{
+                    res.sendStatus(404);
+                }
+            }, function (err) {
+                res.sendStatus(404);
+            });
     }
 
 }

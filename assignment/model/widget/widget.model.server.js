@@ -100,6 +100,7 @@ module.exports = function () {
     }
     function deleteWidgetOfPage(widgetId) {
         // Delete the widget and the associated image (if present)
+        console.log("in wofp");
         return WidgetModel.findById(widgetId)
             .then(function (widget) {
                 if(widget.type == "IMAGE"){
