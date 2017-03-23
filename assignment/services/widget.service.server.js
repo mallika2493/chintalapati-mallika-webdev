@@ -8,7 +8,7 @@ module.exports=function (app,model) {
     app.get("/api/widget/:widgetId",findWidgetById);
     app.put("/api/widget/:widgetId",updateWidget);
     app.delete("/api/widget/:widgetId",deleteWidget);
-    app.put("/page/:pageId/widget", sortWidget);
+    app.put("/page/:pageId/widget", updateWidgetOrder);
 
 
     var multer = require('multer');
@@ -109,7 +109,7 @@ module.exports=function (app,model) {
 
     }
 
-    function sortWidget(req, res) {
+    /*function sortWidget(req, res) {
         var pid = req.params['pageId'];
         var i1 = parseInt(req.query.initial);
         var i2 = parseInt(req.query.final);
@@ -134,7 +134,7 @@ module.exports=function (app,model) {
         }
 
         res.sendStatus(200);
-    }
+    }*/
 
     function uploadImage(req, res) {
         var pageId = null;
@@ -157,11 +157,11 @@ module.exports=function (app,model) {
                 .then(function (response) {
                     if(response.ok===1&&response.n===1){
 
-                        console.log("in hereeeee1");
+
                         WidgetModel
                             .findWidgetById(widgetId)
                             .then(function (newResponse) {
-                                console.log("in hereeeee2");
+
                                 pageId = newResponse._page;
                                 res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget");
 
@@ -197,5 +197,19 @@ module.exports=function (app,model) {
             );
     }
 
+    function updateWidgetOrder(req, res) {
+        var pageId = req.params.pageId;
+        var startIndex = parseInt(req.query.initial);
+        var endIndex = parseInt(req.query.final);
+
+        WidgetModel
+            .reorderWidget(pageId, startIndex, endIndex)
+            .then(function (response) {
+
+                res.sendStatus(response);
+            }, function (err) {
+                res.sendStatus(404);
+            });
+    }
 
 }

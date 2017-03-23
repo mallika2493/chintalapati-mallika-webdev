@@ -48,6 +48,7 @@ body {
     padding-bottom: 5px;
     border-bottom-left-radius: 5px;
     opacity: 0.7;
+    z-index: 1;
 }
 
 .navbar-default {
@@ -80,7 +81,7 @@ a {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */
     height: 0;
-    width:90%;
+
 }
 
 .youtube-widget iframe {
@@ -88,6 +89,6 @@ a {
     top: 0;
     left: 0;
 
-    height: auto;
+    height: 100%;
 }
 

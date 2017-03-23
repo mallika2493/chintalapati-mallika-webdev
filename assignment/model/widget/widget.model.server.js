@@ -14,7 +14,8 @@ module.exports = function () {
         setModel: setModel,
         updateWidget: updateWidget,
         deleteWidget: deleteWidget,
-        deleteWidgetOfPage: deleteWidgetOfPage
+        deleteWidgetOfPage: deleteWidgetOfPage,
+        reorderWidget:reorderWidget
 
     };
 
@@ -22,9 +23,7 @@ module.exports = function () {
 
     return api;
 
-    function findAllWidgetsForPage(pageId) {
-        return WidgetModel.find({"_page": pageId});
-    }
+
 
     function findWidgetById(widgetId) {
         return WidgetModel.findOne({_id: widgetId});
@@ -107,6 +106,45 @@ module.exports = function () {
                     deleteUploadedImage(widget.url);
                 }
                 return WidgetModel.remove({_id: widgetId});
+            }, function (err) {
+                return err;
+            });
+    }
+
+    function findAllWidgetsForPage(pageId){
+        return model.PageModel
+            .findPageById(pageId)
+            .then(function (page) {
+                var widgetsOfPage = page.widgets;
+                var numberOfWidgets = widgetsOfPage.length;
+                var widgetCollectionForPage = [];
+
+                return getWidgetsRecursively(numberOfWidgets, widgetsOfPage, widgetCollectionForPage);
+            }, function (err) {
+                return err;
+            });
+    }
+    function getWidgetsRecursively(count, widgetsOfPage, widgetCollectionForPage) {
+        if(count == 0){
+            return widgetCollectionForPage;
+        }
+
+        return WidgetModel.findById(widgetsOfPage.shift()).select('-__v')
+            .then(function (widget) {
+                widgetCollectionForPage.push(widget);
+                return getWidgetsRecursively(--count, widgetsOfPage, widgetCollectionForPage);
+            }, function (err) {
+                return err;
+            });
+    }
+
+    function reorderWidget(pageId, start, end) {
+        return model.PageModel
+            .findPageById(pageId)
+            .then(function (page) {
+                page.widgets.splice(end, 0, page.widgets.splice(start, 1)[0]);
+                page.save();
+                return 200;
             }, function (err) {
                 return err;
             });
