@@ -17,7 +17,7 @@
             var secret = "50ed1200d797e928";
             var urlBase = "https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&api_key=API_KEY&text=TEXT";
             var url = urlBase.replace("API_KEY", key).replace("TEXT", searchTerm);
-            return $http.get(url);
+            return $http.get(url)
         }
     }
 })();
