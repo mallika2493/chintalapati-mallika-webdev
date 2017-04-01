@@ -49,25 +49,80 @@
 <div class="container-fluid">
     <div class="col-sm-8 input-group center-block">
             <span class="input-group-btn">
-            <input ng-model="searchText" type="text" placeholder="Search tv show" class="form-control">
+                <input ng-model="searchText" type="text" placeholder="Search tv show" class="form-control">
 
-        <a ng-click="model.searchShow(searchText)" class="btn btn-default" type="button">
-            <span class="glyphicon glyphicon-search"></span>
-        </a>
-    </span>
+                <a ng-click="model.searchShow(searchText)" class="btn btn-default" type="button">
+                    <span class="glyphicon glyphicon-search"></span>
+                </a>
+            </span>
     </div>
-    <div class="row container-fluid">
+    <!--<div class="container-fluid">
         <div class="col-xs-4 center-block" style="padding-left:0px; padding-right:0px;" ng-repeat="show in model.shows">
 
             <img width="100%"
 
                  ng-src="{{show.image.original}}"/>
-            <div class="col-md-11">
-                <p class="featurette-heading">{{show.summary}}</p>
+            <div class="col-sm-8">
+                <div class="panel panel-default">
+                    <h2>{{show.name}}</h2>
 
+                &lt;!&ndash;<p class="featurette-heading">{{show.summary}}</p> &ndash;&gt;
+                </div>
             </div>
 
         </div>
 
+    </div>-->
+    <div class="row container-fluid">
+        <div class="panel panel-default">
+            <div class="col-sm-11 ng-binding" style="..." ng-repeat="sho in model.shows">
+
+                <img width="60%" height="10%" class="img-responsive margin-top"
+                ng-src="{{sho.show.image.original}}">
+
+                <h2 class="ng-binding">{{sho.show.name}}</h2>
+                <div class="caption">
+                    <span class="h5 text-muted ng-binding" ng-repeat="genre in sho.show.genres">#{{genre}}&nbsp</span>
+                </div>
+                <i class="fa fa-clock-o ng-binding">&nbsp;{{sho.show.runtime}} min</i>
+                <hr class="featurette-divider">
+
+
+                <p class="ng-binding">
+                    <h5>Summary</h5>
+                {{sho.show.summary}}</p>
+
+
+                <p>Watch every {{sho.show.schedule.days[0]}} at {{sho.show.schedule.time}} hrs</p>
+
+                <hr>
+                <h5>Cast</h5>
+
+                <!-- ng-repeat on cast -->
+                <div class="col-sm-8" ng-repeat="cast in model.cast">
+                    <!--{{cast.person.name}} -->
+                    <div class="container">
+
+                        <br>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <img class="media-object" style="width: 80px" ng-src="{{cast.character.image.original}}">
+                            </div>
+
+                        </div>
+                        <div class="media-body">
+                            <h5 class="media-heading">{{cast.person.name}} as {{cast.character.name}}</h5>
+
+
+                        </div>
+                        <hr>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
+
+
 </div>

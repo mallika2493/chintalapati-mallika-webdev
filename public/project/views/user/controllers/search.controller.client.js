@@ -12,7 +12,7 @@
     function searchController($routeParams,$location, TvShowService) {
         var vm=this;
         vm.searchShow = searchShow;
-        vm.getImage=getImage;
+
 
 
         function init() {
@@ -28,24 +28,22 @@
                 .searchShow(searchTerm)
                 .then(function (response) {
                     var data = response.data;
-                    var sh = data[0];
-                    var summary = sh.show.summary;
+                    var sh = [data[0]];
+                    var summary = sh[0].show.summary;
                     cleanText = summary.replace(/<\/?[^>]+(>|$)/g, "");
-                    sh.show.summary=cleanText;
+                    sh[0].show.summary=cleanText;
+                    var id = sh[0].show.id;
                     vm.shows = sh;
+                    console.log(vm.shows)
+                    vm.id=id;
+                    TvShowService.getCastDetails(id)
+                        .then(function (response) {
+                            var cast=response.data;
+                            vm.cast=cast;
+
+                        });
                });
         }
-
-        function getImage(url) {
-            TvShowService.getImage(url)
-                .then(function (response) {
-                    return
-
-                });
-
-
-        }
-
 
 
     }

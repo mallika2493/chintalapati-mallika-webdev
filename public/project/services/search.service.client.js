@@ -9,7 +9,7 @@
     function TvShowService($http) {
         var api = {
             "searchShow":searchShow,
-            "getImage":getImage
+            "getCastDetails":getCastDetails
         };
         return api;
 
@@ -21,8 +21,9 @@
             return $http.get(url);
         }
 
-        function getImage(url) {
-
+        function getCastDetails(id) {
+            var urlBase = "http://api.tvmaze.com/shows/ID/cast";
+            var url = urlBase.replace("ID", id);
             return $http.get(url);
         }
     }
