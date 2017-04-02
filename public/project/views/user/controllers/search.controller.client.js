@@ -9,15 +9,20 @@
         .module("RecipeAppMaker")
         .controller("searchController", searchController);
 
-    function searchController($routeParams,$location, TvShowService) {
+    function searchController($routeParams,$location, TvShowService,UserService) {
         var vm=this;
         vm.searchShow = searchShow;
+        vm.findUserByUserId=findUserByUserId;
 
 
 
         function init() {
-            /*vm.userId = $routeParams.uid;
-            vm.websiteId = $routeParams.wid;
+            vm.userId = $routeParams.uid;
+            if(vm.userId!=null){
+                findUserByUserId(vm.userId)
+            }
+            //vm.user=findUserByUserId($routeParams.uid);
+            /*vm.websiteId = $routeParams.wid;
             vm.pageId = $routeParams.pid;
             vm.widgetId = $routeParams.wgid;*/
         }
@@ -43,6 +48,15 @@
 
                         });
                });
+        }
+
+        function findUserByUserId(userId) {
+            var promise = UserService
+                .findUserById(userId)
+                .success(function (user) {
+                    vm.user=user;
+                });
+
         }
 
 
