@@ -3,7 +3,7 @@
  */
 (function(){
     angular
-        .module("RecipeAppMaker")
+        .module("SeriesAppMaker")
         .controller("registerController", registerController);
 
     function registerController(UserService, $location) {

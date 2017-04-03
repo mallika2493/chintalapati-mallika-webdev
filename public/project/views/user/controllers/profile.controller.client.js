@@ -4,7 +4,7 @@
 
 (function(){
     angular
-        .module("RecipeAppMaker")
+        .module("SeriesAppMaker")
         .controller("profileController", profileController);
 
     function profileController($routeParams, $location,UserService) {

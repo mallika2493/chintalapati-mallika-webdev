@@ -3,7 +3,7 @@
  */
 (function(){
     angular
-        .module("RecipeAppMaker")
+        .module("SeriesAppMaker")
         .factory("TvShowService",TvShowService);
 
     function TvShowService($http) {

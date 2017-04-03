@@ -6,7 +6,7 @@
  */
 (function(){
     angular
-        .module("RecipeAppMaker")
+        .module("SeriesAppMaker")
         .controller("searchController", searchController);
 
     function searchController($routeParams,$location, TvShowService,UserService) {

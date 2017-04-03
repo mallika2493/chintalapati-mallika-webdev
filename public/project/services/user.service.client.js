@@ -1,6 +1,6 @@
 (function () {
         angular
-            .module("RecipeAppMaker")
+            .module("SeriesAppMaker")
             .factory('UserService', userService);
 
         function userService($http) {

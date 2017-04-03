@@ -1,6 +1,6 @@
 (function () {
     angular
-        .module("RecipeAppMaker")
+        .module("SeriesAppMaker")
         .config(configuration);
 
     function configuration($routeProvider, $locationProvider) {

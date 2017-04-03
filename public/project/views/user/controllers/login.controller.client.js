@@ -1,6 +1,6 @@
 (function(){
     angular
-        .module("RecipeAppMaker")
+        .module("SeriesAppMaker")
         .controller("loginController", loginController);
 
     function loginController(UserService, $location) {

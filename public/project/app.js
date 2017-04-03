@@ -1,4 +1,4 @@
 (function () {
     angular
-        .module("RecipeAppMaker", ["ngRoute","textAngular"]);
+        .module("SeriesAppMaker", ["ngRoute","textAngular"]);
 })();
