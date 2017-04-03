@@ -13,12 +13,14 @@
         var vm=this;
         vm.searchShow = searchShow;
         vm.findUserByUserId=findUserByUserId;
-
+        vm.setLikeStatus=setLikeStatus;
 
 
         function init() {
             vm.userId = $routeParams.uid;
+
             if(vm.userId!=null){
+
                 findUserByUserId(vm.userId)
             }
             //vm.user=findUserByUserId($routeParams.uid);
@@ -55,8 +57,14 @@
                 .findUserById(userId)
                 .success(function (user) {
                     vm.user=user;
+                    vm.user.status="like";
                 });
 
+        }
+
+        function setLikeStatus(status) {
+            console.log(typeof status);
+            vm.user.status=status;
         }
 
 

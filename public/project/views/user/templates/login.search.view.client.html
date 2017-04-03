@@ -36,7 +36,28 @@
                 <img width="60%" height="10%" class="img-responsive margin-top"
                      ng-src="{{sho.show.image.original}}">
 
-                <h2 class="ng-binding">{{sho.show.name}}</h2>
+                <h2 class="ng-binding">{{sho.show.name}}
+                    <div ng-switch="model.user.status">
+                        <span>
+                        <div ng-switch-when="like"
+                             ng-click="model.setLikeStatus('unlike')">
+                                <span class="glyphicon glyphicon-heart like-button-color"></span>
+
+                        </div>
+                        </span>
+                        <span>
+                        <div ng-switch-when="unlike"
+                            ng-click="model.setLikeStatus('like')">
+                                <span class="glyphicon glyphicon-heart-empty like-button-color"></span>
+
+                        </div>
+                        </span>
+
+                    </div>
+
+                </h2>
+
+
                 <div class="caption">
                     <span class="h5 text-muted ng-binding" ng-repeat="genre in sho.show.genres">#{{genre}}&nbsp</span>
                 </div>
