@@ -12,8 +12,11 @@ module.exports = function () {
         email: String,
         phone: String,
         //followers
-        //likes
+        //following
+        likes:[String],
         //reviews
+        //picture of the user
+        //role
         //websites: [{type: mongoose.Schema.Types.ObjectId, ref: 'WebsiteModel'}],
         series: [{type: mongoose.Schema.Types.ObjectId, ref: 'SeriesModel'}],
         dateCreated: {type: Date, default: Date.now()},

@@ -13,7 +13,9 @@
                 "createUser": createUser,
                 "findUserById": findUserById,
                 "deleteUser":deleteUser,
-                "findUserByUsername":findUserByUsername
+                "findUserByUsername":findUserByUsername,
+                "setLikeStatus":setLikeStatus,
+                "isShowLiked":isShowLiked
             };
             return api;
 
@@ -42,6 +44,16 @@
             function deleteUser(uid) {
                 return $http.delete("/api/user/"+uid);
 
+            }
+
+            function setLikeStatus(status,userId, showId) {
+
+                return $http.put("/api/user/" + userId + "/series/" + showId + "/likeStatus/"+status);
+
+            }
+
+            function isShowLiked(userId, showId) {
+                return $http.get("/api/user/" + userId + "/series/" + showId + "/isShowliked");
             }
 
         }

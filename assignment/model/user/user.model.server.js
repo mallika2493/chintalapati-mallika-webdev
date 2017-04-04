@@ -11,6 +11,7 @@ module.exports = function () {
         setModel: setModel,
         updateUser: updateUser,
         deleteUser:deleteUser,
+        findUserByFacebookId: findUserByFacebookId
 
     };
 
@@ -20,6 +21,10 @@ module.exports = function () {
     var UserModel = mongoose.model('UserModel', UserSchema);
 
     return api;
+
+    function findUserByFacebookId(facebookId) {
+        return UserModel.findOne({'facebook.id': facebookId});
+    }
 
     function createUser(user) {
 

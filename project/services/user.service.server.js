@@ -14,7 +14,9 @@ module.exports = function (app, model) {
     app.get("/api/user", findUser);
     app.post("/api/user", createUser);
     app.put("/api/user/:userId", updateUser);
+    app.put("/api/user/:userId/series/:showId/likeStatus/:status", updateLikeStatus);
     app.delete("/api/user/:userId", deleteUser);
+    app.get("/api/user/:userId/series/:showId/isShowliked",isShowLiked);
 
 
     function findUserByCredentials(req, res) {
@@ -189,6 +191,41 @@ module.exports = function (app, model) {
             },function (err) {
                 res.sendStatus(404);
             });
+    }
+
+    function updateLikeStatus(req,res) {
+        var showId = req.params.showId;
+
+        var userId = req.params.userId;
+        var status = req.params.status;
+        UserModel.updatelikeStatus(userId, showId,status)
+            .then(
+                function (response) {
+                    res.json(response);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+
+            );
+
+    }
+
+    function isShowLiked(req,res) {
+        var seriesId = req.params.showId;
+        var userId = req.params.userId;
+        console.log(seriesId);
+        UserModel
+            .isShowLiked(userId, seriesId)
+            .then(
+                function (user) {
+                    console.log(user);
+                    res.json(user);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 };
 

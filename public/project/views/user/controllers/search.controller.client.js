@@ -14,6 +14,7 @@
         vm.searchShow = searchShow;
         vm.findUserByUserId=findUserByUserId;
         vm.setLikeStatus=setLikeStatus;
+        vm.isShowLiked=isShowLiked
 
 
         function init() {
@@ -21,16 +22,14 @@
 
             if(vm.userId!=null){
 
-                findUserByUserId(vm.userId)
+                findUserByUserId(vm.userId);
+
             }
-            //vm.user=findUserByUserId($routeParams.uid);
-            /*vm.websiteId = $routeParams.wid;
-            vm.pageId = $routeParams.pid;
-            vm.widgetId = $routeParams.wgid;*/
+
         }
         init();
         function searchShow(searchTerm) {
-
+            var id;
             TvShowService
                 .searchShow(searchTerm)
                 .then(function (response) {
@@ -39,7 +38,7 @@
                     var summary = sh[0].show.summary;
                     cleanText = summary.replace(/<\/?[^>]+(>|$)/g, "");
                     sh[0].show.summary=cleanText;
-                    var id = sh[0].show.id;
+                    id = sh[0].show.id;
                     vm.shows = sh;
                     console.log(vm.shows)
                     vm.id=id;
@@ -47,9 +46,11 @@
                         .then(function (response) {
                             var cast=response.data;
                             vm.cast=cast;
+                            isShowLiked(id);
 
                         });
                });
+
         }
 
         function findUserByUserId(userId) {
@@ -57,15 +58,48 @@
                 .findUserById(userId)
                 .success(function (user) {
                     vm.user=user;
-                    vm.user.status="like";
+                    //vm.user.status="like";
                 });
 
         }
 
-        function setLikeStatus(status) {
-            console.log(typeof status);
-            vm.user.status=status;
+        function setLikeStatus(likeStatus) {
+
+            UserService
+                .setLikeStatus(likeStatus,vm.userId, vm.id)
+                .then(function (response) {
+                    var status = response.data;
+                    console.log(status);
+                    if ((status.n == 1 || status.nModified == 1) && status.ok == 1) {
+                        vm.user.status=likeStatus;
+                        //return SeriesService.addSeries(vm.shows);
+                    }
+                })
+                .then(function (response) {
+                    console.log("Series Inserted !");
+                });
+            //vm.user.status=status;
         }
+
+        function isShowLiked(series_id) {
+
+            UserService
+                .isShowLiked(vm.userId, series_id)
+                .then(function (response) {
+                    var user = response.data;
+                    if (user) {
+                        console.log(user);
+                        vm.user.status = 'like';
+                        console.log(vm.user.status);
+                    }
+                    else {
+                        vm.user.status = 'unlike';
+                        console.log(vm.user.status);
+                    }
+                });
+        }
+
+
 
 
     }

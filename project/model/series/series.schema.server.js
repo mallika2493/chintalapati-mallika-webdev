@@ -8,10 +8,9 @@ module.exports = function () {
     var mongoose = require('mongoose');
 
     var SeriesSchema = mongoose.Schema({
-
-        //websites: [{type: mongoose.Schema.Types.ObjectId, ref: 'WebsiteModel'}],
-
-        //dateCreated: {type: Date, default: Date.now()},
+        _id: String,
+        title: String,
+        imageUrl: String
 
     },{collections:'project.mongo.series'});
 

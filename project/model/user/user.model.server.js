@@ -11,6 +11,8 @@ module.exports = function () {
         setModel: setModel,
         updateUser: updateUser,
         deleteUser:deleteUser,
+        updatelikeStatus:updatelikeStatus,
+        isShowLiked:isShowLiked
 
     };
 
@@ -82,6 +84,19 @@ module.exports = function () {
             }, function (err) {
                 return err;
             });
+    }
+
+    function updatelikeStatus(userId,showId,status) {
+            if(status=='like')
+            return UserModel.update({_id: userId}, {$addToSet: {likes: showId}});
+            else if(status='unlike')
+                return UserModel.update({_id: userId}, {$pullAll: {likes: [showId]}});
+
+
+    }
+
+    function isShowLiked(userId,showId) {
+        return UserModel.findOne({_id: userId, likes: {$in: [showId]}});
     }
 
 };
