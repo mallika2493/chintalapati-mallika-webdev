@@ -9,12 +9,13 @@
         .module("SeriesAppMaker")
         .controller("searchController", searchController);
 
-    function searchController($routeParams,$location, TvShowService,UserService) {
+    function searchController($routeParams,$location, TvShowService,UserService,ReviewService) {
         var vm=this;
         vm.searchShow = searchShow;
         vm.findUserByUserId=findUserByUserId;
         vm.setLikeStatus=setLikeStatus;
-        vm.isShowLiked=isShowLiked
+        vm.isShowLiked=isShowLiked;
+        vm.addReview=addReview;
 
 
         function init() {
@@ -23,6 +24,7 @@
             if(vm.userId!=null){
 
                 findUserByUserId(vm.userId);
+
 
             }
 
@@ -47,6 +49,7 @@
                             var cast=response.data;
                             vm.cast=cast;
                             isShowLiked(id);
+                            findAllReviewsBySeriesId(id);
 
                         });
                });
@@ -69,7 +72,7 @@
                 .setLikeStatus(likeStatus,vm.userId, vm.id)
                 .then(function (response) {
                     var status = response.data;
-                    console.log(status);
+
                     if ((status.n == 1 || status.nModified == 1) && status.ok == 1) {
                         vm.user.status=likeStatus;
                         //return SeriesService.addSeries(vm.shows);
@@ -95,6 +98,51 @@
                     else {
                         vm.user.status = 'unlike';
                         console.log(vm.user.status);
+                    }
+                });
+        }
+
+        function addReview(review) {
+
+            ReviewService
+                .addReview(vm.userId, vm.id, review)
+                .then(function (response) {
+                    if (response.data) {
+                        //vm.selectedIndex = -1;
+                        //vm.review = {};
+                        vm.reviews.push(response.data);
+                        findUserBySeriesReviewUserId(vm.reviews);
+                        //movieAvgRatingByMovieId(vm.reviews);
+                        //return SeriesService.addSeries(vm.series);
+                    }
+                })
+                .then(function (response) {
+                    console.log("Series Inserted !");
+                });
+
+        }
+
+        function findUserBySeriesReviewUserId(reviews) {
+            reviews.forEach(function (element, index, array) {
+                UserService.findUserById(reviews[index].userId)
+                    .then(function (response) {
+                        if (response.data) {
+                            reviews[index].userFirstName = response.data.firstName;
+                            //reviews[index].imgUrl = response.data.imgUrl;
+                        }
+                    });
+            });
+        }
+
+        function findAllReviewsBySeriesId(seriesId) {
+            ReviewService
+                .findAllReviewsBySeriesId(seriesId)
+                .then(function (response) {
+                    if (response.data) {
+                        vm.reviews = response.data;
+                        findUserBySeriesReviewUserId(vm.reviews);
+                        //movieAvgRatingByMovieId(vm.reviews);
+
                     }
                 });
         }

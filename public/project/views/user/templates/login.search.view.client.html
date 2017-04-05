@@ -66,17 +66,19 @@
 
 
                 <p class="ng-binding">
-                <h5>Summary</h5>
+                <h3>Summary</h3>
                 {{sho.show.summary}}</p>
 
 
                 <p>Watch every {{sho.show.schedule.days[0]}} at {{sho.show.schedule.time}} hrs</p>
 
                 <hr>
-                <h5>Cast</h5>
+                <h3>Cast</h3>
 
                 <!-- ng-repeat on cast -->
-                <div class="col-sm-8" ng-repeat="cast in model.cast">
+                <div class="col-sm-6">
+
+                <div class="col-sm-6" ng-repeat="cast in model.cast">
                     <!--{{cast.person.name}} -->
                     <div class="container">
 
@@ -89,13 +91,66 @@
                         </div>
                         <br>
                         <div class="media-body">
-                            <h5>{{cast.person.name}} as {{cast.character.name}}</h5>
+                            <h5>{{cast.person.name}} as</h5>
+                            <h5>{{cast.character.name}}</h5>
                         </div>
-                        <hr>
+                        <hr class="col-sm-2">
 
                     </div>
                 </div>
+                </div>
+                <div class="col-sm-6 panel-body">
+                    <div class="panel-heading">
+                        <h4>Reviews</h4>
+                    </div>
+                    <div class="well" ng-repeat="review in model.reviews">
+                        <div class="panel-body">
+                            <div class="media">
+                                <!--img u="image" ng-src="../../../img/profile-icon.png" />-->
+                                <h3><span class="glyphicon glyphicon-user"></span></h3>
+                                <div class="media-body">
+                                    <h4 class="media-heading">{{review.title}}</h4>
+                                    <p class="text-justify">
+                                        {{review.description}}
+                                    </p>
+                                    <small>By
+                                        <a ui-sref="profile.reviews({userId: review.userId})">{{review.userFirstName}}</a>
 
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="well">
+                        <h3>Write Review</h3>
+
+                        <form>
+                            <div class="form-group">
+
+                                <input ng-model="model.review.title"
+                                       type="text"
+                                       placeholder="title of your review"
+                                       class="form-control"
+                                       id="series-title"/>
+                            </div>
+                            <div class="form-group">
+
+                                <textarea ng-model="model.review.description"
+                                          rows="3"
+                                          placeholder="Description of your review"
+                                          class="form-control"
+                                          id="series-description"></textarea>
+
+                                <div class="form-group">
+                                    <a ng-click="model.addReview(model.review)" class="btn btn-success">
+                                        Submit
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>

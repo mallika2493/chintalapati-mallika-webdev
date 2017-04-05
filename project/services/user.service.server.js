@@ -214,12 +214,12 @@ module.exports = function (app, model) {
     function isShowLiked(req,res) {
         var seriesId = req.params.showId;
         var userId = req.params.userId;
-        console.log(seriesId);
+
         UserModel
             .isShowLiked(userId, seriesId)
             .then(
                 function (user) {
-                    console.log(user);
+
                     res.json(user);
                 },
                 function (err) {
