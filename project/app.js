@@ -11,4 +11,5 @@ module.exports = function(app) {
     require("./services/series.service.server.js")(app,model);
     require("./services/reviews.service.server.js")(app,model);
 
+
 };

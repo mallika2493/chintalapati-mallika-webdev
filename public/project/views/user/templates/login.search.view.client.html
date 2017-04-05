@@ -106,6 +106,12 @@
                     <div class="well" ng-repeat="review in model.reviews">
                         <div class="panel-body">
                             <div class="media">
+                                <div class="form-group">
+
+                                    <a ng-click="model.follow({userId: review.userId})" class="btn btn-success pull-right">
+                                        <i class="glyphicon glyphicon-plus"/> follow {{review.userFirstName}}
+                                    </a>
+                                </div>
                                 <!--img u="image" ng-src="../../../img/profile-icon.png" />-->
                                 <h3><span class="glyphicon glyphicon-user"></span></h3>
                                 <div class="media-body">

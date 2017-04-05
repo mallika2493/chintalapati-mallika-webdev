@@ -15,7 +15,8 @@
                 "deleteUser":deleteUser,
                 "findUserByUsername":findUserByUsername,
                 "setLikeStatus":setLikeStatus,
-                "isShowLiked":isShowLiked
+                "isShowLiked":isShowLiked,
+                "follow":follow
             };
             return api;
 
@@ -54,6 +55,10 @@
 
             function isShowLiked(userId, showId) {
                 return $http.get("/api/user/" + userId + "/series/" + showId + "/isShowliked");
+            }
+
+            function follow(loggedInUserId,secondUserId){
+                return $http.put("/api/user/"+loggedInUserId+"/user2/"+secondUserId);
             }
 
         }

@@ -17,22 +17,11 @@ module.exports = function (app, model) {
     app.put("/api/user/:userId/series/:showId/likeStatus/:status", updateLikeStatus);
     app.delete("/api/user/:userId", deleteUser);
     app.get("/api/user/:userId/series/:showId/isShowliked",isShowLiked);
+    app.put("/api/user/:loggedInUserId/user2/:secondUserId",follow);
 
 
     function findUserByCredentials(req, res) {
 
-        /*var username = req.query.username;
-         var password = req.query.password;
-
-         var user = users.find(function (user) {
-         return user.password == password && user.username == username;
-
-         });
-         if(user) {
-         res.send(user);
-         } else {
-         res.sendStatus(404).send('User not found for username: ' + username + ' and password: ' + password);
-         }*/
         var username = req.query.username;
         var password = req.query.password;
         UserModel
@@ -55,15 +44,6 @@ module.exports = function (app, model) {
 
     function findUserById(req, res) {
 
-        /*var userId = req.params['userId'];
-         for(var u in users) {
-         var user = users[u];
-         if( user._id === userId ) {
-         res.send(user);
-         return;
-         }
-         }
-         res.sendStatus(404).send({});*/
         var userId = req.params['userId'];
         UserModel.findUserById(userId)
             .then(
@@ -110,10 +90,6 @@ module.exports = function (app, model) {
 
     function createUser(req, res) {
 
-        /*var newuser=req.body;
-         newuser._id=(new Date()).getTime().toString();
-         users.push(newuser);
-         res.json(newuser);*/
         var newuser=req.body;
         UserModel.createUser(newuser)
             .then(
@@ -130,37 +106,10 @@ module.exports = function (app, model) {
     }
 
 
-    /*function updateUser(req, res) {
-        var userId = req.params['userId'];
-        for (var u in users) {
-            var user = users[u];
-            if (user._id === userId) {
-                var newUser = req.body;
-                users[u].firstName = newUser.firstName;
-                users[u].lastName = newUser.lastName;
-                users[u].email = newUser.email;
-                res.sendStatus(200);
-                return;
-            }
-        }
-        res.sendStatus(404);
-
-    }*/
-
     function updateUser(req, res) {
         var userId = req.params['userId'];
         var newUser = req.body;
-        /*for(var u in users) {
-         var user = users[u];
-         if( user._id === userId ) {
-         var newUser = req.body;
-         users[u].firstName = newUser.firstName;
-         users[u].lastName = newUser.lastName;
-         users[u].email = newUser.email;
-         res.sendStatus(200);
-         return;
-         }
-         }*/
+
         UserModel
             .updateUser(userId, newUser)
             .then(function (response) {
@@ -226,6 +175,30 @@ module.exports = function (app, model) {
                     res.status(400).send(err);
                 }
             );
+    }
+
+    function follow(req, res){
+        var loggedInUserId = req.params.loggedInUserId;
+        var secondUserId = req.params.secondUserId;
+
+        UserModel
+            .addToFollowing(loggedInUserId, secondUserId)
+            .then(
+                function (response) {
+                    console.log("added to following..");
+                    return UserModel.addToFollowers(secondUserId, loggedInUserId);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            )
+            .then(
+                function (response) {
+                    res.json(response);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
     }
 };
 

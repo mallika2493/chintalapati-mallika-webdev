@@ -12,7 +12,9 @@ module.exports = function () {
         updateUser: updateUser,
         deleteUser:deleteUser,
         updatelikeStatus:updatelikeStatus,
-        isShowLiked:isShowLiked
+        isShowLiked:isShowLiked,
+        addToFollowing:addToFollowing,
+        addToFollowers:addToFollowers
 
     };
 
@@ -97,6 +99,20 @@ module.exports = function () {
 
     function isShowLiked(userId,showId) {
         return UserModel.findOne({_id: userId, likes: {$in: [showId]}});
+    }
+
+    function addToFollowing(loggedInUserId,secondUserId) {
+
+        return UserModel.update({_id: loggedInUserId}, {$addToSet: {following: secondUserId}});
+
+
+    }
+
+    function addToFollowers(secondUserId,loggedInUserId) {
+        console.log("user1:"+loggedInUserId+" user2: "+secondUserId);
+
+        return UserModel.update({_id: secondUserId}, {$addToSet: {followers: loggedInUserId}});
+
     }
 
 };

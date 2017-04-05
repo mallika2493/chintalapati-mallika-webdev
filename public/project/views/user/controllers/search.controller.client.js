@@ -16,6 +16,7 @@
         vm.setLikeStatus=setLikeStatus;
         vm.isShowLiked=isShowLiked;
         vm.addReview=addReview;
+        vm.follow=follow;
 
 
         function init() {
@@ -50,6 +51,7 @@
                             vm.cast=cast;
                             isShowLiked(id);
                             findAllReviewsBySeriesId(id);
+                            setAllFollowingUsers(vm.userId);
 
                         });
                });
@@ -129,6 +131,7 @@
                     .then(function (response) {
                         if (response.data) {
                             reviews[index].userFirstName = response.data.firstName;
+                            reviews[index].userId = response.data._id;
                             //reviews[index].imgUrl = response.data.imgUrl;
                         }
                     });
@@ -146,6 +149,26 @@
 
                     }
                 });
+        }
+
+        function follow(secondUserId) {
+            UserService
+                .follow(vm.userId, secondUserId.userId)
+                .then(function (response) {
+                    var status = response.data;
+                    console.log(status);
+                    if ((status.n == 1 || status.nModified == 1) && status.ok == 1) {
+                        vm.allFollowing.push(secondUserId)
+                    }
+
+                });
+        }
+
+        function setAllFollowingUsers(userId) {
+            vm.allFollowing=[];
+            //vm.AllFollowing=following
+            //sets the all following users
+            // should be called in init()
         }
 
 
