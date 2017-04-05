@@ -9,7 +9,7 @@
         .module("SeriesAppMaker")
         .controller("searchController", searchController);
 
-    function searchController($routeParams,$location, TvShowService,UserService,ReviewService) {
+    function searchController($routeParams,$location, TvShowService,UserService,ReviewService,SeriesService) {
         var vm=this;
         vm.searchShow = searchShow;
         vm.findUserByUserId=findUserByUserId;
@@ -75,7 +75,8 @@
 
                     if ((status.n == 1 || status.nModified == 1) && status.ok == 1) {
                         vm.user.status=likeStatus;
-                        //return SeriesService.addSeries(vm.shows);
+                        console.log(vm.shows);
+                        return SeriesService.addSeries(vm.shows);
                     }
                 })
                 .then(function (response) {
@@ -113,7 +114,7 @@
                         vm.reviews.push(response.data);
                         findUserBySeriesReviewUserId(vm.reviews);
                         //movieAvgRatingByMovieId(vm.reviews);
-                        //return SeriesService.addSeries(vm.series);
+                        return SeriesService.addSeries(vm.series);
                     }
                 })
                 .then(function (response) {

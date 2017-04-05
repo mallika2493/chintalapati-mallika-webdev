@@ -19,13 +19,13 @@ module.exports = function () {
     return api;
     
     function addSeries(series) {
-        //return SeriesModel.create(series);
         var newSeries = {
-            "title": series.title,
-            "imageUrl": series.image_url
+            "title": series.name,
+
+            "imageUrl": series.image.original
         };
 
-        return SeriesModel.findOneAndUpdate({_id: series.id.toString()}, newSeries, {upsert: true});
+        return SeriesModel.findOneAndUpdate({_id: series.id}, newSeries, {upsert: true});
         
     }
 
