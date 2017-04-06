@@ -5,12 +5,22 @@
 
     function configuration($routeProvider, $locationProvider) {
         $routeProvider
+            .when("/home", {
+                templateUrl: 'views/user/templates/home.view.client.html',
+                controller: "homeController",
+                controllerAs: "model"
+            })
+            .when("/home/:uid", {
+                templateUrl: 'views/user/templates/login.home.view.client.html',
+                controller: "homeController",
+                controllerAs: "model"
+            })
             .when("/login", {
                 templateUrl: 'views/user/templates/login.view.client.html',
                 controller: "loginController",
                 controllerAs: "model"
             })
-            .when("/search", {
+            .when("/search/:searchTerm", {
                 templateUrl: 'views/user/templates/search.view.client.html',
                 controller: "searchController",
                 controllerAs: "model"
@@ -25,7 +35,7 @@
                 controller: "profileController",
                 controllerAs: "model"
             })
-            .when("/user/:uid/search", {
+            .when("/user/:uid/search/:searchTerm", {
                 templateUrl: 'views/user/templates/login.search.view.client.html',
                 controller: "searchController",
                 controllerAs: "model"

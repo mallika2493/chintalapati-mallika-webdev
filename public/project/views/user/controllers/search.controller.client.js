@@ -21,7 +21,8 @@
 
         function init() {
             vm.userId = $routeParams.uid;
-
+            vm.searchTerm = $routeParams.searchTerm;
+            searchShow(vm.searchTerm);
             if(vm.userId!=null){
 
                 findUserByUserId(vm.userId);
@@ -47,11 +48,18 @@
                     vm.id=id;
                     TvShowService.getCastDetails(id)
                         .then(function (response) {
-                            var cast=response.data;
-                            vm.cast=cast;
-                            isShowLiked(id);
+                            var cast = response.data;
+                            vm.cast = cast;
                             findAllReviewsBySeriesId(id);
-                            setAllFollowingUsers(vm.userId);
+                            if (vm.userId != null) {
+                                isShowLiked(id);
+                                setAllFollowingUsers(vm.userId);
+                            //$location.url("/user/"+vm.userId+"/search");
+                        }
+                        else{
+                            //$location.url("/search");
+                            }
+
 
                         });
                });
