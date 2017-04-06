@@ -10,6 +10,11 @@
                 controller: "homeController",
                 controllerAs: "model"
             })
+            .when("/", {
+                templateUrl: 'views/user/templates/home.view.client.html',
+                controller: "homeController",
+                controllerAs: "model"
+            })
             .when("/home/:uid", {
                 templateUrl: 'views/user/templates/login.home.view.client.html',
                 controller: "homeController",

@@ -9,7 +9,9 @@
     function ReviewService($http) {
         var api = {
             "addReview":addReview,
-            "findAllReviewsBySeriesId":findAllReviewsBySeriesId
+            "findAllReviewsBySeriesId":findAllReviewsBySeriesId,
+            "editReview":editReview,
+            "deleteReview":deleteReview
 
         };
         return api;
@@ -22,6 +24,15 @@
         function findAllReviewsBySeriesId(seriesId) {
             return $http.get("/api/user/series/"+seriesId);
 
+        }
+        
+        function editReview(reviewObj) {
+            return $http.put("/api/user/series/review/" + reviewObj._id, reviewObj);
+            
+        }
+
+        function deleteReview(review_id) {
+            return $http.delete("/api/user/series/review/" + review_id);
         }
 
     }

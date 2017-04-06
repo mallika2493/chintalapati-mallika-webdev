@@ -6,7 +6,9 @@ module.exports = function () {
     var api = {
         addReview:addReview,
         setModel:setModel,
-        findAllReviewsBySeriesId:findAllReviewsBySeriesId
+        findAllReviewsBySeriesId:findAllReviewsBySeriesId,
+        editReview:editReview,
+        deleteReview:deleteReview
     };
 
     var mongoose = require('mongoose');
@@ -30,6 +32,14 @@ module.exports = function () {
 
     function findAllReviewsBySeriesId(seriesId) {
         return ReviewModel.find({seriesId: seriesId});
+    }
+    function editReview(reviewId,reviewObj) {
+        return ReviewModel.update({_id: reviewId}, {$set: reviewObj});
+    }
+
+    function deleteReview(reviewId) {
+        return ReviewModel.remove({_id:reviewId});
+
     }
 
 

@@ -8,7 +8,7 @@
         <div class="navbar-text pull-right page-text">
 
             <a href="">
-                <span>Welcome {{model.user.username}}&nbsp&nbsp&nbsp</span>
+                <span>Welcome {{model.user.username}}&nbsp;&nbsp;&nbsp;</span>
             </a>
 
             <a href="index.html#/home">
@@ -45,7 +45,7 @@
                         </span>
                         <span>
                         <div ng-switch-when="unlike"
-                            ng-click="model.setLikeStatus('like')">
+                             ng-click="model.setLikeStatus('like')">
                                 <span class="glyphicon glyphicon-heart-empty like-button-color"></span>
 
                         </div>
@@ -76,26 +76,26 @@
                 <!-- ng-repeat on cast -->
                 <div class="col-sm-6">
 
-                <div class="col-sm-6" ng-repeat="cast in model.cast">
-                    <!--{{cast.person.name}} -->
-                    <div class="container">
+                    <div class="col-sm-6" ng-repeat="cast in model.cast">
+                        <!--{{cast.person.name}} -->
+                        <div class="container">
 
-                        <br>
-                        <div class="media">
-                            <div class="media-left media-top">
-                                <img class="media-object img-width" ng-src="{{cast.character.image.original}}">
+                            <br>
+                            <div class="media">
+                                <div class="media-left media-top">
+                                    <img class="media-object img-width" ng-src="{{cast.character.image.original}}">
+                                </div>
+
                             </div>
+                            <br>
+                            <div class="media-body">
+                                <h5>{{cast.person.name}} as</h5>
+                                <h5>{{cast.character.name}}</h5>
+                            </div>
+                            <hr class="col-sm-2">
 
                         </div>
-                        <br>
-                        <div class="media-body">
-                            <h5>{{cast.person.name}} as</h5>
-                            <h5>{{cast.character.name}}</h5>
-                        </div>
-                        <hr class="col-sm-2">
-
                     </div>
-                </div>
                 </div>
                 <div class="col-sm-6 panel-body">
                     <div class="panel-heading">
@@ -103,25 +103,71 @@
                     </div>
                     <div class="well" ng-repeat="review in model.reviews">
                         <div class="panel-body">
+                            <div ng-if="model.selectedIndex === $index">
+
+                                <form>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control"
+                                               placeholder="Please enter title of the review"
+                                               ng-model="model.editedReviewObject.title"/>
+                                    </div>
+                                    <div class="form-group">
+                    <textarea class="form-control" rows="3" placeholder="Please enter description of the review"
+                              ng-model="model.editedReviewObject.description"></textarea>
+                                    </div>
+                                </form>
+                            </div>
                             <div class="media">
                                 <div class="form-group">
 
-                                    <a ng-click="model.follow({userId: review.userId})" class="btn btn-success pull-right">
+                                    <a ng-click="model.follow({userId: review.userId})"
+                                       class="btn btn-success pull-right">
                                         <i class="glyphicon glyphicon-plus"/> follow {{review.userFirstName}}
                                     </a>
                                 </div>
                                 <!--img u="image" ng-src="../../../img/profile-icon.png" />-->
-                                <h3><span class="glyphicon glyphicon-user"></span></h3>
+                                <h3><span class="glyphicon glyphicon-user"></span>
+                                    <a ui-sref="profile.reviews({userId: review.userId})">{{review.userFirstName}}</a>
+                                </h3>
                                 <div class="media-body">
                                     <h4 class="media-heading">{{review.title}}</h4>
                                     <p class="text-justify">
                                         {{review.description}}
                                     </p>
-                                    <small>By
-                                        <a ui-sref="profile.reviews({userId: review.userId})">{{review.userFirstName}}</a>
 
-                                    </small>
+
                                 </div>
+
+                                <div class="btn-group-md">
+                                    <a href="" class="btn btn-success" role="button"
+                                       ng-if="model.selectedIndex === $index"
+                                       ng-click="model.editReview(model.editedReviewObject)">
+                                        <i class="glyphicon glyphicon-ok" aria-hidden="true"></i>
+                                        Update
+                                    </a>
+                                    <a href="" class="btn btn-danger" role="button"
+                                       ng-if="model.selectedIndex === $index"
+                                       ng-click="model.undoReview()">
+                                        <i class="glyphicon glyphicon-erase" aria-hidden="true"></i>
+                                        Cancel
+                                    </a>
+                                </div>
+
+                                <div class="btn-group-md">
+                                    <a href="" class="btn btn-warning" role="button"
+                                       ng-if="model.selectedIndex !== $index && model.userId == review.userId"
+                                       ng-click="model.selectReviewBox($index)">
+                                        <i class="glyphicon glyphicon-edit" aria-hidden="true"></i>
+                                        Edit
+                                    </a>
+                                    <a href="" class="btn btn-danger" role="button"
+                                       ng-if="model.selectedIndex !== $index && model.userId == review.userId"
+                                       ng-click="model.deleteReview($index)">
+                                        <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
+                                        Delete
+                                    </a>
+                                </div>
+
                             </div>
                         </div>
                     </div>

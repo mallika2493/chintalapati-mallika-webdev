@@ -91,7 +91,7 @@ module.exports = function () {
     function updatelikeStatus(userId,showId,status) {
             if(status=='like')
             return UserModel.update({_id: userId}, {$addToSet: {likes: showId}});
-            else if(status='unlike')
+            else if(status=='unlike')
                 return UserModel.update({_id: userId}, {$pullAll: {likes: [showId]}});
 
 

@@ -72,6 +72,31 @@
 
                     </div>
                 </div>
+                <div class="col-sm-6 panel-body">
+                    <div class="panel-heading">
+                        <h4>Reviews</h4>
+                    </div>
+                    <div class="well" ng-repeat="review in model.reviews">
+                        <div class="panel-body">
+                            <div class="media">
+                                <!--img u="image" ng-src="../../../img/profile-icon.png" />-->
+                                <h3><span class="glyphicon glyphicon-user"></span></h3>
+                                <div class="media-body">
+                                    <h4 class="media-heading">{{review.title}}</h4>
+                                    <p class="text-justify">
+                                        {{review.description}}
+                                    </p>
+                                    <small>By
+                                        <a ui-sref="profile.reviews({userId: review.userId})">{{review.userFirstName}}</a>
+
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
 
             </div>
         </div>

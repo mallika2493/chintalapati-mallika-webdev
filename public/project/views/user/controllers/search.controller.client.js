@@ -16,6 +16,10 @@
         vm.setLikeStatus=setLikeStatus;
         vm.isShowLiked=isShowLiked;
         vm.addReview=addReview;
+        vm.selectReviewBox=selectReviewBox;
+        vm.editReview=editReview;
+        vm.undoReview=undoReview;
+        vm.deleteReview=deleteReview;
         vm.follow=follow;
 
 
@@ -54,10 +58,10 @@
                             if (vm.userId != null) {
                                 isShowLiked(id);
                                 setAllFollowingUsers(vm.userId);
-                            //$location.url("/user/"+vm.userId+"/search");
+
                         }
                         else{
-                            //$location.url("/search");
+
                             }
 
 
@@ -71,7 +75,7 @@
                 .findUserById(userId)
                 .success(function (user) {
                     vm.user=user;
-                    //vm.user.status="like";
+
                 });
 
         }
@@ -92,7 +96,7 @@
                 .then(function (response) {
                     console.log("Series Inserted !");
                 });
-            //vm.user.status=status;
+
         }
 
         function isShowLiked(series_id) {
@@ -119,17 +123,22 @@
                 .addReview(vm.userId, vm.id, review)
                 .then(function (response) {
                     if (response.data) {
-                        //vm.selectedIndex = -1;
+                        vm.selectedIndex = -1;
                         //vm.review = {};
                         vm.reviews.push(response.data);
                         findUserBySeriesReviewUserId(vm.reviews);
-                        //movieAvgRatingByMovieId(vm.reviews);
+                        //movieAvgRatingBySeriesId(vm.reviews);
                         return SeriesService.addSeries(vm.series);
                     }
                 })
                 .then(function (response) {
                     console.log("Series Inserted !");
                 });
+
+        }
+
+        function editReview(reviewer_userId) {
+            ReviewService.editReview(reviewer_userId);
 
         }
 
@@ -177,6 +186,58 @@
             //vm.AllFollowing=following
             //sets the all following users
             // should be called in init()
+        }
+
+        function selectReviewBox(index) {
+            vm.selectedIndex = index;
+            var editedReviewObject = {
+                "_id": vm.reviews[index]._id,
+                "title": vm.reviews[index]["title"],
+                "description": vm.reviews[index]["description"],
+                "seriesId": vm.reviews[index].seriesId,
+                "userId": vm.reviews[index]["userId"],
+
+            }
+            vm.editedReviewObject = editedReviewObject;
+
+        }
+
+        function editReview(editReviewObj) {
+            ReviewService
+                .editReview(editReviewObj)
+                .then(function (response) {
+                    var status = response.data;
+                    console.log(status);
+                    if ((status.n == 1 || status.nModified == 1) && status.ok == 1) {
+                        vm.reviews[vm.selectedIndex] = editReviewObj;
+                        vm.selectedIndex = -1;
+                        vm.review = {};
+                        findUserBySeriesReviewUserId(vm.reviews);
+
+                    }
+                });
+        }
+
+        function undoReview() {
+            vm.selectedIndex=-1;
+        }
+        
+        function deleteReview(index_review) {
+            var reviewId = vm.reviews[index_review]._id;
+            ReviewService
+                .deleteReview(reviewId)
+                .then(function (response) {
+                    var status = response.data;
+
+                    if (status.n == 1 && status.ok == 1) {
+                        vm.reviews.splice(index_review, 1);
+                        vm.selectedIndex = -1;
+
+                        findUserBySeriesReviewUserId(vm.reviews);
+
+                    }
+                });
+            
         }
 
 
