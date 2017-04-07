@@ -8,7 +8,8 @@
 
     function SeriesService($http) {
         var api = {
-            "addSeries":addSeries
+            "addSeries":addSeries,
+            "findSeriesById":findSeriesById
 
 
         };
@@ -17,6 +18,11 @@
         function addSeries(shows) {
 
             return $http.post("/api/user/series/", shows);
+        }
+
+        function findSeriesById(seriesId) {
+            return $http.get("/api/user/likes/series/"+seriesId);
+
         }
 
 

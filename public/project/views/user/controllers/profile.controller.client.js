@@ -7,10 +7,14 @@
         .module("SeriesAppMaker")
         .controller("profileController", profileController);
 
-    function profileController($routeParams, $location,UserService) {
+    function profileController($routeParams, $location,UserService,SeriesService) {
         var vm = this;
         //vm.updateUser = updateUser;
         vm.deleteUser = deleteUser;
+        vm.getChoiceView=getChoiceView;
+        vm.setChoice=setChoice;
+        vm.getlikeDetails=getLikeDetails;
+
         var userId = $routeParams['uid'];
 
         vm.update = function (newUser) {
@@ -25,12 +29,15 @@
 
         };
         function init() {
-
-            var promise = UserService
+            vm.series=[];
+            UserService
                 .findUserById(userId)
                 .success(function (user) {
                     vm.user=user;
+                    getLikeDetails();
                 });
+            vm.choice=null;
+
 
         }
         init();
@@ -47,6 +54,37 @@
                         vm.error = 'unable to remove user';
                     });
             }
+        }
+
+        function setChoice(choice) {
+            vm.choice=choice;
+            if(choice=='LIKE'){
+            getLikeDetails();
+            }
+
+
+        }
+
+        function getChoiceView(choice) {
+            var url="views/user/templates/profile-"+choice+".view.client.html";
+            return url;
+
+        }
+        
+        function getLikeDetails() {
+
+            for(var like in vm.user.likes){
+                var series_id = vm.user.likes[like];
+                SeriesService.findSeriesById(series_id)
+                    .then(function (series) {
+                        vm.series.push(series);
+
+
+                    });
+
+
+            }
+            
         }
 
 

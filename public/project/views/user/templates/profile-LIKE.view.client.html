@@ -1,0 +1,22 @@
+<div ng-controller="profileController as model">
+<h2>LIKES <a href="">
+    <span class="glyphicon glyphicon-heart like-button-color"></span>
+</a></h2>
+<br>
+<div class="container-fluid">
+    <div class="row col-sm-2 well">
+        <div ng-repeat="show in model.series">
+
+
+        <div class="media">
+            <div class="media-object">
+                <img ng-src="{{show.data.imageUrl}}" class="media-object img-thumbnail" style="width:80px">
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">{{show.data.title}}</h4>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+</div>
