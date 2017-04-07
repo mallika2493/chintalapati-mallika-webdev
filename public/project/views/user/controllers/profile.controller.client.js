@@ -14,6 +14,7 @@
         vm.getChoiceView=getChoiceView;
         vm.setChoice=setChoice;
         vm.getlikeDetails=getLikeDetails;
+        vm.searchShow=searchShow
 
         var userId = $routeParams['uid'];
 
@@ -35,6 +36,7 @@
                 .success(function (user) {
                     vm.user=user;
                     getLikeDetails();
+
                 });
             vm.choice=null;
 
@@ -84,8 +86,19 @@
 
 
             }
-            
+
         }
+
+        function searchShow(searchTerm) {
+            if(vm.user._id==null)
+                $location.url("/search/"+searchTerm);
+            else{
+                $location.url("/user/"+vm.user._id+"/search/"+searchTerm);
+            }
+
+        }
+
+
 
 
 
