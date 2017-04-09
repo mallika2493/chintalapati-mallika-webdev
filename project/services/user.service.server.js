@@ -18,6 +18,7 @@ module.exports = function (app, model) {
     app.delete("/api/user/:userId", deleteUser);
     app.get("/api/user/:userId/series/:showId/isShowliked",isShowLiked);
     app.put("/api/user/:loggedInUserId/user2/:secondUserId",follow);
+    app.put("/api/user/:loggedInUserId/user2/:secondUserId/unfollow",unfollow);
 
 
     function findUserByCredentials(req, res) {
@@ -185,7 +186,7 @@ module.exports = function (app, model) {
             .addToFollowing(loggedInUserId, secondUserId)
             .then(
                 function (response) {
-                    console.log("added to following..");
+
                     return UserModel.addToFollowers(secondUserId, loggedInUserId);
                 },
                 function (err) {
@@ -195,6 +196,31 @@ module.exports = function (app, model) {
             .then(
                 function (response) {
                     res.json(response);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                });
+    }
+
+    function unfollow(req,res) {
+        var loggedInUserId = req.params.loggedInUserId;
+        var secondUserId = req.params.secondUserId;
+        console.log("im unfollowing");
+        UserModel
+            .removeFromFollowing(loggedInUserId, secondUserId)
+            .then(
+                function (response) {
+                    console.log("removed from following..");
+                    return UserModel.removeFromFollowers(secondUserId, loggedInUserId);
+                },
+                function (err) {
+                    res.status(400).send(err);
+                }
+            )
+            .then(
+                function (response) {
+                    res.json(response);
+
                 },
                 function (err) {
                     res.status(400).send(err);

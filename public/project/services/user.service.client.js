@@ -16,7 +16,8 @@
                 "findUserByUsername":findUserByUsername,
                 "setLikeStatus":setLikeStatus,
                 "isShowLiked":isShowLiked,
-                "follow":follow
+                "follow":follow,
+                "unfollow":unfollow
             };
             return api;
 
@@ -59,6 +60,10 @@
 
             function follow(loggedInUserId,secondUserId){
                 return $http.put("/api/user/"+loggedInUserId+"/user2/"+secondUserId);
+            }
+
+            function unfollow(loggedInUserId,secondUserId){
+                return $http.put("/api/user/"+loggedInUserId+"/user2/"+secondUserId+"/unfollow");
             }
 
         }

@@ -103,6 +103,14 @@ a {
     color: red
 }
 
+.follower-button-color{
+    color: yellowgreen;
+}
+
 .img-like-width{
     width:80px;
+}
+
+.following-button-color{
+    color : blue;
 }

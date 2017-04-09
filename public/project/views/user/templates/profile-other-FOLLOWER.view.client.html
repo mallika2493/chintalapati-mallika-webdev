@@ -1,23 +1,22 @@
-<div ng-controller="profileController as model">
-    <h2>Following <a href="">
+<div ng-controller="profileOtherController as model">
+    <h2>Followers <a href="">
         <span class="glyphicon glyphicon-eye-open follower-button-color"></span>
     </a></h2>
-
 
     <br>
     <div class="container-fluid">
         <div class="row col-sm-6 well">
-            <div ng-switch="model.following_users.length">
+            <div ng-switch="model.followers.length">
 
                 <div ng-switch-when=0>
 
                     <div class="well col-sm-8">
-                        <p class="bg-info">Sorry you are not following anyone!!</p>
+                        <p class="bg-info">Sorry you have no followers!!</p>
                     </div>
                 </div>
                 <div ng-switch-default>
 
-                    <div ng-repeat="f in model.following_users">
+                    <div ng-repeat="f in model.followers">
 
 
                         <h3><span class="glyphicon glyphicon-user"></span>

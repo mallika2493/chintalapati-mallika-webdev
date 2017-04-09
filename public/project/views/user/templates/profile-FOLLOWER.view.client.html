@@ -1,10 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div ng-controller="profileController as model">
+    <h2>Followers <a href="">
+        <span class="glyphicon glyphicon-eye-open follower-button-color"></span>
+    </a></h2>
 
-</body>
-</html>
+    <br>
+    <div class="container-fluid">
+        <div class="row col-sm-6 well">
+            <div ng-switch="model.followers.length">
+
+                <div ng-switch-when=0>
+
+                    <div class="well col-sm-8">
+                        <p class="bg-info">Sorry you have no followers!!</p>
+                    </div>
+                </div>
+                <div ng-switch-default>
+
+                    <div ng-repeat="f in model.followers">
+
+
+                        <h3><span class="glyphicon glyphicon-user"></span>
+                            <a href="#/user1/{{model.user._id}}/secondUser/{{f._id}}">{{f.firstName}}</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

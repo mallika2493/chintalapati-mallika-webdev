@@ -14,7 +14,10 @@ module.exports = function () {
         updatelikeStatus:updatelikeStatus,
         isShowLiked:isShowLiked,
         addToFollowing:addToFollowing,
-        addToFollowers:addToFollowers
+        addToFollowers:addToFollowers,
+        removeFromFollowing:removeFromFollowing,
+        removeFromFollowers:removeFromFollowers
+
 
     };
 
@@ -109,9 +112,23 @@ module.exports = function () {
     }
 
     function addToFollowers(secondUserId,loggedInUserId) {
-        console.log("user1:"+loggedInUserId+" user2: "+secondUserId);
+
 
         return UserModel.update({_id: secondUserId}, {$addToSet: {followers: loggedInUserId}});
+
+    }
+
+    function removeFromFollowing(loggedInUserId,secondUserId) {
+        console.log("user1:"+loggedInUserId+" user2: "+secondUserId);
+        return UserModel.update({_id: loggedInUserId}, {$pullAll: {following: [secondUserId]}});
+
+
+    }
+
+    function removeFromFollowers(secondUserId,loggedInUserId) {
+        console.log("user1:"+loggedInUserId+" user2: "+secondUserId);
+
+        return UserModel.update({_id: secondUserId}, {$pullAll: {followers: [loggedInUserId]}});
 
     }
 

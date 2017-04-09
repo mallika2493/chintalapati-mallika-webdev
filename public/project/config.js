@@ -40,6 +40,11 @@
                 controller: "profileController",
                 controllerAs: "model"
             })
+            .when("/user1/:uid1/secondUser/:uid2", {
+                templateUrl: 'views/user/templates/profile-other-user-view.client.html',
+                controller: "profileOtherController",
+                controllerAs: "model"
+            })
             .when("/user/:uid/search/:searchTerm", {
                 templateUrl: 'views/user/templates/login.search.view.client.html',
                 controller: "searchController",
