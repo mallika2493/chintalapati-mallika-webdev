@@ -68,7 +68,12 @@
         }
 
         function getChoiceView(choice) {
-            var url = "views/user/templates/profile-other-" + choice + ".view.client.html";
+            var url = "";
+
+            if(vm.userId==vm.secondUserId)
+                url =  "views/user/templates/profile-" + choice + ".view.client.html";
+            else
+            url = "views/user/templates/profile-other-" + choice + ".view.client.html";
             return url;
 
         }

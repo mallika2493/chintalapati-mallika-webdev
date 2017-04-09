@@ -20,7 +20,12 @@
 
 
                         <h3><span class="glyphicon glyphicon-user"></span>
+                            <div ng-if="model.user._id!=f._id">
                             <a href="#/user1/{{model.user._id}}/secondUser/{{f._id}}">{{f.firstName}}</a>
+                            </div>
+                            <div ng-if="model.user._id==f._id">
+                                <a href="#/user/{{model.user._id}}">{{f.firstName}}</a>
+                            </div>
                         </h3>
                     </div>
                 </div>
