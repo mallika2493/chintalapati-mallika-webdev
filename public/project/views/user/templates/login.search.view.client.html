@@ -120,15 +120,24 @@
                             <div class="media">
                                 <div class="form-group">
 
-                                    <a ng-click="model.follow({userId: review.userId})"
-                                       class="btn btn-success pull-right">
-                                        <i class="glyphicon glyphicon-plus"/> follow {{review.userFirstName}}
-                                    </a>
                                 </div>
                                 <!--img u="image" ng-src="../../../img/profile-icon.png" />-->
-                                <h3><span class="glyphicon glyphicon-user"></span>
-                                    <a ui-sref="profile.reviews({userId: review.userId})">{{review.userFirstName}}</a>
-                                </h3>
+
+                                    <div ng-switch=review.userId>
+                                        <div ng-switch-when=model.userId>
+                                            <h3><span class="glyphicon glyphicon-user"></span>
+                                            <a href="#/user/{{model.userId}}">{{review.userFirstName}}</a>
+                                            </h3>
+                                        </div>
+                                        <div ng-switch-when!=model.userId>
+                                            <h3><span class="glyphicon glyphicon-user"></span>
+                                            <a href="#/user1/{{model.userId}}/secondUser/{{review.userId}}">{{review.userFirstName}}</a>
+                                            </h3>
+                                        </div>
+
+
+                                    </div>
+
                                 <div class="media-body">
                                     <h4 class="media-heading">{{review.title}}</h4>
                                     <p class="text-justify">
