@@ -10,6 +10,8 @@ module.exports = function(app) {
     require("./services/user.service.server.js")(app,model);
     require("./services/series.service.server.js")(app,model);
     require("./services/reviews.service.server.js")(app,model);
+    require("./services/actor.service.server.js")(app,model);
+    require("./services/status.service.server.js")(app,model);
 
 
 };

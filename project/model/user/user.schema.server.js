@@ -16,7 +16,7 @@ module.exports = function () {
         likes:[String],
 
         //picture of the user
-        //role
+        role:{type: String, default: "user", enum: ["user","actor","admin"]},
 
         series: [{type: mongoose.Schema.Types.ObjectId, ref: 'SeriesModel'}],
         dateCreated: {type: Date, default: Date.now()},

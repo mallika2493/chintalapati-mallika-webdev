@@ -40,6 +40,17 @@
                 controller: "profileController",
                 controllerAs: "model"
             })
+            .when("/user/actor/:uid", {
+                templateUrl: 'views/user/actor/templates/profile.actor.view.client.html',
+                controller: "profileActorController",
+                controllerAs: "model"
+            })
+            .when("/user/actor/series/:uid", {
+                templateUrl: 'views/user/actor/templates/profile.actor.register.view.client.html',
+                controller: "registerActorController",
+                controllerAs: "model"
+            })
+        ///
             .when("/user1/:uid1/secondUser/:uid2", {
                 templateUrl: 'views/user/templates/profile-other-user-view.client.html',
                 controller: "profileOtherController",

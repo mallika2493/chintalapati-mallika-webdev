@@ -20,7 +20,13 @@
                     UserService
                         .createUser(user)
                         .success(function (user) {
+                            if(user.role=="actor"){
+                                //ActorService add for Actor model by add
+                                $location.url('/user/actor/series/'+user._id);
+                            }
+                            else{
                             $location.url('/user/' + user._id);
+                            }
 
                         })
                         .error(function () {
