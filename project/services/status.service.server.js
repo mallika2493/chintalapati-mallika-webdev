@@ -9,6 +9,7 @@ module.exports = function (app, model) {
     app.put("/api/actor/status/:status_id",editStatus);
     app.delete("/api/actor/status/:status_id",deleteStatus);
 
+
     function createStatus(req, res) {
 
         var actorId=req.params['aid'];
@@ -72,6 +73,49 @@ module.exports = function (app, model) {
 
     }
 
+    //var upload = multer({storage: storage});
+    //app.post("/api/upload", upload.single('myFile'), uploadImage);
+
+    /*function uploadImage(req, res) {
+        var status
+        var imgWidget ={
+            width:width,
+            _id:widgetId
+        }
+        if(req.file!=null) {
+            var myFile = req.file;
+            var destination = myFile.destination;
+
+            imgWidget.url = req.protocol + '://' + req.get('host') + "/uploads/" + myFile.filename;
+
+            WidgetModel
+                .updateWidget(widgetId, imgWidget)
+                .then(function (response) {
+                    if(response.ok===1&&response.n===1){
+
+
+                        WidgetModel
+                            .findWidgetById(widgetId)
+                            .then(function (newResponse) {
+
+                                pageId = newResponse._page;
+                                res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget");
+
+                            });
+                    }
+                    else{
+                        res.sendStatus(404);
+                    }
+                },function(err){
+                    res.sendStatus(404);
+                });
+
+        }
+        else{
+            pageId = req.body.pageId;
+            res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/"+widgetId);
+        }
+    }*/
 
 
 }

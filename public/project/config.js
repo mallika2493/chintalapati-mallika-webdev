@@ -60,6 +60,11 @@
                 templateUrl: 'views/user/templates/login.search.view.client.html',
                 controller: "searchController",
                 controllerAs: "model"
+            })
+            .when("/user/:uid/LIKE", {
+                templateUrl: 'views/user/templates/profile-LIKE.view.client.html',
+                controller: "profileController",
+                controllerAs: "model"
             });
 
 

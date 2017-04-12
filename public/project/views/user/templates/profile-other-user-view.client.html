@@ -6,12 +6,19 @@
             </a>
         </div>
         <div class="navbar-text pull-right page-text">
-            <a href="#/user/{{model.user._id}}">
+
+            <a ng-if="model.user.role=='actor'" href="#/user/actor/{{model.userId}}">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+            <a ng-if="model.user.role!='actor'" href="#/user/{{model.userId}}">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
 
-            <a href="#/user/{{model.user._id}}">
-                <span>{{model.user.username}}&nbsp;&nbsp;&nbsp;</span>
+            <a ng-if="model.user.role=='actor'" href="#/user/actor/{{model.userId}}">
+                <span>{{model.user.firstName}}&nbsp;&nbsp;&nbsp;</span>
+            </a>
+            <a ng-if="model.user.role!='actor'" href="#/user/{{model.userId}}">
+                <span>{{model.user.firstName}}&nbsp;&nbsp;&nbsp;</span>
             </a>
 
             <a href="index.html#/home">

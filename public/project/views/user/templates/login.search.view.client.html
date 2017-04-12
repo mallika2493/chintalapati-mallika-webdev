@@ -1,14 +1,17 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-text pull-left page-text">
-            <a href="#/home">
+            <a href="">
                 <span class="glyphicon glyphicon-chevron-left"></span>
             </a>
         </div>
         <div class="navbar-text pull-right page-text">
 
-            <a href="#/user/{{model.userId}}">
-                <span>Welcome {{model.user.username}}&nbsp;&nbsp;&nbsp;</span>
+            <a ng-if="model.user.role=='actor'" href="#/user/actor/{{model.userId}}">
+                <span>{{model.user.firstName}}&nbsp;&nbsp;&nbsp;</span>
+            </a>
+            <a ng-if="model.user.role!='actor'" href="#/user/{{model.userId}}">
+                <span>{{model.user.firstName}}&nbsp;&nbsp;&nbsp;</span>
             </a>
 
             <a href="index.html#/home">

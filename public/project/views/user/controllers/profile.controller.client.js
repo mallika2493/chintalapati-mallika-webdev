@@ -39,8 +39,8 @@
                 .findUserById(userId)
                 .success(function (user) {
                     vm.user = user;
-                    if(vm.user.role=="actor"){
-                        $location.url("/user/actor/"+vm.user._id);
+                    if(vm.user.role=="actoras"){
+                        //$location.url("/user/actor/"+vm.user._id);
                     }
                     else{
                     getLikeDetails();

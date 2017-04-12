@@ -6,12 +6,12 @@
             </a>
         </div>
         <div class="navbar-text pull-right page-text">
-            <a href="#/user/{{model.user._id}}">
+            <a href="#/user/actor/{{model.user._id}}">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
 
-            <a href="#/user/{{model.user._id}}">
-                <span>{{model.user.username}}&nbsp;&nbsp;&nbsp;</span>
+            <a href="#/user/actor/{{model.user._id}}">
+                <span>{{model.user.firstName}}&nbsp;&nbsp;&nbsp;</span>
             </a>
 
             <a href="index.html#/home">
@@ -57,7 +57,52 @@
                     </div>
                     <div class="col-xs-2">
                         <a href="" class="pull-right">
-                            <span class="glyphicon glyphicon-sunglasses"></span>
+                            <span class="glyphicon glyphicon-sunglasses status-button-color"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-10">
+                        <a href="" ng-click="model.setChoice('LIKE')">
+                            Likes
+                        </a>
+
+                    </div>
+                    <div class="col-xs-2">
+                        <a href="" class="pull-right">
+                            <span class="glyphicon glyphicon-heart like-button-color"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-10">
+                        <a href="" ng-click="model.setChoice('FOLLOWER')" class="active follower-button-color">
+                            Fans
+                        </a>
+
+                    </div>
+                    <div class="col-xs-2">
+                        <a href="" class="pull-right">
+                            <span class="glyphicon glyphicon-eye-open follower-button-color"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-10">
+                        <a href="" ng-click="model.setChoice('FOLLOWING')" class="active following-button-color">
+                            Following
+                        </a>
+
+                    </div>
+                    <div class="col-xs-2">
+                        <a href="" class="pull-right">
+                            <span class="glyphicon glyphicon-eye-open following-button-color"></span>
                         </a>
                     </div>
                 </div>
@@ -104,7 +149,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
 
-        <a href="#/user/{{model.user._id}}" class="navbar-link navbar-brand pull-right">
+        <a href="#/user/actor/{{model.user._id}}" class="navbar-link navbar-brand pull-right">
           <span class="glyphicon glyphicon-user">
           </span>
         </a>

@@ -96,8 +96,13 @@
         }
 
         function getChoiceView(choice) {
+            if(choice!='STATUS')
+                return "views/user/templates/profile-" + choice + ".view.client.html";
+                //$location.url("/user/"+vm.userId+"/"+choice);
+            else {
             var url = "views/user/actor/templates/profile-actor-" + choice + ".view.client.html";
             return url;
+            }
 
         }
 
