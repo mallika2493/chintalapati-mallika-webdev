@@ -6,7 +6,7 @@ module.exports = function () {
     var api = {
         createUser: createUser,
         findUserById: findUserById,
-        findUserbyUsername: findUserbyUsername,
+        findUserByUsername: findUserByUsername,
         findUserByCredentials: findUserByCredentials,
         setModel: setModel,
         updateUser: updateUser,
@@ -17,7 +17,12 @@ module.exports = function () {
         addToFollowers:addToFollowers,
         removeFromFollowing:removeFromFollowing,
         removeFromFollowers:removeFromFollowers,
-        deleteFromAllFollowersAndFollowing:deleteFromAllFollowersAndFollowing
+        deleteFromAllFollowersAndFollowing:deleteFromAllFollowersAndFollowing,
+
+        findUserByGoogleId:findUserByGoogleId,
+        findUserByFacebookId:findUserByFacebookId,
+        getAllUsers:getAllUsers
+
 
 
     };
@@ -38,11 +43,27 @@ module.exports = function () {
         model = _model;
     }
 
+    function findUserByGoogleId(googleId) {
+        return UserModel
+            .findOne({'google.id': googleId});
+    }
+
+    function findUserByFacebookId(facebookId) {
+        return UserModel
+            .findOne({'facebook.id': facebookId});
+    }
+
+
+
+
+
+
+
     function findUserById(userId) {
         return UserModel.findById(userId);
     }
 
-    function findUserbyUsername(username) {
+    function findUserByUsername(username) {
         return UserModel.find({"username":username});
     }
 
@@ -112,6 +133,11 @@ module.exports = function () {
         followingUsers=UserModel.find({_id: {$in: deletedUserId}});
 
 
+    }
+    
+    function getAllUsers() {
+        return UserModel.find();
+        
     }
 
 

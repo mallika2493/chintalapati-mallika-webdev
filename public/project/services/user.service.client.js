@@ -18,9 +18,36 @@
                 "isShowLiked":isShowLiked,
                 "follow":follow,
                 "unfollow":unfollow,
-                "deleteFromAllFollowersAndFollowing":deleteFromAllFollowersAndFollowing
+                "deleteFromAllFollowersAndFollowing":deleteFromAllFollowersAndFollowing,
+                "login":login,
+                "logout":logout,
+                "register":register,
+                "getAllRegUsers":getAllRegUsers
+
+
             };
             return api;
+
+            function register(user) {
+                console.log("user called client");
+                var url = '/api/register/';
+                return $http.post(url,user);
+            }
+
+            function logout() {
+                return $http.post("/api/logout");
+            }
+
+            function login(username,password) {
+                var user ={
+                    username:username,
+                    password:password
+                }
+
+                return $http.post('/api/login', user);
+            }
+
+
 
             function updateUser(userId, newUser) {
                 return $http.put("/api/user/"+userId,newUser);
@@ -37,10 +64,12 @@
 
             }
             function findUserByUsername(username) {
+                console.log(typeof username);
                 return $http.get("/api/user?username="+username);
             }
 
             function createUser(user) {
+                console.log(user);
                 return $http.post("/api/user",user);
 
             }
@@ -70,6 +99,10 @@
             function deleteFromAllFollowersAndFollowing(deletedUserId) {
                 return $http.put("/api/delete/user/"+deletedUserId);
 
+            }
+
+            function getAllRegUsers() {
+                return $http.get('/api/getAllUsers/');
             }
 
         }

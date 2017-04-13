@@ -35,6 +35,14 @@
                 controller: "registerController",
                 controllerAs: "model"
             })
+            .when("/user", {
+                templateUrl: 'views/user/templates/profile.view.client.html',
+                controller: "profileController",
+                controllerAs: "model",
+                resolve: {
+                    loggedin: checkLoggedin
+                }
+            })
         .when("/user/:uid", {
                 templateUrl: 'views/user/templates/profile.view.client.html',
                 controller: "profileController",
@@ -77,7 +85,28 @@
                 templateUrl: 'views/user/actor/templates/actor-STATUS.view.client.html',
                 controller: "actorStatusController",
                 controllerAs: "model"
+            })
+            .when("/admin/:uid", {
+                templateUrl: 'views/user/admin/templates/admin.view.client.html',
+                controller: "adminController",
+                controllerAs: "model"
             });
+
+        function checkLoggedin($q, $timeout, $http, $location, $rootScope) {
+            var deferred = $q.defer();
+            $http.get('/api/loggedin').success(function(user) {
+                $rootScope.errorMessage = null;
+                if (user !== '0') {
+                    $rootScope.currentUser = user;
+                    deferred.resolve();
+                    $location.url('/user/'+$rootScope.currentUser._id);
+                } else {
+                    deferred.reject();
+                    $location.url('/');
+                }
+            });
+            return deferred.promise;
+        };
 
 
         // $locationProvider.html5Mode(true);
