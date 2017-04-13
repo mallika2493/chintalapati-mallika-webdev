@@ -1,0 +1,37 @@
+<div ng-controller="profileActorController as model">
+    <h2>SERIES <a href="">
+        <span class="glyphicon glyphicon-film series-button-color"></span>
+    </a></h2>
+    <br>
+    <div class="container-fluid">
+        <div class="row col-sm-6 well">
+            <div ng-switch="model.series.length">
+
+                <div ng-switch-when=0>
+                    {{model.shows}}
+
+                    <div class="well col-sm-8">
+                        <p class="bg-info">Sorry you have not liked anything yet!!</p>
+                    </div>
+                </div>
+                <div ng-switch-default>
+                    <div ng-repeat="show in model.shows">
+
+                        <div class="well media center-block">
+                            <div class="media-object center-block">
+                                <a href="" ng-click="model.searchShow(show.name)">
+                                    <img ng-src="{{show.image}}" class="media-object center-block img-thumbnail img-like-width">
+                                    <h4 class="media-heading text-center">
+                                        {{show.name}}
+                                    </h4>
+                                </a>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

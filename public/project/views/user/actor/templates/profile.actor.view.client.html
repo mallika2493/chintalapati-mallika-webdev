@@ -35,7 +35,7 @@
             <li class="list-group-item">
             <div class="row">
                 <div class="col-xs-10">
-                    <a href="" ng-click="model.setChoice('EDIT')">
+                    <a href="" ng-click="model.setChoice('EDIT')" class="profile-title">
                         Edit Profile
                     </a>
 
@@ -50,7 +50,7 @@
             <li class="list-group-item">
                 <div class="row">
                     <div class="col-xs-10">
-                        <a href="" ng-click="model.setChoice('STATUS')">
+                        <a href="" ng-click="model.setChoice('STATUS')" class="profile-title">
                             Status
                         </a>
 
@@ -65,7 +65,7 @@
             <li class="list-group-item">
                 <div class="row">
                     <div class="col-xs-10">
-                        <a href="" ng-click="model.setChoice('LIKE')">
+                        <a href="" ng-click="model.setChoice('LIKE')" class="profile-title">
                             Likes
                         </a>
 
@@ -80,14 +80,14 @@
             <li class="list-group-item">
                 <div class="row">
                     <div class="col-xs-10">
-                        <a href="" ng-click="model.setChoice('FOLLOWER')" class="active follower-button-color">
+                        <a href="" ng-click="model.setChoice('FOLLOWER')" class="active profile-title">
                             Fans
                         </a>
 
                     </div>
                     <div class="col-xs-2">
                         <a href="" class="pull-right">
-                            <span class="glyphicon glyphicon-eye-open follower-button-color"></span>
+                            <span class="glyphicon glyphicon-eye-open"></span>
                         </a>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
             <li class="list-group-item">
                 <div class="row">
                     <div class="col-xs-10">
-                        <a href="" ng-click="model.setChoice('FOLLOWING')" class="active following-button-color">
+                        <a href="" ng-click="model.setChoice('FOLLOWING')" class="active profile-title">
                             Following
                         </a>
 
@@ -103,6 +103,21 @@
                     <div class="col-xs-2">
                         <a href="" class="pull-right">
                             <span class="glyphicon glyphicon-eye-open following-button-color"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-10">
+                        <a href="" ng-click="model.setChoice('SERIES')" class="active profile-title">
+                            My Series
+                        </a>
+
+                    </div>
+                    <div class="col-xs-2">
+                        <a href="" class="pull-right">
+                            <span class="glyphicon glyphicon-film series-button-color"></span>
                         </a>
                     </div>
                 </div>
@@ -130,6 +145,9 @@
                     <div ng-include="model.getChoiceView(model.choice)"></div>
                 </div>
                 <div ng-switch-when="FOLLOWING">
+                    <div ng-include="model.getChoiceView(model.choice)"></div>
+                </div>
+                <div ng-switch-when="SERIES">
                     <div ng-include="model.getChoiceView(model.choice)"></div>
                 </div>
 

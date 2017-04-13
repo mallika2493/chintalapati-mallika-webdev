@@ -9,7 +9,8 @@
     function TvShowService($http) {
         var api = {
             "searchShow":searchShow,
-            "getCastDetails":getCastDetails
+            "getCastDetails":getCastDetails,
+            "searchShowById":searchShowById
         };
         return api;
 
@@ -25,6 +26,12 @@
             var urlBase = "http://api.tvmaze.com/shows/ID/cast";
             var url = urlBase.replace("ID", id);
             return $http.get(url);
+        }
+        function searchShowById(id) {
+            var urlBase = "http://api.tvmaze.com/shows/ID";
+            var url = urlBase.replace("ID", id);
+            return $http.get(url);
+
         }
     }
 })();

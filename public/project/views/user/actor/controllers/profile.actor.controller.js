@@ -24,8 +24,9 @@
         vm.editStatus=editStatus;
         vm.undoStatus=undoStatus;
         vm.deleteStatus=deleteStatus;
+        vm.searchShow = searchShow;
         /*vm.getlikeDetails = getLikeDetails;
-         vm.searchShow = searchShow;
+
          vm.getFollowers = getFollowers;
          vm.getFollowing = getFollowing;*/
 
@@ -49,6 +50,7 @@
             var userId = $routeParams['uid'];
             vm.userId=userId;
             vm.actorId=null;
+            vm.shows=[];
             UserService
                 .findUserById(userId)
                 .success(function (user) {
@@ -58,17 +60,45 @@
                         vm.actor=actor;
                         vm.actorId=actor._id;
                         findAllStatusByActorId(vm.actor._id);
+                        getSeries();
                     })
                     }
-                    // getLikeDetails();
-                    // getFollowers();
-                    // getFollowing();
+
+
 
                 });
 
         }
 
         init();
+        
+        function getSeries() {
+            var show={};
+            for(var i in vm.actor.series){
+            TvShowService.searchShowById(vm.actor.series[i])
+                .then(function (response) {
+
+                    show={
+                        "name":response.data.name,
+                        "image":response.data.image.original
+                    }
+                    vm.shows.push(show);
+
+                });
+
+            }
+
+            
+        }
+
+        function searchShow(searchTerm) {
+            if (vm.userId == null)
+                $location.url("/search/" + searchTerm);
+            else {
+                $location.url("/user/" + vm.userId + "/search/" + searchTerm);
+            }
+
+        }
 
         function findAllStatusByActorId(actorId) {
             StatusService
@@ -76,8 +106,6 @@
                 .then(function (response) {
                     if (response.data) {
                         vm.statusList = response.data;
-                        //findUserBySeriesReviewUserId(vm.reviews);
-                        //movieAvgRatingByMovieId(vm.reviews);
 
                     }
                 });
@@ -96,7 +124,7 @@
         }
 
         function getChoiceView(choice) {
-            if(choice!='STATUS')
+            if(choice!='STATUS' && choice!='SERIES')
                 return "views/user/templates/profile-" + choice + ".view.client.html";
                 //$location.url("/user/"+vm.userId+"/"+choice);
             else {
