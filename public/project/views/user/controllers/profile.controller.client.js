@@ -7,7 +7,7 @@
         .module("SeriesAppMaker")
         .controller("profileController", profileController);
 
-    function profileController($routeParams, $location, UserService, SeriesService) {
+    function profileController($routeParams, $location, UserService, SeriesService,ActorService) {
         var vm = this;
         //vm.updateUser = updateUser;
         vm.deleteUser = deleteUser;
@@ -62,7 +62,16 @@
                 UserService
                     .deleteUser(user._id)
                     .success(function () {
-                        $location.url("/login");
+                    if(user.role=="actor") {
+                        ActorService.findActorByUserId(user._id)
+                            .then(function (actor) {
+                                ActorService.deleteActor(actor.data._id)
+                                    .success(function () {
+                                        $location.url("/login");
+                                    })
+                            })
+
+                    }
                     })
                     .error(function () {
                         vm.error = 'unable to remove user';

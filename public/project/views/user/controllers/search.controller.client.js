@@ -21,6 +21,7 @@
         vm.undoReview=undoReview;
         vm.deleteReview=deleteReview;
         vm.follow=follow;
+        vm.showActors=showActors;
 
 
         function init() {
@@ -237,6 +238,11 @@
 
                     }
                 });
+            
+        }
+        
+        function showActors() {
+                $location.url("/user/"+vm.userId+"/actor/list/view/"+vm.id+"/name/"+vm.shows[0].show.name);
             
         }
 

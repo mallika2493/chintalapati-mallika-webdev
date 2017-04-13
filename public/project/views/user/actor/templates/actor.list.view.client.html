@@ -1,0 +1,58 @@
+<div ng-controller="actorListController as model">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left page-text">
+            <a href="/user/{{model.userId}}/search/{{model.seriesName}}">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+        </div>
+        <div class="navbar-text pull-right page-text">
+            <a href="#/user/{{model.user._id}}">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+
+            <a href="#/user/{{model.user._id}}">
+                <span>{{model.user.firstName}}&nbsp;&nbsp;&nbsp;</span>
+            </a>
+
+            <a href="index.html#/home">
+                <span class="glyphicon glyphicon-log-out"></span>
+            </a>
+            <a href="index.html#/home">
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+        <div class="navbar-header page-text">
+            <a class="navbar-brand" href="#/home/{{model.user._id}}">Showcity</a>
+        </div>
+    </div>
+</nav>
+
+<div class="row container-fluid">
+    <div class="col-sm-2"></div>
+    <ul class="col-sm-8 list-group center-block">
+        <h3 class="text-center">Actors of {{model.seriesName}}</h3>
+        <li class="list-group-item text-center" ng-repeat="actor in model.actors">
+            <a href="" ng-click="model.getStatusPage(actor)">
+                {{actor.firstName}}
+            </a>
+
+
+        </li>
+    </ul>
+    <div class="col-sm-2"></div>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+
+        <a href="#/user/{{model.user._id}}" class="navbar-link navbar-brand pull-right">
+          <span class="glyphicon glyphicon-user">
+          </span>
+        </a>
+
+    </div>
+</nav>
+</div>

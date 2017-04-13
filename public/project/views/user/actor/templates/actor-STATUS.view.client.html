@@ -1,0 +1,81 @@
+<div ng-controller="actorStatusController as model">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-text pull-left page-text">
+                <a href="/user/{{model.userId}}/actor/list/view/{{model.seriesId}}/name/{{model.seriesName}}">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+            </div>
+            <div class="navbar-text pull-right page-text">
+                <a href="#/user/{{model.user._id}}">
+                    <span class="glyphicon glyphicon-user"></span>
+                </a>
+
+                <a href="#/user/{{model.user._id}}">
+                    <span>{{model.user.firstName}}&nbsp;&nbsp;&nbsp;</span>
+                </a>
+
+                <a href="index.html#/home">
+                    <span class="glyphicon glyphicon-log-out"></span>
+                </a>
+                <a href="index.html#/home">
+                    <span>Logout</span>
+                </a>
+
+            </div>
+
+            <div class="navbar-header page-text">
+                <a class="navbar-brand" href="#/home/{{model.user._id}}">Showcity</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="row container-fluid">
+        <div class="col-sm-11 panel-body">
+            <div class="row">
+            <h3 class="col-sm-4">
+                <div >
+                    <span class="glyphicon glyphicon-user"></span>
+                    <a href="">{{model.actorUser.firstName}}</a>
+                </div>
+            </h3>
+            </div>
+            <div class="well" ng-repeat="status in model.statusList">
+                <div class="panel-body">
+
+                    <div class="media">
+
+                        <!--img u="image" ng-src="../../../img/profile-icon.png" />-->
+
+
+
+                        <div class="media-body">
+
+                            <strong><p class="text-justify">
+                                {{status.description}}
+                        </p></strong>
+                            <small>
+
+                                {{status.dateCreated | date : 'mediumDate'}}
+                            </small>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+
+            <a href="#/user/{{model.user._id}}" class="navbar-link navbar-brand pull-right">
+          <span class="glyphicon glyphicon-user">
+          </span>
+            </a>
+
+        </div>
+    </nav>
+</div>

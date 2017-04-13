@@ -22,6 +22,8 @@
             </a>
 
         </div>
+
+
         <div class="navbar-header page-text">
             <a class="navbar-brand" href="#/home/{{model.userId}}">Showcity</a>
         </div>
@@ -56,6 +58,7 @@
 
                     </div>
 
+
                 </h2>
 
 
@@ -63,6 +66,16 @@
                     <span class="h5 text-muted ng-binding" ng-repeat="genre in sho.show.genres">#{{genre}}&nbsp</span>
                 </div>
                 <i class="fa fa-clock-o ng-binding">&nbsp;{{sho.show.runtime}} min</i>
+
+                <br><br>
+                <span>
+                <div class="form-group">
+                    <a ng-click="model.showActors()" class="btn btn-success">
+                        Actors
+                    </a>
+                </div>
+                </span>
+
                 <hr class="featurette-divider">
 
 

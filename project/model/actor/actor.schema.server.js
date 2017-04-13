@@ -8,7 +8,7 @@ module.exports = function () {
     var mongoose = require('mongoose');
 
     var ActorSchema = mongoose.Schema({
-        userId : {type: mongoose.Schema.Types.ObjectId},
+        userId : {type: mongoose.Schema.Types.ObjectId, ref: 'UserModel'},
         series: [String],
         //status: [{type: mongoose.Schema.Types.ObjectId, ref: 'StatusModel'}],
 

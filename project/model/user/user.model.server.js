@@ -53,43 +53,17 @@ module.exports = function () {
         return UserModel.update({_id:userId},{$set:updatedUser});
     }
     function deleteUser(userId) {
-        // Perform cascade delete to delete the associated websites
-        // The websites will in turn delete the associated pages
-        // The page delete will in turn delete the associated widgets
-        // Perform a recursive function delete since the queries
-        // are asynchronous
-        return UserModel.findById({_id: userId})
-            .then(function (user) {
-                var websitesOfUser = user.websites;
-                return recursiveDelete(websitesOfUser, userId);
-            }, function (err) {
-                return err;
-            });
-    }
-
-    function recursiveDelete(websitesOfUser, userId) {
-        if(websitesOfUser.length == 0){
-            // All websites of user successfully deleted
-            // Delete the user
-            return UserModel.remove({_id: userId})
-                .then(function (response) {
-                    if(response.result.n == 1 && response.result.ok == 1){
-                        return response;
-                    }
-                }, function (err) {
-                    return err;
-                });
-        }
-
-        return model.WebsiteModel.deleteWebsiteAndChildren(websitesOfUser.shift())
+        console.log("I am deleting")
+        return UserModel.remove({_id: userId})
             .then(function (response) {
                 if(response.result.n == 1 && response.result.ok == 1){
-                    return recursiveDelete(websitesOfUser, userId);
+                    return response;
                 }
             }, function (err) {
                 return err;
             });
     }
+
 
     function updatelikeStatus(userId,showId,status) {
             if(status=='like')

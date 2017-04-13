@@ -30,18 +30,42 @@
 </nav>
 
 <div class="row container-fluid">
-    <input  ng-model="actor.series"
-            id="series"
-            type="text"
-            class="form-control"
-            placeholder="series"/>
+    <div class="col-sm-8 input-group center-block">
+    <h3>Please add series you are currently enacting in</h3>
+        <div ng-if="model.series.length==0">
+            <span class="input-group-btn">
+                <input ng-model="ss" type="text" placeholder="series" class="form-control">
 
-    <a ng-click="model.registerActor(actor)"
+                <a ng-click="model.saveSeries(ss)" class="btn btn-default" type="button">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
+            </span>
+        </div>
+        {{s}}
+    <div ng-repeat="s in model.series">
+       <!-- <div class="well">{{s}}</div> -->
+
+        <span class="input-group-btn">
+
+                <input ng-model="s1" type="text" placeholder="series" class="form-control">
+
+                <a ng-click="model.saveSeries(s1)" class="btn btn-default" type="button">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
+            </span>
+        <br>
+    </div>
+
+    <br>
+        <a ng-click="model.registerActor()"
+           class="btn btn-warning btn-block"
+        >Add Series</a>
+    <a ng-click="model.createActor()"
        class="btn btn-primary btn-block"
     >Register Actor</a>
-
+    </div>
 </div>
-
+{{model.actor}}
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
