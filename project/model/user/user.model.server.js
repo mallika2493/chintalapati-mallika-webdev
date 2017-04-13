@@ -16,7 +16,8 @@ module.exports = function () {
         addToFollowing:addToFollowing,
         addToFollowers:addToFollowers,
         removeFromFollowing:removeFromFollowing,
-        removeFromFollowers:removeFromFollowers
+        removeFromFollowers:removeFromFollowers,
+        deleteFromAllFollowersAndFollowing:deleteFromAllFollowersAndFollowing
 
 
     };
@@ -105,5 +106,13 @@ module.exports = function () {
         return UserModel.update({_id: secondUserId}, {$pullAll: {followers: [loggedInUserId]}});
 
     }
+
+    function deleteFromAllFollowersAndFollowing(deletedUserId) {
+        var followingUsers=[];
+        followingUsers=UserModel.find({_id: {$in: deletedUserId}});
+
+
+    }
+
 
 };

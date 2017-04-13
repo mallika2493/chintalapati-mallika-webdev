@@ -61,7 +61,10 @@
             if (answer) {
                 UserService
                     .deleteUser(user._id)
-                    .success(function () {
+                    .then(function () {
+                        //UserService.deleteFromAllFollowersAndFollowing(user._id);
+                    })
+                    .then(function () {
                     if(user.role=="actor") {
                         ActorService.findActorByUserId(user._id)
                             .then(function (actor) {
@@ -72,7 +75,7 @@
                             })
 
                     }
-                    //UserService.delete
+
                     })
                     .error(function () {
                         vm.error = 'unable to remove user';

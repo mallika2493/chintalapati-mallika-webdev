@@ -17,7 +17,8 @@
                 "setLikeStatus":setLikeStatus,
                 "isShowLiked":isShowLiked,
                 "follow":follow,
-                "unfollow":unfollow
+                "unfollow":unfollow,
+                "deleteFromAllFollowersAndFollowing":deleteFromAllFollowersAndFollowing
             };
             return api;
 
@@ -64,6 +65,11 @@
 
             function unfollow(loggedInUserId,secondUserId){
                 return $http.put("/api/user/"+loggedInUserId+"/user2/"+secondUserId+"/unfollow");
+            }
+
+            function deleteFromAllFollowersAndFollowing(deletedUserId) {
+                return $http.put("/api/delete/user/"+deletedUserId);
+
             }
 
         }

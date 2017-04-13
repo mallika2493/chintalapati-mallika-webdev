@@ -19,6 +19,7 @@ module.exports = function (app, model) {
     app.get("/api/user/:userId/series/:showId/isShowliked",isShowLiked);
     app.put("/api/user/:loggedInUserId/user2/:secondUserId",follow);
     app.put("/api/user/:loggedInUserId/user2/:secondUserId/unfollow",unfollow);
+    app.put("/api/delete/user/:uid",deleteFromAllFollowersAndFollowing);
 
 
     function findUserByCredentials(req, res) {
@@ -225,6 +226,20 @@ module.exports = function (app, model) {
                 function (err) {
                     res.status(400).send(err);
                 });
+    }
+
+    function deleteFromAllFollowersAndFollowing(req,res) {
+        var deletedUserId = req.params.uid;
+
+        UserModel.deleteFromAllFollowersAndFollowing(deletedUserId)
+            .then(function (response) {
+                res.json(response);
+
+            },function (err) {
+                res.status(400).send(err);
+
+            })
+
     }
 };
 
