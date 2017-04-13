@@ -75,7 +75,7 @@
             ActorService
                 .createActor(vm.actor)
                 .then(function (ac) {
-                    console.log(ac);
+
 
 
                 });

@@ -4,10 +4,11 @@
 module.exports = function (app, model) {
     app.post("/api/actor", createActor);
     app.get("/api/actor/:uid", getActorByUserId);
-    app.put("/api/actor/series/:seriesId", addtoSeriesForActor);
+    app.put("/api/actor/:aid/series/:seriesId", addToSeriesForActor);
     app.delete("/api/actor/delete/:aid", deleteActor);
     app.get("/api/actors/serial/:seriesId", getAllActorsForSeriesId);
     app.get("/api/user/actor/:aid",getActorByActorId);
+    app.delete("/api/actor/:aid/status/show/:show_id",deleteShow);
     var ActorModel = model.ActorModel;
 
     function createActor(req, res) {
@@ -57,9 +58,11 @@ module.exports = function (app, model) {
 
     }
 
-    function addtoSeriesForActor(req, res) {
+    function addToSeriesForActor(req, res) {
         var seriesId = req.params['seriesId'];
-        var actorId = req.body;
+        var actorId = req.params['aid'];
+        console.log("addSeries"+seriesId);
+        console.log("addSeriesactorID"+actorId);
         ActorModel.addtoSeriesForActor(seriesId, actorId)
             .then(function (actor) {
                     res.send(actor);
@@ -93,6 +96,20 @@ module.exports = function (app, model) {
                     res.sendStatus(400).send(error);
 
                 });
+
+    }
+
+    function deleteShow(req,res) {
+        var showId = req.params.show_id;
+        var actorId = req.params.aid;
+        ActorModel.deleteShow(actorId,showId)
+            .then(function (response) {
+                res.json(response);
+
+            },function (err) {
+                res.status(400).send(err);
+
+            })
 
     }
 

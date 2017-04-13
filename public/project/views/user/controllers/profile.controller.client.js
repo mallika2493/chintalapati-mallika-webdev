@@ -72,6 +72,7 @@
                             })
 
                     }
+                    //UserService.delete
                     })
                     .error(function () {
                         vm.error = 'unable to remove user';

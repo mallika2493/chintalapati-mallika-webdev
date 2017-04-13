@@ -12,7 +12,8 @@
             "addStatus":addStatus,
             "findAllStatusByActorId":findAllStatusByActorId,
             "editStatus":editStatus,
-            "deleteStatus":deleteStatus
+            "deleteStatus":deleteStatus,
+
 
         };
         return api;
@@ -35,6 +36,8 @@
         function deleteStatus(status_id) {
             return $http.delete("/api/actor/status/" + status_id);
         }
+
+
 
     }
 })();

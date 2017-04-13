@@ -3,35 +3,65 @@
         <span class="glyphicon glyphicon-film series-button-color"></span>
     </a></h2>
     <br>
+    <div class="row">
+        <div class="col-sm-3"></div>
     <div class="container-fluid">
         <div class="row col-sm-6 well">
             <div ng-switch="model.series.length">
 
                 <div ng-switch-when=0>
-                    {{model.shows}}
 
-                    <div class="well col-sm-8">
-                        <p class="bg-info">Sorry you have not liked anything yet!!</p>
-                    </div>
                 </div>
                 <div ng-switch-default>
                     <div ng-repeat="show in model.shows">
 
                         <div class="well media center-block">
+                            <div >
+
+                                <a class="pull-right" href=""
+                                   ng-click="model.deleteShow($index)">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </a>
+
+
+                            </div>
                             <div class="media-object center-block">
                                 <a href="" ng-click="model.searchShow(show.name)">
                                     <img ng-src="{{show.image}}" class="media-object center-block img-thumbnail img-like-width">
-                                    <h4 class="media-heading text-center">
+                                    <h4 class="media-heading center-block text-center">
                                         {{show.name}}
                                     </h4>
                                 </a>
                             </div>
 
-
                         </div>
-                    </div>
+
                 </div>
+
             </div>
+                <div class="">
+                    <h3>Add series</h3>
+
+                    <form>
+                        <div class="form-group">
+
+                            <input ng-model="model.newShow"
+                                   type="text"
+                                   placeholder="Please enter the show name"
+                                   class="form-control"
+                                   id="series-title"/>
+                        </div>
+                        <div class="form-group">
+                            <a ng-click="model.addShow(model.newShow)" class="btn btn-success">
+                                Add
+                            </a>
+                        </div>
+
+                    </form>
+                </div>
         </div>
     </div>
+</div>
+        <div class="col-sm-3"></div>
+</div>
 </div>

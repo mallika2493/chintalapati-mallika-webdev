@@ -10,6 +10,7 @@ module.exports = function (app, model) {
     app.delete("/api/actor/status/:status_id",deleteStatus);
 
 
+
     function createStatus(req, res) {
 
         var actorId=req.params['aid'];
@@ -72,6 +73,8 @@ module.exports = function (app, model) {
             })
 
     }
+
+
 
     //var upload = multer({storage: storage});
     //app.post("/api/upload", upload.single('myFile'), uploadImage);

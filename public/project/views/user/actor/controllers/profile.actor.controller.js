@@ -25,6 +25,8 @@
         vm.undoStatus=undoStatus;
         vm.deleteStatus=deleteStatus;
         vm.searchShow = searchShow;
+        vm.deleteShow=deleteShow;
+        vm.addShow=addShow;
         /*vm.getlikeDetails = getLikeDetails;
 
          vm.getFollowers = getFollowers;
@@ -80,7 +82,8 @@
 
                     show={
                         "name":response.data.name,
-                        "image":response.data.image.original
+                        "image":response.data.image.original,
+                        "id":response.data.id
                     }
                     vm.shows.push(show);
 
@@ -214,10 +217,64 @@
                         vm.statusList.splice(index_status, 1);
                         vm.selectedIndex = -1;
 
-                        //findUserBySeriesReviewUserId(vm.reviews);
+
 
                     }
                 });
+        }
+
+        function deleteShow(index_status) {
+            var showId = vm.shows[index_status].id;
+            ActorService
+                .deleteShow(vm.actorId,showId)
+                .then(function (response) {
+                    var status = response.data;
+
+                    if (status.n == 1 && status.ok == 1) {
+                        vm.shows.splice(index_status, 1);
+
+
+
+
+                    }
+                });
+        }
+
+        function addShow(newShow) {
+            var show = {};
+            TvShowService
+                .searchShow(newShow)
+                .then(function (response) {
+
+                    var show={
+                        "name":response.data[0].show.name,
+                        "image":response.data[0].show.image.original,
+                        "id":response.data[0].show.id.toString()
+                    }
+                    ActorService.addToSeriesForActor(vm.actor._id,response.data[0].show.id.toString())
+                        .then(function (response1) {
+                            if (response1.data) {
+                                vm.selectedIndex = -1;
+
+
+                                vm.shows.push(show);
+                                return //findUserBySeriesReviewUserId(vm.reviews);
+
+                            }
+                        })
+                        .then(function (response) {
+                            console.log("Series Inserted !");
+                        });
+
+                });
+
+
+        }
+        function getSeriesIdBySeriesName(searchTerm) {
+
+            var id;
+
+
         }
 
 

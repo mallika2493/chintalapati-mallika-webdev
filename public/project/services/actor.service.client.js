@@ -24,14 +24,16 @@
                 "unfollow":unfollow*/
                 "createActor":createActor,
                 "findActorByUserId":findActorByUserId,
-                "addtoSeriesForActor":addtoSeriesForActor,
+                "addToSeriesForActor":addToSeriesForActor,
                 "deleteActor":deleteActor,
                 "getAllActorsForSeriesId":getAllActorsForSeriesId,
-                "findActorByActorId":findActorByActorId
+                "findActorByActorId":findActorByActorId,
+                "deleteShow":deleteShow
+
             };
 
             function createActor(actor) {
-                console.log("in actor"+ actor);
+
                 return $http.post("/api/actor",actor);
 
             }
@@ -48,8 +50,11 @@
 
             }
 
-            function addtoSeriesForActor(seriesId,actorId) {
-                return $http.put("/api/actor/series/"+seriesId,actorId);
+            function addToSeriesForActor(actorId,seriesId) {
+                console.log("actorId"+actorId+":seriesId"+seriesId);
+
+                console.log(typeof seriesId);
+                return $http.put("/api/actor/"+actorId+"/series/"+seriesId);
 
             }
 
@@ -59,10 +64,14 @@
             }
 
             function getAllActorsForSeriesId(seriesId) {
-                console.log(seriesId);
+
                 return $http.get("/api/actors/serial/"+seriesId);
 
             }
+            function deleteShow(actor_id,show_id){
+                return $http.delete("/api/actor/"+actor_id+"/status/show/" + show_id);
+            }
+
 
 
 

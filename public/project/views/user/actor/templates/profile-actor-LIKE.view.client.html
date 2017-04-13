@@ -3,13 +3,15 @@
         <span class="glyphicon glyphicon-heart like-button-color"></span>
     </a></h2>
     <br>
+    <div class="row">
+        <div class="col-sm-3"></div>
     <div class="container-fluid">
         <div class="row col-sm-6 well">
             <div ng-switch="model.series.length">
 
                 <div ng-switch-when=0>
 
-                    <div class="well col-sm-8">
+                    <div class="well">
                         <p class="bg-info">Sorry you have not liked anything yet!!</p>
                     </div>
                 </div>
@@ -33,4 +35,6 @@
             </div>
         </div>
     </div>
+        <div class="col-sm-3"></div>
+</div>
 </div>

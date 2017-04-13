@@ -17,7 +17,8 @@ module.exports = function () {
         addtoSeriesForActor:addtoSeriesForActor,
         deleteActor:deleteActor,
         getAllActorsForSeriesId:getAllActorsForSeriesId,
-        getActorByActorId:getActorByActorId
+        getActorByActorId:getActorByActorId,
+        deleteShow:deleteShow
     };
     return api;
 
@@ -93,6 +94,11 @@ module.exports = function () {
     function getActorByActorId(actorId) {
         return ActorModel.findOne({_id:actorId});
 
+    }
+    
+    function deleteShow(actorId,showId) {
+        return ActorModel.update({_id: actorId}, {$pullAll: {series: [showId]}});
+        
     }
     //
 
