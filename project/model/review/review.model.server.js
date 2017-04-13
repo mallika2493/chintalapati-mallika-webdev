@@ -8,7 +8,9 @@ module.exports = function () {
         setModel:setModel,
         findAllReviewsBySeriesId:findAllReviewsBySeriesId,
         editReview:editReview,
-        deleteReview:deleteReview
+        deleteReview:deleteReview,
+        findReviews:findReviews
+
     };
 
     var mongoose = require('mongoose');
@@ -41,6 +43,11 @@ module.exports = function () {
         return ReviewModel.remove({_id:reviewId});
 
     }
+
+    function findReviews() {
+        return ReviewModel.find();
+    }
+
 
 
 

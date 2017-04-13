@@ -8,6 +8,7 @@ module.exports = function (app, model) {
     app.get("/api/user/series/:series_id",findAllReviewsBySeriesId);
     app.put("/api/user/series/review/:review_id",editReview);
     app.delete("/api/user/series/review/:review_id",deleteReview);
+    app.get("/api/getAllReviews/",getAllReviews);
 
     function addReview(req, res) {
         var userId = req.params.userId;
@@ -64,6 +65,14 @@ module.exports = function (app, model) {
 
             })
 
+    }
+
+    function getAllReviews(req, res) {
+        ReviewModel.findReviews()
+            .then(function (reviews) {
+
+                res.send(reviews);
+            })
     }
 
 };

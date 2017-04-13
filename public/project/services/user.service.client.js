@@ -22,7 +22,8 @@
                 "login":login,
                 "logout":logout,
                 "register":register,
-                "getAllRegUsers":getAllRegUsers
+                "getAllRegUsers":getAllRegUsers,
+                "findUsersWhoLikedSeries":findUsersWhoLikedSeries
 
 
             };
@@ -105,6 +106,11 @@
                 return $http.get('/api/getAllUsers/');
             }
 
+            function findUsersWhoLikedSeries(seriesId) {
+
+                return $http.get("/api/allUsers/"+seriesId);
+
+            }
         }
     }
 

@@ -37,6 +37,8 @@ module.exports = function (app, model) {
     app.get("/api/user",findUserByUsername);
     app.get('/api/getAllUsers/',getAllUsers);
 
+    app.get("/api/allUsers/:seriesId",findUsersWhoLikedSeries);
+
 
     function authorized (req, res, next) {
         if (!req.isAuthenticated()) {
@@ -493,6 +495,21 @@ module.exports = function (app, model) {
         UserModel.getAllUsers()
             .then(function (users) {
                 res.send(users);
+            })
+
+    }
+
+    function findUsersWhoLikedSeries(req,res) {
+
+        var seriesId = req.params.seriesId;
+        UserModel.findUsersWhoLikedSeries(seriesId)
+            .then(function (response) {
+
+                res.json(response);
+
+            },function (err) {
+                res.status(400).send(err);
+
             })
 
     }

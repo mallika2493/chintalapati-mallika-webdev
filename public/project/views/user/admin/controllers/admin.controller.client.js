@@ -7,13 +7,18 @@
         .module("SeriesAppMaker")
         .controller("adminController", adminController);
 
-    function adminController($routeParams,UserService, $location,$rootScope) {
+    function adminController($routeParams,UserService,SeriesService,ReviewService,TvShowService, $location,$rootScope) {
         var vm = this;
         vm.getAllRegUsers = getAllRegUsers;
         vm.deleteUserAdmin=deleteUserAdmin;
         vm.select=select;
         vm.update=update;
         vm.AddNewUser=AddNewUser;
+
+        vm.getAllSeries=getAllSeries;
+        vm.deleteSeries=deleteSeries;
+        vm.getAllReviews=getAllReviews;
+        vm.deleteReview=deleteReview;
 
         function init() {
             vm.userId=$routeParams['uid'];
@@ -28,8 +33,8 @@
                 });
 
             getAllRegUsers();
-            //getAllHotels();
-            //getAllReviews();
+            getAllSeries();
+            getAllReviews();
             
         }
         
@@ -83,8 +88,84 @@
                 .success(function (user) {
                     vm.user = user;
                     getAllRegUsers();
+                    vm.inputUser=null;
                 })
         }
+        
 
+        function getAllSeries() {
+            SeriesService.getAllSeries()
+                .success(function (s) {
+                    vm.series = s;
+                })
+
+        }
+
+        function deleteSeries(show) {
+            SeriesService.deleteSeries(show)
+                .then(function (response1) {
+                    UserService.findUsersWhoLikedSeries(show._id)
+                        .then(function (response2) {
+                            var usersWhoLiked=response2.data;
+                            for(var i in usersWhoLiked){
+                                UserService.setLikeStatus('unlike',usersWhoLiked[i]._id,show._id);
+                            }
+                            
+                        });
+
+                })
+                .then(function (response) {
+                    SeriesService
+                        .getAllSeries()
+                        .then(function (series) {
+
+                            vm.series = series.data;
+
+                        },function (err) {
+                            res.sendStatus(404).send(err);
+                        })
+                },function (err) {
+                    res.sendStatus(err);
+                });;
+
+        }
+
+        function getAllReviews() {
+
+                ReviewService
+                    .getAllReviews()
+                    .success(function (reviews) {
+                        reviews.forEach(function (element, index, array) {
+                            TvShowService
+                                .searchShowById(reviews[index].seriesId)
+                                .then(function (response) {
+                                    reviews[index].name=response.data.name;
+                                    UserService.findUserById(reviews[index].userId)
+                                        .then(function (response2) {
+                                            reviews[index].username=response2.data.username;
+
+
+
+                                        })
+
+
+                                });
+
+
+                    })
+                        vm.reviews = reviews;
+
+        })
+        }
+
+        function deleteReview(review) {
+            var reviewId = review._id;
+            ReviewService
+                .deleteReview(reviewId)
+                .then(function (response) {
+                    getAllReviews();
+
+                });
+        }
     }
 })();

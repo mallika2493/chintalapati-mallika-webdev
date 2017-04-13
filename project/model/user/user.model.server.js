@@ -21,7 +21,9 @@ module.exports = function () {
 
         findUserByGoogleId:findUserByGoogleId,
         findUserByFacebookId:findUserByFacebookId,
-        getAllUsers:getAllUsers
+        getAllUsers:getAllUsers,
+        findUsersWhoLikedSeries:findUsersWhoLikedSeries
+
 
 
 
@@ -138,6 +140,17 @@ module.exports = function () {
     function getAllUsers() {
         return UserModel.find();
         
+    }
+
+    function findUsersWhoLikedSeries(seriesId) {
+        //console.log("I have come here");
+        return UserModel.find({likes: {$in: [seriesId]}});
+        /*for(var i in likedUsers){
+            console.log(likedUsers[i]);
+            updatelikeStatus(likedUsers[i]._id,seriesId,"unlike");
+        }
+        return;*/
+
     }
 
 

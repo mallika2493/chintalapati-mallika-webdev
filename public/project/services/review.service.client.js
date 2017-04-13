@@ -11,7 +11,8 @@
             "addReview":addReview,
             "findAllReviewsBySeriesId":findAllReviewsBySeriesId,
             "editReview":editReview,
-            "deleteReview":deleteReview
+            "deleteReview":deleteReview,
+            "getAllReviews":getAllReviews
 
         };
         return api;
@@ -33,6 +34,11 @@
 
         function deleteReview(review_id) {
             return $http.delete("/api/user/series/review/" + review_id);
+        }
+        function getAllReviews() {
+
+            var url = '/api/getAllReviews/';
+            return $http.get(url);
         }
 
     }

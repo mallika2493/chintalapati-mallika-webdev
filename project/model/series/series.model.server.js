@@ -7,7 +7,9 @@ module.exports = function () {
     var api = {
         setModel:setModel,
         addSeries: addSeries,
-        findSeriesById:findSeriesById
+        findSeriesById:findSeriesById,
+        getAllSeries:getAllSeries,
+        deleteSeries:deleteSeries
 
     };
 
@@ -36,4 +38,16 @@ module.exports = function () {
     function setModel(_model) {
         model = _model;
     }
+    
+    function getAllSeries() {
+        return SeriesModel.find();
+        
+    }
+
+    function deleteSeries(seriesId) {
+        return SeriesModel.remove({_id: seriesId});
+
+    }
+
+
 };

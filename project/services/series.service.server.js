@@ -6,6 +6,8 @@ module.exports = function (app, model) {
 
     app.post("/api/user/series",addSeries);
     app.get("/api/user/likes/series/:seriesId",findSeriesById);
+    app.get("/api/getAllSeries/",getAllSeries);
+    app.delete("/api/deleteSeries/:seriesId",deleteSeries);
 
     function addSeries(req,res) {
         var shows = req.body;
@@ -36,5 +38,25 @@ module.exports = function (app, model) {
 
             });
         
+    }
+
+    function getAllSeries(req,res) {
+        SeriesModel.getAllSeries()
+            .then(function (series) {
+                res.json(series);
+        })
+
+    }
+
+    function deleteSeries(req,res) {
+        var sid = req.params['seriesId'];
+        SeriesModel.deleteSeries(sid)
+            .then(function (response) {
+                res.sendStatus(200);
+            },function (err) {
+                res.sendStatus(404);
+            });;
+
+
     }
 };
