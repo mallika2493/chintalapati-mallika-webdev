@@ -196,7 +196,7 @@ module.exports = function (app, model) {
     }
 
     function checkAdmin(req, res) {
-        console.log(req.user.role);
+        c
         var loggedIn = req.isAuthenticated();
         var isAdmin = req.user.role == 'ADMIN';
 
@@ -348,9 +348,9 @@ module.exports = function (app, model) {
 
     function register(req, res) {
         var user = req.body;
-        console.log(user.username+" pass: "+user.password);
+
         user.password = bcrypt.hashSync(user.password);
-        console.log(user.password);
+
         UserModel
             .createUser(user)
             .then(function (User){

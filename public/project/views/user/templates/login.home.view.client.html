@@ -4,12 +4,12 @@
         <div class="navbar-text pull-right page-text">
 
             <a href="#/login">
-                <span class="glyphicon glyphicon-log-in"></span>
+                <span class="glyphicon glyphicon-user"></span>
             </a>
-            <a ng-if="model.user.role=='actor'" href="#/user/actor/{{model.userId}}">
+            <a ng-if="model.user.role=='actor'" href="#/user/actor/">
                 <span>{{model.user.firstName}}&nbsp;&nbsp;&nbsp;</span>
             </a>
-            <a ng-if="model.user.role!='actor'" href="#/user/{{model.userId}}">
+            <a ng-if="model.user.role!='actor'" href="#/user/">
                 <span>{{model.user.firstName}}&nbsp;&nbsp;&nbsp;</span>
             </a>
             <a href="index.html#/home">

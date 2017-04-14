@@ -13,7 +13,7 @@
         .module("SeriesAppMaker")
         .controller("profileActorController", profileActorController);
 
-    function profileActorController($routeParams, $location, UserService,TvShowService,ActorService,StatusService) {
+    function profileActorController($routeParams, $location, UserService,TvShowService,ActorService,StatusService,loggedin) {
         var vm = this;
         //vm.updateUser = updateUser;
         //vm.deleteUser = deleteUser;
@@ -35,7 +35,7 @@
         //var userId = $routeParams['uid'];
 
         vm.update = function (newUser) {
-            var user = UserService.updateUser(userId, newUser)
+            var user = UserService.updateUser(loggedin.data._id, newUser)
                 .success(function (response) {
                     vm.message = "user successfully updated"
                 })
@@ -49,8 +49,8 @@
 
         function init() {
             vm.choice = null;
-            var userId = $routeParams['uid'];
-            vm.userId=userId;
+            vm.userId=loggedin.data._id;
+
             vm.actorId=null;
             vm.shows=[];
             UserService
@@ -275,6 +275,16 @@
             var id;
 
 
+        }
+        function logout(){
+            UserService
+                .logout()
+                .then(
+                    function (response) {
+                        $rootScope.currentUser = null;
+                        $location.url("/login");
+                    }
+                )
         }
 
 

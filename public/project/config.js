@@ -48,7 +48,10 @@
             .when("/search/:searchTerm", {
                 templateUrl: 'views/user/templates/search.view.client.html',
                 controller: "searchController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
             .when("/register", {
                 templateUrl: 'views/user/templates/register.view.client.html',
@@ -63,15 +66,26 @@
                     loggedin: checkLoggedin
                 }
             })
-        .when("/user/:uid", {
+            .when("/user/EDIT", {
+                templateUrl: 'views/user/templates/profile-EDIT.view.client.html',
+                controller: "profileController",
+                controllerAs: "model",
+                resolve: {
+                    loggedin: checkLoggedin
+                }
+            })
+        /*.when("/user/:uid", {
                 templateUrl: 'views/user/templates/profile.view.client.html',
                 controller: "profileController",
                 controllerAs: "model"
-            })
-            .when("/user/actor/:uid", {
+            })*/
+            .when("/user/actor/", {
                 templateUrl: 'views/user/actor/templates/profile.actor.view.client.html',
                 controller: "profileActorController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
             .when("/user/actor/series/:uid", {
                 templateUrl: 'views/user/actor/templates/profile.actor.register.view.client.html',
@@ -90,11 +104,29 @@
                 controllerAs: "model"
             })
 
-            .when("/user/:uid/LIKE", {
+            .when("/user/LIKE", {
                 templateUrl: 'views/user/templates/profile-LIKE.view.client.html',
                 controller: "profileController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
+            .when("/user/FOLLOWER", {
+                templateUrl: 'views/user/templates/profile-FOLLOWER.view.client.html',
+                controller: "profileController",
+                controllerAs: "model",
+                resolve: {
+                    loggedin: checkLoggedin
+                }
+            }).when("/user/FOLLOWING", {
+            templateUrl: 'views/user/templates/profile-FOLLOWING.view.client.html',
+            controller: "profileController",
+            controllerAs: "model",
+            resolve: {
+                loggedin: checkLoggedin
+            }
+        })
             .when("/user/:uid/actor/list/view/:seriesId/name/:searchTerm", {
                 templateUrl: 'views/user/actor/templates/actor.list.view.client.html',
                 controller: "actorListController",

@@ -9,7 +9,7 @@
         .module("SeriesAppMaker")
         .controller("searchController", searchController);
 
-    function searchController($routeParams,$location, TvShowService,UserService,ReviewService,SeriesService) {
+    function searchController($routeParams,$location, TvShowService,UserService,ReviewService,SeriesService,loggedin,$rootScope) {
         var vm=this;
         vm.searchShow = searchShow;
         vm.findUserByUserId=findUserByUserId;
@@ -22,10 +22,11 @@
         vm.deleteReview=deleteReview;
         vm.follow=follow;
         vm.showActors=showActors;
+        vm.logout=logout;
 
 
         function init() {
-            vm.userId = $routeParams.uid;
+            vm.userId=loggedin.data._id;
             vm.searchTerm = $routeParams.searchTerm;
             searchShow(vm.searchTerm);
             if(vm.userId!=null){
@@ -244,6 +245,16 @@
         function showActors() {
                 $location.url("/user/"+vm.userId+"/actor/list/view/"+vm.id+"/name/"+vm.shows[0].show.name);
             
+        }
+        function logout(){
+            UserService
+                .logout()
+                .then(
+                    function (response) {
+                        $rootScope.currentUser = null;
+                        $location.url("/login");
+                    }
+                )
         }
 
 

@@ -7,25 +7,25 @@
             </a>
         </div>
         <div class="navbar-text pull-right page-text">
-            <a href="#/user/{{model.user._id}}">
+            <a href="#/user/">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
 
-            <a href="#/user/{{model.user._id}}">
+            <a href="#/user/">
                 <span>{{model.user.firstName}}&nbsp;&nbsp;&nbsp;</span>
             </a>
 
-            <a href="index.html#/home">
+            <a href="" ng-click="model.logout()">
                 <span class="glyphicon glyphicon-log-out"></span>
             </a>
-            <a href="index.html#/home">
+            <a href="" ng-click="model.logout()">
                 <span>Logout</span>
             </a>
 
         </div>
 
         <div class="navbar-header page-text">
-            <a class="navbar-brand" href="#/home/{{model.user._id}}">Showcity</a>
+            <a class="navbar-brand" href="#/home/login">Showcity</a>
         </div>
     </div>
 </nav>
@@ -48,7 +48,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
 
-        <a href="#/user/{{model.user._id}}" class="navbar-link navbar-brand pull-right">
+        <a href="#/user/" class="navbar-link navbar-brand pull-right">
           <span class="glyphicon glyphicon-user">
           </span>
         </a>

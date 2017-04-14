@@ -7,7 +7,7 @@
         .module("SeriesAppMaker")
         .controller("profileController", profileController);
 
-    function profileController($routeParams, $location, UserService, SeriesService,ActorService,$rootScope) {
+    function profileController($routeParams, $location, UserService, SeriesService,ActorService,$rootScope,loggedin) {
         var vm = this;
         //vm.updateUser = updateUser;
         vm.deleteUser = deleteUser;
@@ -19,7 +19,8 @@
         vm.getFollowing = getFollowing;
         vm.logout=logout;
 
-        var userId = $routeParams['uid'];
+        var userId = loggedin.data._id;
+
 
         vm.update = function (newUser) {
             var user = UserService.updateUser(userId, newUser)
@@ -33,21 +34,19 @@
 
         };
         function init() {
+            vm.userId=loggedin.data._id;
             vm.series = [];
             vm.followers = [];
             vm.following_users = [];
             UserService
-                .findUserById(userId)
+                .findUserById(vm.userId)
                 .success(function (user) {
                     vm.user = user;
-                    if(vm.user.role=="actoras"){
-                        //$location.url("/user/actor/"+vm.user._id);
-                    }
-                    else{
+
                     getLikeDetails();
                     getFollowers();
                     getFollowing();
-                    }
+
 
                 });
             vm.choice = null;
