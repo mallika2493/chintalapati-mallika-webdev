@@ -8,15 +8,14 @@
         vm.login = login;
 
         function login(user) {
-            var promise = UserService
-                .findUserByCredentials(user.username, user.password)
+            var promise =  UserService.login(user)
                 .success(function (user) {
                     $rootScope.currentUser = user;
                     if(user!=null && user.role=="admin"){
-                        $location.url('/admin/'+user._id);
+                        $location.url('/admin');
                     }
                 else if(user != null && user.role!="admin") {
-                    $location.url('/home/'+user._id);
+                    $location.url('/home/login');
                 } else {
                     vm.error = 'user not found';
                 }

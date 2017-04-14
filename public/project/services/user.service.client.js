@@ -40,14 +40,15 @@
                 return $http.post("/api/logout");
             }
 
-            function login(username,password) {
-                var user ={
+            function login(user) {
+                /*var user ={
                     username:username,
                     password:password
-                }
-
+                }*/
+                console.log("user login in client")
                 return $http.post('/api/login', user);
             }
+
 
 
 

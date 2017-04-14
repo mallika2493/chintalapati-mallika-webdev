@@ -7,7 +7,7 @@
         .module("SeriesAppMaker")
         .controller("adminController", adminController);
 
-    function adminController($routeParams,UserService,SeriesService,ReviewService,TvShowService,StatusService,ActorService, $location,$rootScope) {
+    function adminController($routeParams,UserService,SeriesService,ReviewService,TvShowService,StatusService,ActorService, $location,loggedin,$rootScope) {
         var vm = this;
         vm.getAllRegUsers = getAllRegUsers;
         vm.deleteUserAdmin=deleteUserAdmin;
@@ -21,9 +21,10 @@
         vm.deleteReview=deleteReview;
         vm.getAllActorStatus=getAllActorStatus;
         vm.deleteStatus=deleteStatus;
+        vm.logout=logout;
 
         function init() {
-            vm.userId=$routeParams['uid'];
+            vm.userId=loggedin.data._id;
             UserService
                 .findUserById(vm.userId)
                 .success(function (user) {
@@ -258,6 +259,17 @@
                     getAllActorStatus();
                 });
 
+        }
+
+        function logout(){
+            UserService
+                .logout()
+                .then(
+                    function (response) {
+                        $rootScope.currentUser = null;
+                        $location.url("/login");
+                    }
+                )
         }
     }
 })();

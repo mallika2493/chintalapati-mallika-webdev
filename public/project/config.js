@@ -3,27 +3,47 @@
         .module("SeriesAppMaker")
         .config(configuration);
 
-    function configuration($routeProvider, $locationProvider) {
+    var checkLoggedin = function($q, $timeout, $http, $location, $rootScope) {
+        return $http.get('/api/loggedin').success(function(user) {
+            $rootScope.errorMessage = null;
+            if (user !== '0') {
+                $rootScope.currentUser = user;
+            } else {
+                $location.url('/login');
+            }
+        });
+    };
+
+    function configuration($routeProvider,$httpProvider, $locationProvider) {
+        $httpProvider.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
+        $httpProvider.defaults.headers.put['Content-Type'] = 'application/json;charset=utf-8';
         $routeProvider
             .when("/home", {
                 templateUrl: 'views/user/templates/home.view.client.html',
                 controller: "homeController",
                 controllerAs: "model"
+
             })
-            .when("/", {
+            /*.when("/", {
                 templateUrl: 'views/user/templates/home.view.client.html',
                 controller: "homeController",
                 controllerAs: "model"
-            })
-            .when("/home/:uid", {
+            })*/
+            .when("/home/login", {
                 templateUrl: 'views/user/templates/login.home.view.client.html',
                 controller: "homeController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
             .when("/login", {
                 templateUrl: 'views/user/templates/login.view.client.html',
                 controller: "loginController",
                 controllerAs: "model"
+                /*resolve: {
+                    loggedin: checkLoggedin
+                }*/
             })
             .when("/search/:searchTerm", {
                 templateUrl: 'views/user/templates/search.view.client.html',
@@ -86,27 +106,14 @@
                 controller: "actorStatusController",
                 controllerAs: "model"
             })
-            .when("/admin/:uid", {
+            .when("/admin", {
                 templateUrl: 'views/user/admin/templates/admin.view.client.html',
                 controller: "adminController",
-                controllerAs: "model"
-            });
-
-        function checkLoggedin($q, $timeout, $http, $location, $rootScope) {
-            var deferred = $q.defer();
-            $http.get('/api/loggedin').success(function(user) {
-                $rootScope.errorMessage = null;
-                if (user !== '0') {
-                    $rootScope.currentUser = user;
-                    deferred.resolve();
-                    $location.url('/user/'+$rootScope.currentUser._id);
-                } else {
-                    deferred.reject();
-                    $location.url('/');
+                controllerAs: "model",
+                resolve: {
+                    loggedin: checkLoggedin
                 }
             });
-            return deferred.promise;
-        };
 
 
         // $locationProvider.html5Mode(true);

@@ -19,17 +19,17 @@
                 .error(function () {
                     //if (!$scope.register.$invalid && user.password == user.veryPassword) {
                         UserService
-                            .createUser(user)
+                            .register(user)
                             .success(function (user) {
                                 if (user.role == "actor") {
                                     //ActorService add for Actor model by add
                                     $location.url('/user/actor/series/' + user._id);
                                 }
                                 else if(user.role=="admin"){
-                                    $location.url('/admin/'+user._id);
+                                    $location.url('/admin/');
                                 }
                                 else {
-                                    $location.url('/user/' + user._id);
+                                    $location.url('/user/');
                                 }
 
                             })

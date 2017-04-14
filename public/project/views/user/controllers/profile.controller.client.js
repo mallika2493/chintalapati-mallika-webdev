@@ -7,7 +7,7 @@
         .module("SeriesAppMaker")
         .controller("profileController", profileController);
 
-    function profileController($routeParams, $location, UserService, SeriesService,ActorService) {
+    function profileController($routeParams, $location, UserService, SeriesService,ActorService,$rootScope) {
         var vm = this;
         //vm.updateUser = updateUser;
         vm.deleteUser = deleteUser;
@@ -17,6 +17,7 @@
         vm.searchShow = searchShow;
         vm.getFollowers = getFollowers;
         vm.getFollowing = getFollowing;
+        vm.logout=logout;
 
         var userId = $routeParams['uid'];
 
@@ -168,6 +169,17 @@
                     });
 
             }
+        }
+
+        function logout(){
+            UserService
+                .logout()
+                .then(
+                    function (response) {
+                        $rootScope.currentUser = null;
+                        $location.url("/login");
+                    }
+                )
         }
 
 

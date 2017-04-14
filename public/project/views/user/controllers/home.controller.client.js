@@ -6,14 +6,17 @@
     angular
         .module("SeriesAppMaker")
         .controller("homeController",homeController);
-    function homeController($routeParams,$location, UserService) {
+    function homeController($routeParams,$location, UserService,$rootScope,loggedin) {
         var vm = this;
 
         vm.searchShow = searchShow;
         vm.findUserByUserId=findUserByUserId;
+        vm.logout=logout;
 
         function init() {
-            vm.userId=$routeParams.uid;
+
+            //vm.userId=$routeParams.uid;
+            vm.userId=loggedin.data._id;
             if(vm.userId!=null){
 
                 findUserByUserId(vm.userId);
@@ -38,6 +41,17 @@
 
                 });
 
+        }
+
+        function logout(){
+            UserService
+                .logout()
+                .then(
+                    function (response) {
+                        $rootScope.currentUser = null;
+                        $location.url("/login");
+                    }
+                )
         }
 
     }

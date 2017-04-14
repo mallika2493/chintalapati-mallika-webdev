@@ -6,6 +6,7 @@
 
 module.exports = function (app, model) {
     var passport      = require('passport');
+    var bcrypt = require("bcrypt-nodejs");
     var LocalStrategy = require('passport-local').Strategy;
     var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
     var FacebookStrategy = require('passport-facebook').Strategy;
@@ -17,11 +18,12 @@ module.exports = function (app, model) {
 
     var UserModel = model.UserModel;
 
-    app.post('/api/login', passport.authenticate('wam'),login);
+    app.post('/api/login',passport.authenticate('local'),login);
     app.post('/api/checkLogin', checkLogin);
     app.post('/api/checkAdmin', checkAdmin);
     app.post('/api/logout', logout);
     app.get ('/api/loggedin', loggedin);
+    app.post ('/api/register', register);
 
     app.get("/api/user", findUserByCredentials);
     app.get("/api/user/:userId", findUserById);
@@ -52,7 +54,7 @@ module.exports = function (app, model) {
         }
     };
 
-    app.get ('/api/loggedin', loggedin);
+
 
     app.get ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
     app.get('/auth/facebook/callback',
@@ -184,6 +186,7 @@ module.exports = function (app, model) {
     }
 
     function loggedin(req, res) {
+        console.log(req.body);
         res.send(req.isAuthenticated() ? req.user : '0');
     }
 
@@ -240,11 +243,13 @@ module.exports = function (app, model) {
     }
 
     function localStrategy(username, password, done) {
-        // console.log(username);
+
         UserModel
             .findUserByUsername(username)
             .then(
+
                 function (user) {
+
                     //console.log(user);
                     if(user && bcrypt.compareSync(password, user.password)) {
                         //console.log("In if ")
@@ -341,10 +346,33 @@ module.exports = function (app, model) {
             );
     }
 
+    function register(req, res) {
+        var user = req.body;
+        console.log(user.username+" pass: "+user.password);
+        user.password = bcrypt.hashSync(user.password);
+        console.log(user.password);
+        UserModel
+            .createUser(user)
+            .then(function (User){
+                console.log(User);
+                if(User){
+                    req.login(User, function (err) {
+                        if(err){
+                            res.status(400).send(err);
+                        }
+                        else{
+                            res.json(User);
+                        }
+                    });
+                }
+            });
+    }
+
 
     function createUser(req, res) {
 
         var newuser=req.body;
+        newuser.password = bcrypt.hashSync(newuser.password);
 
         UserModel.createUser(newuser)
             .then(

@@ -3,7 +3,7 @@
 
         <div class="navbar-text pull-right page-text">
 
-            <a href="index.html#/login">
+            <a href="#/login">
                 <span class="glyphicon glyphicon-log-in"></span>
             </a>
             <a ng-if="model.user.role=='actor'" href="#/user/actor/{{model.userId}}">
@@ -15,7 +15,7 @@
             <a href="index.html#/home">
                 <span class="glyphicon glyphicon-log-out"></span>
             </a>
-            <a href="index.html#/home">
+            <a href="" ng-click="model.logout()">
                 <span>Logout</span>
             </a>
 
