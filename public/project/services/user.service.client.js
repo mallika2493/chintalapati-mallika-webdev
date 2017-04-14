@@ -18,14 +18,15 @@
                 "isShowLiked":isShowLiked,
                 "follow":follow,
                 "unfollow":unfollow,
-                "deleteFromAllFollowersAndFollowing":deleteFromAllFollowersAndFollowing,
                 "login":login,
                 "logout":logout,
                 "register":register,
                 "getAllRegUsers":getAllRegUsers,
-                "findUsersWhoLikedSeries":findUsersWhoLikedSeries
-
-
+                "findUsersWhoLikedSeries":findUsersWhoLikedSeries,
+                "findUsersToDeleteFromFollowers":findUsersToDeleteFromFollowers,
+                "findUsersToDeleteFromFollowing":findUsersToDeleteFromFollowing,
+                "removeFromFollowers":removeFromFollowers,
+                "removeFromFollowing":removeFromFollowing
             };
             return api;
 
@@ -97,10 +98,6 @@
                 return $http.put("/api/user/"+loggedInUserId+"/user2/"+secondUserId+"/unfollow");
             }
 
-            function deleteFromAllFollowersAndFollowing(deletedUserId) {
-                return $http.put("/api/delete/user/"+deletedUserId);
-
-            }
 
             function getAllRegUsers() {
                 return $http.get('/api/getAllUsers/');
@@ -109,6 +106,26 @@
             function findUsersWhoLikedSeries(seriesId) {
 
                 return $http.get("/api/allUsers/"+seriesId);
+
+            }
+
+            function findUsersToDeleteFromFollowers(toBeRemovedId) {
+                return $http.get("/api/removeFollowers/"+toBeRemovedId);
+
+            }
+
+            function findUsersToDeleteFromFollowing(toBeRemovedId) {
+                return $http.get("/api/removeFollowing/"+toBeRemovedId);
+
+            }
+            
+            function removeFromFollowers(currentUserId,toBeRemovedId) {
+                return $http.delete("/api/removeFollower/currentUser/"+currentUserId+"/deleteUser/"+toBeRemovedId);
+                
+            }
+
+            function removeFromFollowing(currentUserId,toBeRemovedId) {
+                return $http.delete("/api/removeFollowing/currentUser/"+currentUserId+"/deleteUser/"+toBeRemovedId);
 
             }
         }

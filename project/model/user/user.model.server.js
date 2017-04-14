@@ -17,15 +17,12 @@ module.exports = function () {
         addToFollowers:addToFollowers,
         removeFromFollowing:removeFromFollowing,
         removeFromFollowers:removeFromFollowers,
-        deleteFromAllFollowersAndFollowing:deleteFromAllFollowersAndFollowing,
-
         findUserByGoogleId:findUserByGoogleId,
         findUserByFacebookId:findUserByFacebookId,
         getAllUsers:getAllUsers,
-        findUsersWhoLikedSeries:findUsersWhoLikedSeries
-
-
-
+        findUsersWhoLikedSeries:findUsersWhoLikedSeries,
+        findUsersToDeleteFromFollowers:findUsersToDeleteFromFollowers,
+        findUsersToDeleteFromFollowing:findUsersToDeleteFromFollowing
 
     };
 
@@ -130,12 +127,6 @@ module.exports = function () {
 
     }
 
-    function deleteFromAllFollowersAndFollowing(deletedUserId) {
-        var followingUsers=[];
-        followingUsers=UserModel.find({_id: {$in: deletedUserId}});
-
-
-    }
     
     function getAllUsers() {
         return UserModel.find();
@@ -143,13 +134,16 @@ module.exports = function () {
     }
 
     function findUsersWhoLikedSeries(seriesId) {
-        //console.log("I have come here");
         return UserModel.find({likes: {$in: [seriesId]}});
-        /*for(var i in likedUsers){
-            console.log(likedUsers[i]);
-            updatelikeStatus(likedUsers[i]._id,seriesId,"unlike");
-        }
-        return;*/
+
+    }
+
+    function findUsersToDeleteFromFollowers(toBeRemovedId) {
+        return UserModel.find({followers: {$in: [toBeRemovedId]}});
+
+    }
+    function findUsersToDeleteFromFollowing(toBeRemovedId) {
+        return UserModel.find({following: {$in: [toBeRemovedId]}});
 
     }
 
