@@ -29,7 +29,7 @@
             if(vm.userId==null)
             $location.url("/search/"+searchTerm);
             else{
-                $location.url("/user/"+vm.userId+"/search/"+searchTerm);
+                $location.url("/user/search/"+searchTerm);
             }
 
         }

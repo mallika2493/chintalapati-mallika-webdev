@@ -98,10 +98,13 @@
                 controller: "profileOtherController",
                 controllerAs: "model"
             })
-            .when("/user/:uid/search/:searchTerm", {
+            .when("/user/search/:searchTerm", {
                 templateUrl: 'views/user/templates/login.search.view.client.html',
                 controller: "searchController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
 
             .when("/user/LIKE", {

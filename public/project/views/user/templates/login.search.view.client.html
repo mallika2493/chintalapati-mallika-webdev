@@ -1,12 +1,12 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-text pull-left page-text">
-            <a href="">
+            <a href="#/home/login">
                 <span class="glyphicon glyphicon-chevron-left"></span>
             </a>
         </div>
         <div class="navbar-text pull-right page-text">
-            <a href="#/login">
+            <a href="#/user">
                 <span class="glyphicon glyphicon-user"></span>
             </a>
 
@@ -17,7 +17,7 @@
                 <span>{{model.user.firstName}}&nbsp;&nbsp;&nbsp;</span>
             </a>
 
-            <a href="index.html#/home">
+            <a href="" ng-click="model.logout()">
                 <span class="glyphicon glyphicon-log-out"></span>
             </a>
             <a href="" ng-click="model.logout()">
@@ -28,7 +28,7 @@
 
 
         <div class="navbar-header page-text">
-            <a class="navbar-brand" href="#/home/{{model.userId}}">Showcity</a>
+            <a class="navbar-brand" href="#/home/login">Showcity</a>
         </div>
     </div>
 </nav>
