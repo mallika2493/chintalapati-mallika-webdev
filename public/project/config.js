@@ -115,6 +115,23 @@
                     loggedin: checkLoggedin
                 }
             })
+            .when("/user/actor/SERIES", {
+                templateUrl: 'views/user/actor/templates/profile-actor-SERIES.view.client.html',
+                controller: "profileActorController",
+                controllerAs: "model",
+                resolve: {
+                    loggedin: checkLoggedin
+                }
+            })
+
+            .when("/user/actor/STATUS", {
+                templateUrl: 'views/user/actor/templates/profile-actor-STATUS.view.client.html',
+                controller: "profileActorController",
+                controllerAs: "model",
+                resolve: {
+                    loggedin: checkLoggedin
+                }
+            })
             .when("/user/FOLLOWER", {
                 templateUrl: 'views/user/templates/profile-FOLLOWER.view.client.html',
                 controller: "profileController",

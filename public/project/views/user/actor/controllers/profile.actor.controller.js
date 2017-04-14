@@ -13,7 +13,7 @@
         .module("SeriesAppMaker")
         .controller("profileActorController", profileActorController);
 
-    function profileActorController($routeParams, $location, UserService,TvShowService,ActorService,StatusService,loggedin) {
+    function profileActorController($routeParams, $location, UserService,TvShowService,ActorService,StatusService,SeriesService,loggedin,$rootScope) {
         var vm = this;
         //vm.updateUser = updateUser;
         //vm.deleteUser = deleteUser;
@@ -27,6 +27,8 @@
         vm.searchShow = searchShow;
         vm.deleteShow=deleteShow;
         vm.addShow=addShow;
+        vm.getlikeDetails = getLikeDetails;
+        vm.logout=logout;
 
 
         vm.update = function (newUser) {
@@ -49,15 +51,18 @@
             vm.actorId=null;
             vm.shows=[];
             UserService
-                .findUserById(userId)
+                .findUserById(vm.userId)
                 .success(function (user) {
                     vm.user = user;
                     if(user.role=="actor"){
-                    ActorService.findActorByUserId(userId).success(function (actor) {
+                    ActorService.findActorByUserId(vm.userId).success(function (actor) {
                         vm.actor=actor;
                         vm.actorId=actor._id;
                         findAllStatusByActorId(vm.actor._id);
                         getSeries();
+                        getLikeDetails();
+                        getFollowers();
+                        getFollowing();
                     })
                     }
 
@@ -124,27 +129,11 @@
         function getChoiceView(choice) {
             if(choice!='STATUS' && choice!='SERIES')
                 return "views/user/templates/profile-" + choice + ".view.client.html";
-                //$location.url("/user/"+vm.userId+"/"+choice);
+
             else {
-            var url = "views/user/actor/templates/profile-actor-" + choice + ".view.client.html";
-            return url;
+            return "views/user/actor/templates/profile-actor-" + choice + ".view.client.html";
+
             }
-
-        }
-
-
-        function getSeriesIdBySeriesName(searchTerm) {
-
-            var id;
-            TvShowService
-                .searchShow(searchTerm)
-                .then(function (response) {
-                    var data = response.data;
-                    var sh = [data[0]];
-
-                    id = sh[0].show.id;
-                    return id;
-                });
 
         }
 
@@ -276,6 +265,61 @@
                     }
                 )
         }
+
+        function getLikeDetails() {
+            vm.series=[];
+            for (var like in vm.user.likes) {
+                var series_id = vm.user.likes[like];
+                SeriesService.findSeriesById(series_id)
+                    .then(function (series) {
+                        vm.series.push(series);
+
+
+                    });
+
+
+            }
+
+        }
+
+        function getFollowers() {
+            vm.followers = [];
+
+            for (var f in vm.user.followers) {
+                UserService
+                    .findUserById(vm.user.followers[f])
+                    .success(function (user) {
+                        vm.followers.push(user);
+
+                    });
+
+
+            }
+        }
+
+        function getFollowing() {
+            vm.following_users = [];
+            for (var f in vm.user.following) {
+                UserService
+                    .findUserById(vm.user.following[f])
+                    .success(function (user) {
+                        vm.following_users.push(user);
+
+                    });
+
+            }
+        }
+        function logout(){
+            UserService
+                .logout()
+                .then(
+                    function (response) {
+                        $rootScope.currentUser = null;
+                        $location.url("/login");
+                    }
+                )
+        }
+
 
 
     }

@@ -42,6 +42,9 @@
                 .findUserById(vm.userId)
                 .success(function (user) {
                     vm.user = user;
+                    if(vm.user.role=="actor"){
+                        $location.url("/user/actor/");
+                    }
 
                     getLikeDetails();
                     getFollowers();
