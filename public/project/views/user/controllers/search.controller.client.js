@@ -23,6 +23,7 @@
         vm.follow=follow;
         vm.showActors=showActors;
         vm.logout=logout;
+        vm.setSecondUserId=setSecondUserId;
 
 
         function init() {
@@ -256,6 +257,13 @@
                     }
                 )
         }
+
+        function setSecondUserId(secondUserId) {
+
+            $location.url("/user1/secondUser/"+secondUserId);
+
+        }
+        //#/user1/{{model.userId}}/secondUser/{{review.userId}}
 
 
 

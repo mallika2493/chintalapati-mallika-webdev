@@ -9,13 +9,14 @@
         .module("SeriesAppMaker")
         .controller("registerActorController", registerActorController);
 
-    function registerActorController($routeParams, $location, UserService, TvShowService, ActorService) {
+    function registerActorController($routeParams, $location, UserService, TvShowService, ActorService,loggedin,$rootScope) {
         var vm = this;
 
         vm.registerActor = registerActor;
         vm.saveSeries = saveSeries;
         vm.undoSeries=undoSeries;
         vm.createActor=createActor;
+        vm.logout=logout;
 
         //var userId = $routeParams['uid'];
 
@@ -33,7 +34,7 @@
 
 
         function init() {
-            var userId = $routeParams['uid'];
+            var userId = loggedin.data._id;
             vm.userId = userId;
 
             vm.series = [];
@@ -96,6 +97,17 @@
         function undoSeries(s,index) {
             vm.series.splice(index,1);
 
+        }
+
+        function logout(){
+            UserService
+                .logout()
+                .then(
+                    function (response) {
+                        $rootScope.currentUser = null;
+                        $location.url("/login");
+                    }
+                )
         }
 
     }

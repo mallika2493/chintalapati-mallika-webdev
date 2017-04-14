@@ -87,16 +87,23 @@
                     loggedin: checkLoggedin
                 }
             })
-            .when("/user/actor/series/:uid", {
+            .when("/user/actor/series/", {
                 templateUrl: 'views/user/actor/templates/profile.actor.register.view.client.html',
                 controller: "registerActorController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
         ///
-            .when("/user1/:uid1/secondUser/:uid2", {
+            .when("/user1/secondUser/:uid2", {
                 templateUrl: 'views/user/templates/profile-other-user-view.client.html',
                 controller: "profileOtherController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    loggedin: checkLoggedin
+                }
+
             })
             .when("/user/search/:searchTerm", {
                 templateUrl: 'views/user/templates/login.search.view.client.html',

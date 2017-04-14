@@ -23,7 +23,7 @@
                             .success(function (user) {
                                 if (user.role == "actor") {
                                     //ActorService add for Actor model by add
-                                    $location.url('/user/actor/series/' + user._id);
+                                    $location.url('/user/actor/series/');
                                 }
                                 else if(user.role=="admin"){
                                     $location.url('/admin/');

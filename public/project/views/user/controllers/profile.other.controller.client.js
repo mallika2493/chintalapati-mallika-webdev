@@ -6,7 +6,7 @@
         .module("SeriesAppMaker")
         .controller("profileOtherController", profileOtherController);
 
-    function profileOtherController($routeParams, $location, UserService, SeriesService) {
+    function profileOtherController($routeParams, $location, UserService, SeriesService,$rootScope,loggedin) {
         var vm = this;
 
         vm.getChoiceView = getChoiceView;
@@ -16,13 +16,14 @@
         vm.follow = follow;
         vm.unfollow = unfollow;
         vm.getFollowing=getFollowing;
+        vm.logout=logout;
 
 
         function init() {
             vm.series = [];
             vm.followers = [];
             vm.following_users = [];
-            vm.userId = $routeParams['uid1'];
+            vm.userId = loggedin.data._id;
             vm.secondUserId = $routeParams['uid2'];
             UserService
                 .findUserById(vm.secondUserId)
@@ -144,6 +145,17 @@
                     });
 
             }
+        }
+
+        function logout(){
+            UserService
+                .logout()
+                .then(
+                    function (response) {
+                        $rootScope.currentUser = null;
+                        $location.url("/login");
+                    }
+                )
         }
 
 

@@ -150,7 +150,7 @@
                                         </div>
                                         <div ng-if="review.userId!=model.userId">
                                             <h3><span class="glyphicon glyphicon-user"></span>
-                                            <a href="#/user1/{{model.userId}}/secondUser/{{review.userId}}">{{review.userFirstName}}</a>
+                                            <a href="" ng-click="model.setSecondUserId(review.userId)">{{review.userFirstName}}</a>
                                             </h3>
                                         </div>
 

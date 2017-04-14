@@ -1,4 +1,4 @@
-<div ng-controller="profileOtherController as model">
+<div>
     <h2>Followers <a href="">
         <span class="glyphicon glyphicon-eye-open follower-button-color"></span>
     </a></h2>
@@ -6,36 +6,39 @@
     <br>
     <div class="row">
         <div class="col-sm-3"></div>
-    <div class="container-fluid">
-        <div class="row col-sm-6 well">
-            <div ng-switch="model.followers.length">
+        <div class="container-fluid">
+            <div class="row col-sm-6 well">
+                <div ng-switch="model.followers.length">
 
-                <div ng-switch-when=0>
-
-
-                        <p class="text-danger text-center">Sorry you have no followers!!</p>
-
-                </div>
-                <div ng-switch-default>
-
-                    <div ng-repeat="f in model.followers">
+                    <div ng-switch-when=0>
 
 
-                        <h3><span class="glyphicon glyphicon-user"></span>
+                        <p class="text-danger text-center">User has no followers!!</p>
+
+                    </div>
+                    <div ng-switch-default>
+
+                        <div ng-repeat="f in model.followers">
+
                             <div ng-if="model.user._id!=f._id">
-                                <a href="#/user1/{{model.user._id}}/secondUser/{{f._id}}">{{f.firstName}}</a>
+                                <h3><span class="glyphicon glyphicon-user">
+                            <a href="#/user1/secondUser/{{f._id}}">{{f.firstName}}</a>
+                        </span>
+                                </h3>
                             </div>
                             <div ng-if="model.user._id==f._id">
-                                <a href="#/user/{{model.user._id}}">{{f.firstName}}</a>
+                                <h3><span class="glyphicon glyphicon-user">
+                            <a href="#/user/">{{f.firstName}}</a>
+                        </span>
+                                </h3>
+
                             </div>
-                        </h3>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="col-sm-3"></div>
         </div>
     </div>
-        <div class="col-sm-3"></div>
-    </div>
-</div>
 
 
