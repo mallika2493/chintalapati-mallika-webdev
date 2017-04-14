@@ -6,16 +6,18 @@
         .module("SeriesAppMaker")
         .controller("actorListController", actorListController);
 
-    function actorListController($routeParams,$location, UserService,ActorService) {
+    function actorListController($routeParams,$location, UserService,ActorService,loggedin,$rootScope,RouteService) {
         var vm = this;
         vm.seriesId = $routeParams.seriesId;
-        vm.userId =  $routeParams.uid;
+
         vm.seriesName = $routeParams.searchTerm;
         vm.getStatusPage = getStatusPage;
+        vm.logout=logout;
 
 
         function init() {
             vm.actors = [];
+            vm.userId=loggedin.data._id;
 
             UserService
                 .findUserById(vm.userId)
@@ -29,21 +31,35 @@
                 .success(function (actors) {
 
                     vm.actorsList=actors;
-                    for(var i in vm.actorsList){
-                        UserService.findUserById(vm.actorsList[i].userId)
+                    vm.actorsList.forEach(function (element, index, array) {
+                        UserService.findUserById(vm.actorsList[index].userId)
                             .success(function (user) {
                                 vm.actors.push(user);
 
                             })
-                    }
+                    })
+
                 });
         }
         init();
         
         function getStatusPage(actor) {
-            $location.url("/user/actor/"+actor._id+"/loggedInUserId/"+vm.userId+"/series/"
+
+            //RouteService.setParam(actor._id);
+            $location.url("/user/actor/"+actor._id+"/loggedInUserId/series/"
                 +vm.seriesId+"/serialName/"+vm.seriesName);
             
+        }
+
+        function logout(){
+            UserService
+                .logout()
+                .then(
+                    function (response) {
+                        $rootScope.currentUser = null;
+                        $location.url("/login");
+                    }
+                )
         }
     }
 

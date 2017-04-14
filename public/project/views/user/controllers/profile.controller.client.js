@@ -137,7 +137,7 @@
             if (vm.user._id == null)
                 $location.url("/search/" + searchTerm);
             else {
-                $location.url("/user/" + vm.user._id + "/search/" + searchTerm);
+                $location.url("/user/search/" + searchTerm);
             }
 
         }

@@ -142,20 +142,20 @@
                                 </div>
                                 <!--img u="image" ng-src="../../../img/profile-icon.png" />-->
 
-                                    <div ng-switch=review.userId>
-                                        <div ng-switch-when=model.userId>
+
+                                        <div ng-if="review.userId==model.userId">
                                             <h3><span class="glyphicon glyphicon-user"></span>
-                                            <a href="#/user/{{model.userId}}">{{review.userFirstName}}</a>
+                                            <a href="#/user/">{{review.userFirstName}}</a>
                                             </h3>
                                         </div>
-                                        <div ng-switch-when!=model.userId>
+                                        <div ng-if="review.userId!=model.userId">
                                             <h3><span class="glyphicon glyphicon-user"></span>
                                             <a href="#/user1/{{model.userId}}/secondUser/{{review.userId}}">{{review.userFirstName}}</a>
                                             </h3>
                                         </div>
 
 
-                                    </div>
+
 
                                 <div class="media-body">
                                     <h4 class="media-heading">{{review.title}}</h4>

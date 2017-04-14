@@ -12,17 +12,17 @@ module.exports = function () {
 
     var api = {
         setModel:setModel,
-        createActor:createActor,
+        addActor:addActor,
         getActorByUserId:getActorByUserId,
         addtoSeriesForActor:addtoSeriesForActor,
         deleteActor:deleteActor,
-        getAllActorsForSeriesId:getAllActorsForSeriesId,
+        findAllActorsForSeriesId:findAllActorsForSeriesId,
         getActorByActorId:getActorByActorId,
         deleteShow:deleteShow
     };
     return api;
 
-    function createActor(actor) {
+    function addActor(actor) {
         //var deferred = q.defer();
         console.log("hi", actor);
         return ActorModel
@@ -87,7 +87,7 @@ module.exports = function () {
             });*/
 
     }
-    function getAllActorsForSeriesId(seriesId) {
+    function findAllActorsForSeriesId(seriesId) {
         return ActorModel.find({series: {$in: [seriesId]}});
 
     }

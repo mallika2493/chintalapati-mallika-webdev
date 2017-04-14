@@ -243,7 +243,7 @@
         }
         
         function showActors() {
-                $location.url("/user/"+vm.userId+"/actor/list/view/"+vm.id+"/name/"+vm.shows[0].show.name);
+                $location.url("/user/actor/list/view/"+vm.id+"/name/"+vm.shows[0].show.name);
             
         }
         function logout(){

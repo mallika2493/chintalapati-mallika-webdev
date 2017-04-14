@@ -20,7 +20,7 @@
         $routeProvider
             .when("/home", {
                 templateUrl: 'views/user/templates/home.view.client.html',
-                controller: "homeController",
+                controller: "homeGuestController",
                 controllerAs: "model"
 
             })
@@ -130,16 +130,22 @@
                 loggedin: checkLoggedin
             }
         })
-            .when("/user/:uid/actor/list/view/:seriesId/name/:searchTerm", {
+            .when("/user/actor/list/view/:seriesId/name/:searchTerm", {
                 templateUrl: 'views/user/actor/templates/actor.list.view.client.html',
                 controller: "actorListController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
-            .when("/user/actor/:actorId/loggedInUserId/:loggedInUserId/series/:seriesId" +
+            .when("/user/actor/:actorId/loggedInUserId/series/:seriesId" +
                 "/serialName/:seriesName", {
                 templateUrl: 'views/user/actor/templates/actor-STATUS.view.client.html',
                 controller: "actorStatusController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
             .when("/admin", {
                 templateUrl: 'views/user/admin/templates/admin.view.client.html',

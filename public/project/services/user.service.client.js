@@ -45,7 +45,7 @@
                     username:username,
                     password:password
                 }*/
-                console.log("user login in client")
+
                 return $http.post('/api/login', user);
             }
 
@@ -67,7 +67,7 @@
 
             }
             function findUserByUsername(username) {
-                console.log(typeof username);
+
                 return $http.get("/api/user?username="+username);
             }
 

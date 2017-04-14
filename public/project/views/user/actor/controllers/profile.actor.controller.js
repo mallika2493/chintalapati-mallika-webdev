@@ -27,12 +27,7 @@
         vm.searchShow = searchShow;
         vm.deleteShow=deleteShow;
         vm.addShow=addShow;
-        /*vm.getlikeDetails = getLikeDetails;
 
-         vm.getFollowers = getFollowers;
-         vm.getFollowing = getFollowing;*/
-
-        //var userId = $routeParams['uid'];
 
         vm.update = function (newUser) {
             var user = UserService.updateUser(loggedin.data._id, newUser)
@@ -98,7 +93,7 @@
             if (vm.userId == null)
                 $location.url("/search/" + searchTerm);
             else {
-                $location.url("/user/" + vm.userId + "/search/" + searchTerm);
+                $location.url("/user/search/" + searchTerm);
             }
 
         }
@@ -270,12 +265,7 @@
 
 
         }
-        function getSeriesIdBySeriesName(searchTerm) {
 
-            var id;
-
-
-        }
         function logout(){
             UserService
                 .logout()

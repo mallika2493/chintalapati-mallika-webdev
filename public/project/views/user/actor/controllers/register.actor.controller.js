@@ -14,6 +14,7 @@
 
         vm.registerActor = registerActor;
         vm.saveSeries = saveSeries;
+        vm.undoSeries=undoSeries;
         vm.createActor=createActor;
 
         //var userId = $routeParams['uid'];
@@ -34,6 +35,7 @@
         function init() {
             var userId = $routeParams['uid'];
             vm.userId = userId;
+
             vm.series = [];
             vm.actor = {};
             //getSeriesIdBySeriesName(actor.series)
@@ -54,8 +56,8 @@
 
 
         function registerActor() {
-            var s = 0;
-            for (s in vm.series) {
+
+            for(s in vm.series){
                 TvShowService
                     .searchShow(vm.series[s])
                     .then(function (response) {
@@ -66,40 +68,33 @@
 
                         vm.actor.series.push(id);
 
-                    });
-            }
 
+            });
+
+
+            }
         }
 
         function createActor() {
             ActorService
                 .createActor(vm.actor)
                 .then(function (ac) {
-
-
-
                 });
-            $location.url('/user/actor/' + vm.userId);
+            $location.url('/user/actor/');
 
         }
 
         function saveSeries(s) {
 
             vm.series.push(s);
+            vm.s = null;
+
         }
 
-        function getSeriesIdBySeriesName(searchTerm) {
 
-            var id;
-            TvShowService
-                .searchShow(searchTerm)
-                .then(function (response) {
-                    var data = response.data;
-                    var sh = [data[0]];
 
-                    id = sh[0].show.id;
-                    return id;
-                });
+        function undoSeries(s,index) {
+            vm.series.splice(index,1);
 
         }
 

@@ -39,7 +39,7 @@
             }
 
             function findActorByUserId(userId) {
-                console.log(userId);
+
                 return $http.get("/api/actor/"+userId);
 
             }
@@ -51,9 +51,7 @@
             }
 
             function addToSeriesForActor(actorId,seriesId) {
-                console.log("actorId"+actorId+":seriesId"+seriesId);
 
-                console.log(typeof seriesId);
                 return $http.put("/api/actor/"+actorId+"/series/"+seriesId);
 
             }

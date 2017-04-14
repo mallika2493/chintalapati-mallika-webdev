@@ -15,7 +15,7 @@ module.exports = function (app, model) {
         var newActor = req.body;
         console.log("after " + newActor);
         ActorModel
-            .createActor(newActor)
+            .addActor(newActor)
             .then(
                 function (actor) {
                     console("after susscessfull" + actor);
@@ -88,7 +88,7 @@ module.exports = function (app, model) {
 
     function getAllActorsForSeriesId(req, res) {
         var sid = req.params['seriesId'];
-        ActorModel.getAllActorsForSeriesId(sid)
+        ActorModel.findAllActorsForSeriesId(sid)
             .then(function (actors) {
                     res.send(actors);
                 },

@@ -10,12 +10,13 @@
         .module("SeriesAppMaker")
         .controller("actorStatusController", actorStatusController);
 
-    function actorStatusController($routeParams, UserService,StatusService,ActorService) {
+    function actorStatusController($routeParams, UserService,StatusService,ActorService,$rootScope,loggedin,RouteService) {
         var vm = this;
         vm.seriesId = $routeParams.seriesId;
-        vm.userId =  $routeParams.loggedInUserId;
+        vm.userId =  loggedin.data._id;
         vm.seriesName = $routeParams.seriesName;
-        vm.actorId = $routeParams.actorId;
+
+        vm.logout=logout;
 
         vm.findAllStatusByActorId=findAllStatusByActorId;
         /*/user/actor/:actorId/loggedInUserId/:loggedInuserId/series/:seriesId" +
@@ -23,6 +24,12 @@
 
         function init() {
             vm.statusList=[];
+
+            /*var id=RouteService.getParam();
+            if(id!=undefined)
+                $rootScope.secondUserId = id;
+            vm.actorId = $rootScope.secondUserId;*/
+            vm.actorId=$routeParams['actorId'];
             UserService
                 .findUserById(vm.userId)
                 .then(function (user) {
@@ -60,6 +67,16 @@
 
                     }
                 });
+        }
+        function logout(){
+            UserService
+                .logout()
+                .then(
+                    function (response) {
+                        $rootScope.currentUser = null;
+                        $location.url("/login");
+                    }
+                )
         }
 
 
