@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="00f0d394-06f9-47da-8407-8724cc140359" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/model/review/review.model.server.js" afterPath="$PROJECT_DIR$/project/model/review/review.model.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/model/series/series.model.server.js" afterPath="$PROJECT_DIR$/project/model/series/series.model.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/model/user/user.model.server.js" afterPath="$PROJECT_DIR$/project/model/user/user.model.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/services/reviews.service.server.js" afterPath="$PROJECT_DIR$/project/services/reviews.service.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/services/series.service.server.js" afterPath="$PROJECT_DIR$/project/services/series.service.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/services/user.service.server.js" afterPath="$PROJECT_DIR$/project/services/user.service.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/services/review.service.client.js" afterPath="$PROJECT_DIR$/public/project/services/review.service.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/services/series.service.client.js" afterPath="$PROJECT_DIR$/public/project/services/series.service.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/services/user.service.client.js" afterPath="$PROJECT_DIR$/public/project/services/user.service.client.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/model/status/status.model.server.js" afterPath="$PROJECT_DIR$/project/model/status/status.model.server.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/services/status.service.server.js" afterPath="$PROJECT_DIR$/project/services/status.service.server.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/services/status.service.client.js" afterPath="$PROJECT_DIR$/public/project/services/status.service.client.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/user/actor/controllers/profile.actor.controller.js" afterPath="$PROJECT_DIR$/public/project/views/user/actor/controllers/profile.actor.controller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/user/admin/controllers/admin.controller.client.js" afterPath="$PROJECT_DIR$/public/project/views/user/admin/controllers/admin.controller.client.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/user/admin/templates/admin.view.client.html" afterPath="$PROJECT_DIR$/public/project/views/user/admin/templates/admin.view.client.html" />
     </list>
@@ -31,23 +25,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="search.controller.client.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/views/user/controllers/search.controller.client.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="241" column="9" lean-forward="true" selection-start-line="225" selection-start-column="8" selection-end-line="241" selection-end-column="9" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin.controller.client.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="admin.controller.client.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/project/views/user/admin/controllers/admin.controller.client.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="575">
-              <caret line="167" column="19" lean-forward="false" selection-start-line="167" selection-start-column="19" selection-end-line="167" selection-end-column="19" />
+            <state relative-caret-position="2240">
+              <caret line="195" column="37" lean-forward="false" selection-start-line="195" selection-start-column="37" selection-end-line="195" selection-end-column="37" />
               <folding>
                 <element signature="e#0#45#0" expanded="false" />
               </folding>
@@ -55,41 +37,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile.controller.client.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/views/user/controllers/profile.controller.client.js">
+      <file leaf-file-name="actor.status.controller.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project/views/user/actor/controllers/actor.status.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="112" column="22" lean-forward="false" selection-start-line="112" selection-start-column="22" selection-end-line="112" selection-end-column="22" />
+            <state relative-caret-position="345">
+              <caret line="34" column="39" lean-forward="true" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="39" />
+              <folding>
+                <element signature="e#47#92#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="actor-STATUS.view.client.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project/views/user/actor/templates/actor-STATUS.view.client.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="38" column="29" lean-forward="false" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register.controller.client.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/views/user/controllers/register.controller.client.js">
+      <file leaf-file-name="profile-actor-STATUS.view.client.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project/views/user/actor/templates/profile-actor-STATUS.view.client.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" column="58" lean-forward="false" selection-start-line="28" selection-start-column="58" selection-end-line="28" selection-end-column="58" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="profile.other.controller.client.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/views/user/controllers/profile.other.controller.client.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1590">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.controller.client.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/views/user/controllers/login.controller.client.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="50" lean-forward="false" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="50" />
+            <state relative-caret-position="480">
+              <caret line="81" column="76" lean-forward="false" selection-start-line="81" selection-start-column="52" selection-end-line="81" selection-end-column="76" />
               <folding />
             </state>
           </provider>
@@ -105,22 +79,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reviews.service.server.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/project/services/reviews.service.server.js">
+      <file leaf-file-name="profile.actor.controller.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/project/views/user/actor/controllers/profile.actor.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="635">
-              <caret line="72" column="0" lean-forward="true" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="review.service.client.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/project/services/review.service.client.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="230">
+              <caret line="160" column="34" lean-forward="true" selection-start-line="160" selection-start-column="34" selection-end-line="160" selection-end-column="34" />
+              <folding>
+                <element signature="e#47#92#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -128,15 +94,45 @@
       <file leaf-file-name="admin.view.client.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/project/views/user/admin/templates/admin.view.client.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="524">
-              <caret line="272" column="59" lean-forward="false" selection-start-line="272" selection-start-column="47" selection-end-line="272" selection-end-column="59" />
+            <state relative-caret-position="596">
+              <caret line="288" column="59" lean-forward="false" selection-start-line="288" selection-start-column="47" selection-end-line="288" selection-end-column="59" />
               <folding>
                 <element signature="e#1133#1139#1" expanded="true" />
                 <element signature="e#1219#1225#1" expanded="true" />
                 <element signature="e#1295#1301#1" expanded="true" />
                 <element signature="e#1392#1398#1" expanded="true" />
-                <element signature="e#4822#4828#1" expanded="true" />
+                <element signature="e#5066#5072#1" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="actor.service.server.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project/services/actor.service.server.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="45" column="30" lean-forward="false" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="actor.service.client.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/project/services/actor.service.client.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="443">
+              <caret line="46" column="39" lean-forward="false" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="actor.model.server.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/project/model/actor/actor.model.server.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="530">
+              <caret line="93" column="30" lean-forward="false" selection-start-line="93" selection-start-column="13" selection-end-line="93" selection-end-column="30" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -154,8 +150,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>console.log</find>
-      <find>deleteUploadedImage</find>
       <find>findUser</find>
       <find>findUserbyUsername</find>
       <find>navbar-brand</find>
@@ -184,6 +178,8 @@
       <find>series name</find>
       <find>removeSeriesFromAllLikes</find>
       <find>for</find>
+      <find>getActorByUserId</find>
+      <find>getActorByActorId</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -205,13 +201,8 @@
         <option value="$PROJECT_DIR$/public/project/views/user/actor/templates/profile.actor.view.client.html" />
         <option value="$PROJECT_DIR$/public/project/views/user/templates/profile.view.client.html" />
         <option value="$PROJECT_DIR$/public/project/views/user/templates/profile-other-user-view.client.html" />
-        <option value="$PROJECT_DIR$/public/project/services/status.service.client.js" />
-        <option value="$PROJECT_DIR$/project/services/status.service.server.js" />
-        <option value="$PROJECT_DIR$/project/model/status/status.model.server.js" />
         <option value="$PROJECT_DIR$/project/model/actor/actor.model.server.js" />
         <option value="$PROJECT_DIR$/public/project/views/user/actor/controllers/register.actor.controller.js" />
-        <option value="$PROJECT_DIR$/public/project/views/user/actor/controllers/profile.actor.controller.js" />
-        <option value="$PROJECT_DIR$/public/project/services/actor.service.client.js" />
         <option value="$PROJECT_DIR$/public/project/views/user/actor/templates/profile-actor-SERIES.view.client.html" />
         <option value="$PROJECT_DIR$/public/project/views/user/actor/templates/profile-actor-LIKE.view.client.html" />
         <option value="$PROJECT_DIR$/project/services/actor.service.server.js" />
@@ -242,7 +233,12 @@
         <option value="$PROJECT_DIR$/public/project/services/review.service.client.js" />
         <option value="$PROJECT_DIR$/project/services/reviews.service.server.js" />
         <option value="$PROJECT_DIR$/public/project/views/user/admin/templates/admin.view.client.html" />
+        <option value="$PROJECT_DIR$/public/project/services/status.service.client.js" />
+        <option value="$PROJECT_DIR$/project/model/status/status.model.server.js" />
+        <option value="$PROJECT_DIR$/project/services/status.service.server.js" />
+        <option value="$PROJECT_DIR$/public/project/services/actor.service.client.js" />
         <option value="$PROJECT_DIR$/public/project/views/user/admin/controllers/admin.controller.client.js" />
+        <option value="$PROJECT_DIR$/public/project/views/user/actor/controllers/profile.actor.controller.js" />
       </list>
     </option>
   </component>
@@ -624,7 +620,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="review" />
+              <option name="myItemId" value="status" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chintalapati-mallika-webdev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chintalapati-mallika-webdev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="actor" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -782,12 +800,12 @@
       <workItem from="1490362908935" duration="66091000" />
       <workItem from="1491444659374" duration="37000" />
       <workItem from="1491444722549" duration="15188000" />
-      <workItem from="1491541209322" duration="145427000" />
+      <workItem from="1491541209322" duration="147622000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="600125000" />
+    <option name="totallyTimeSpent" value="602320000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -850,7 +868,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/public/project/views/user/admin/controllers/admin.controller.client.js</url>
-          <line>98</line>
+          <line>101</line>
           <properties />
           <option name="timeStamp" value="15" />
         </line-breakpoint>
@@ -860,54 +878,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/project/views/user/actor/templates/profile-actor-LIKE.view.client.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="6" lean-forward="true" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/services/actor.service.server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="10" column="66" lean-forward="true" selection-start-line="10" selection-start-column="66" selection-end-line="10" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/views/user/templates/profile-EDIT.view.client.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="32" column="25" lean-forward="false" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/views/user/templates/profile-FOLLOWER.view.client.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="4" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="7" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/views/user/templates/profile-FOLLOWING.view.client.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="8" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/views/user/templates/profile-other-FOLLOWER.view.client.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="4" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="7" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/views/user/templates/profile-other-FOLLOWING.view.client.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -1038,14 +1008,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/views/user/actor/templates/actor-STATUS.view.client.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="38" column="29" lean-forward="false" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/views/user/actor/templates/profile-actor-SERIES.view.client.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -1058,14 +1020,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
           <caret line="90" column="44" lean-forward="false" selection-start-line="90" selection-start-column="29" selection-end-line="90" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/model/actor/actor.model.server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="71" column="32" lean-forward="false" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -1126,22 +1080,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/services/user.service.client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="108" column="44" lean-forward="false" selection-start-line="108" selection-start-column="21" selection-end-line="108" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/services/user.service.server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="502" column="0" lean-forward="true" selection-start-line="502" selection-start-column="0" selection-end-line="502" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/views/user/actor/controllers/actor.list.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-75">
@@ -1150,31 +1088,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/views/user/actor/controllers/profile.actor.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="151" column="19" lean-forward="true" selection-start-line="143" selection-start-column="11" selection-end-line="151" selection-end-column="19" />
-          <folding>
-            <element signature="e#47#92#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/services/series.service.client.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="515">
           <caret line="36" column="29" lean-forward="false" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="29" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/views/user/actor/controllers/actor.status.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="34" column="39" lean-forward="true" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="39" />
-          <folding>
-            <element signature="e#47#92#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1198,14 +1116,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="635">
           <caret line="72" column="0" lean-forward="true" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/views/user/actor/controllers/register.actor.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="740">
-          <caret line="55" column="33" lean-forward="true" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
           <folding />
         </state>
       </provider>
@@ -1250,36 +1160,144 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/views/user/admin/templates/admin.view.client.html">
+    <entry file="file://$PROJECT_DIR$/public/project/services/user.service.client.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="272" column="59" lean-forward="false" selection-start-line="272" selection-start-column="47" selection-end-line="272" selection-end-column="59" />
-          <folding>
-            <element signature="e#1133#1139#1" expanded="true" />
-            <element signature="e#1219#1225#1" expanded="true" />
-            <element signature="e#1295#1301#1" expanded="true" />
-            <element signature="e#1392#1398#1" expanded="true" />
-            <element signature="e#4822#4828#1" expanded="true" />
-          </folding>
+        <state relative-caret-position="485">
+          <caret line="106" column="13" lean-forward="true" selection-start-line="104" selection-start-column="12" selection-end-line="106" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/services/user.service.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="533">
+          <caret line="497" column="14" lean-forward="true" selection-start-line="494" selection-start-column="8" selection-end-line="497" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/model/status/status.model.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="605">
+          <caret line="48" column="34" lean-forward="false" selection-start-line="48" selection-start-column="34" selection-end-line="48" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/project/views/user/controllers/search.controller.client.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="241" column="9" lean-forward="true" selection-start-line="225" selection-start-column="8" selection-end-line="241" selection-end-column="9" />
+        <state relative-caret-position="202">
+          <caret line="146" column="12" lean-forward="true" selection-start-line="146" selection-start-column="12" selection-end-line="155" selection-end-column="15" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/project/services/status.service.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="36" lean-forward="false" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/services/status.service.client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="15" column="30" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/services/actor.service.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="45" column="30" lean-forward="false" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/model/actor/actor.model.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="530">
+          <caret line="93" column="30" lean-forward="false" selection-start-line="93" selection-start-column="13" selection-end-line="93" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/services/actor.service.client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="46" column="39" lean-forward="false" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/views/user/admin/templates/admin.view.client.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="596">
+          <caret line="288" column="59" lean-forward="false" selection-start-line="288" selection-start-column="47" selection-end-line="288" selection-end-column="59" />
+          <folding>
+            <element signature="e#1133#1139#1" expanded="true" />
+            <element signature="e#1219#1225#1" expanded="true" />
+            <element signature="e#1295#1301#1" expanded="true" />
+            <element signature="e#1392#1398#1" expanded="true" />
+            <element signature="e#5066#5072#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/views/user/actor/controllers/actor.status.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="34" column="39" lean-forward="true" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="39" />
+          <folding>
+            <element signature="e#47#92#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/views/user/actor/templates/actor-STATUS.view.client.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="38" column="29" lean-forward="false" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/views/user/admin/controllers/admin.controller.client.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="167" column="19" lean-forward="false" selection-start-line="167" selection-start-column="19" selection-end-line="167" selection-end-column="19" />
+        <state relative-caret-position="2240">
+          <caret line="195" column="37" lean-forward="false" selection-start-line="195" selection-start-column="37" selection-end-line="195" selection-end-column="37" />
           <folding>
             <element signature="e#0#45#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/views/user/actor/templates/profile-actor-STATUS.view.client.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="81" column="76" lean-forward="false" selection-start-line="81" selection-start-column="52" selection-end-line="81" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/views/user/actor/controllers/register.actor.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="740">
+          <caret line="55" column="33" lean-forward="true" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/views/user/actor/controllers/profile.actor.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="160" column="34" lean-forward="true" selection-start-line="160" selection-start-column="34" selection-end-line="160" selection-end-column="34" />
+          <folding>
+            <element signature="e#47#92#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -36,169 +36,166 @@
 <button class="btn btn-primary" ng-click="model.getAllActorStatus()">Actor Status</button>&nbsp;
 
 <div class="container">
-<div class="row table-responsive col-sm-10">
-    <h3>User Details</h3>
-    <table class="table table-bordered table-striped">
-        <thead>
-        <tr class="theadrow">
-            <th ng-click="model.order('username')" class="nowrap">
+    <div class="row table-responsive col-sm-10">
+        <h3>User Details</h3>
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr class="theadrow">
+                <th ng-click="model.order('username')" class="nowrap">
                     <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"
                           ng-show="(model.predicate == 'username') && (model.reverse == true)"></span>
-                <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"
-                      ng-show="(model.predicate == 'username') && (model.reverse == false)"></span>
-                Username
-            </th>
-            <th>Password</th>
-            <th ng-click="model.order('firstName')" class="nowrap">
+                    <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"
+                          ng-show="(model.predicate == 'username') && (model.reverse == false)"></span>
+                    Username
+                </th>
+                <th>Password</th>
+                <th ng-click="model.order('firstName')" class="nowrap">
                     <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"
                           ng-show="(model.predicate == 'firstName') && (model.reverse == true)"></span>
-                <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"
-                      ng-show="(model.predicate == 'firstName') && (model.reverse == false)"></span>
-                First Name
-            </th>
-            <th ng-click="model.order('lastName')" class="nowrap">
+                    <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"
+                          ng-show="(model.predicate == 'firstName') && (model.reverse == false)"></span>
+                    First Name
+                </th>
+                <th ng-click="model.order('lastName')" class="nowrap">
                     <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"
                           ng-show="(model.predicate == 'lastName') && (model.reverse == true)"></span>
-                <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"
-                      ng-show="(model.predicate == 'lastName') && (model.reverse == false)"></span>
-                Last Name
-            </th>
-            <th>Roles</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr class="forms-input-row">
-            <td>
-                <input type="text" class="form-control" id="username" placeholder="username"
-                       ng-model="model.inputUser.username">
-            </td>
-            <td>
-                <input type="password" class="form-control" id="password" placeholder="password"
-                       ng-model="model.inputUser.password">
-            </td>
-            <td>
-                <input type="text" class="form-control" id="firstName" placeholder="First Name"
-                       ng-model="model.inputUser.firstName">
-            </td>
-            <td>
-                <input type="text" class="form-control" id="lastName" placeholder="Last Name"
-                       ng-model="model.inputUser.lastName">
-            </td>
-            <td>
-                <input type="text" class="form-control" id="role" placeholder="role"
-                       ng-model="model.inputUser.role">
-            </td>
-            <td>
+                    <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"
+                          ng-show="(model.predicate == 'lastName') && (model.reverse == false)"></span>
+                    Last Name
+                </th>
+                <th>Roles</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="forms-input-row">
+                <td>
+                    <input type="text" class="form-control" id="username" placeholder="username"
+                           ng-model="model.inputUser.username">
+                </td>
+                <td>
+                    <input type="password" class="form-control" id="password" placeholder="password"
+                           ng-model="model.inputUser.password">
+                </td>
+                <td>
+                    <input type="text" class="form-control" id="firstName" placeholder="First Name"
+                           ng-model="model.inputUser.firstName">
+                </td>
+                <td>
+                    <input type="text" class="form-control" id="lastName" placeholder="Last Name"
+                           ng-model="model.inputUser.lastName">
+                </td>
+                <td>
+                    <input type="text" class="form-control" id="role" placeholder="role"
+                           ng-model="model.inputUser.role">
+                </td>
+                <td>
 
-                <a href="" ng-click="model.AddNewUser(model.inputUser)"
-                   ng-hide="model.selected == -1">
-                    <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span>
-                </a>
-                <a href="" ng-click="model.update(model.inputUser)"
-                   ng-hide="model.selected == -1">
-                    <span class="glyphicon glyphicon-ok pull-right" aria-hidden="true"></span>
-                </a>
+                    <a href="" ng-click="model.AddNewUser(model.inputUser)"
+                       ng-hide="model.selected == -1">
+                        <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span>
+                    </a>
+                    <a href="" ng-click="model.update(model.inputUser)"
+                       ng-hide="model.selected == -1">
+                        <span class="glyphicon glyphicon-ok pull-right" aria-hidden="true"></span>
+                    </a>
 
-            </td>
-        </tr>
-        <tr ng-repeat="u in model.users | orderBy:model.predicate:model.reverse">
-            <td>{{u.username}}</td>
-            <td>&nbsp;</td>
-            <td>{{u.firstName}}</td>
-            <td>{{u.lastName}}</td>
-            <td>{{u.role}}</td>
-            <td>
-                <a href="" ng-click="model.select(u)"><span
-                        class="glyphicon glyphicon-cog pencilicon pull-right" aria-hidden="true"></span>
-                </a>
-                <a href="" ng-click="model.deleteUserAdmin(u,$index)"><span
-                        class="glyphicon glyphicon-remove removeicon pull-left"
-                        aria-hidden="true"></span>
-                </a>
-
-
+                </td>
+            </tr>
+            <tr ng-repeat="u in model.users | orderBy:model.predicate:model.reverse">
+                <td>{{u.username}}</td>
+                <td>&nbsp;</td>
+                <td>{{u.firstName}}</td>
+                <td>{{u.lastName}}</td>
+                <td>{{u.role}}</td>
+                <td>
+                    <a href="" ng-click="model.select(u)"><span
+                            class="glyphicon glyphicon-cog pencilicon pull-right" aria-hidden="true"></span>
+                    </a>
+                    <a href="" ng-click="model.deleteUserAdmin(u,$index)"><span
+                            class="glyphicon glyphicon-remove removeicon pull-left"
+                            aria-hidden="true"></span>
+                    </a>
 
 
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
-<div class="row table-responsive col-sm-10">
-    <h3>Show Details</h3>
-    <table class="table table-bordered table-striped">
-        <thead>
-        <tr class="theadrow">
-            <th ng-click="model.order('model.seriesName')" class="nowrap">
+    <div class="row table-responsive col-sm-10">
+        <h3>Show Details</h3>
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr class="theadrow">
+                <th ng-click="model.order('model.seriesName')" class="nowrap">
                     <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"
                           ng-show="(model.predicate == 'seriesName') && (model.reverse == true)"></span>
-                <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"
-                      ng-show="(model.predicate == 'seriesName') && (model.reverse == false)"></span>
-                Series Name
-            </th>
-            <th ng-click="model.order('model.seriesImageUrl')" class="nowrap">
+                    <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"
+                          ng-show="(model.predicate == 'seriesName') && (model.reverse == false)"></span>
+                    Series Name
+                </th>
+                <th ng-click="model.order('model.seriesImageUrl')" class="nowrap">
                     <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"
                           ng-show="(model.predicate == 'seriesImageUrl') && (model.reverse == true)"></span>
-                <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"
-                      ng-show="(model.predicate == 'seriesImageUrl') && (model.reverse == false)"></span>
-                Series image url
-            </th>
-            <th ng-click="model.order('model.seriesId')" class="nowrap">
+                    <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"
+                          ng-show="(model.predicate == 'seriesImageUrl') && (model.reverse == false)"></span>
+                    Series image url
+                </th>
+                <th ng-click="model.order('model.seriesId')" class="nowrap">
                     <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"
                           ng-show="(model.predicate == 'seriesId') && (model.reverse == true)"></span>
-                <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"
-                      ng-show="(model.predicate == 'seriesId') && (model.reverse == false)"></span>
-                Series Id
-            </th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr class="forms-input-row">
-            <td>
-                <input type="text" class="form-control" id="hotelName" placeholder="series name"
-                       ng-model="model.inputSeries.seriesName">
-            </td>
-            <td>
-                <input type="text" class="form-control" id="hotelCity" placeholder="Series image url"
-                       ng-model="model.inputSeries.seriesImageUrl">
-            </td>
-            <td>
-                <input type="text" class="form-control" id="hotelId" placeholder="SeriesId"
-                       ng-model="model.inputSeries.seriesId">
-            </td>
-            <td>
-                <a href="" ng-click="model.AddNewHotel(model.inputHotel)"
-                   ng-hide="model.selected == -1">
-                    <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span>
-                </a>
-                <a href="" ng-click="model.updateHotel(model.inputHotel)"
-                   ng-hide="model.selected == -1">
-                    <span class="glyphicon glyphicon-ok okicon pull-right" aria-hidden="true"></span>
-                </a>
-            </td>
-        </tr>
+                    <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"
+                          ng-show="(model.predicate == 'seriesId') && (model.reverse == false)"></span>
+                    Series Id
+                </th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="forms-input-row">
+                <td>
+                    <input type="text" class="form-control" id="hotelName" placeholder="series name"
+                           ng-model="model.inputSeries.seriesName">
+                </td>
+                <td>
+                    <input type="text" class="form-control" id="hotelCity" placeholder="Series image url"
+                           ng-model="model.inputSeries.seriesImageUrl">
+                </td>
+                <td>
+                    <input type="text" class="form-control" id="hotelId" placeholder="SeriesId"
+                           ng-model="model.inputSeries.seriesId">
+                </td>
+                <td>
+                    <a href="" ng-click="model.AddNewHotel(model.inputHotel)"
+                       ng-hide="model.selected == -1">
+                        <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span>
+                    </a>
+                    <a href="" ng-click="model.updateHotel(model.inputHotel)"
+                       ng-hide="model.selected == -1">
+                        <span class="glyphicon glyphicon-ok okicon pull-right" aria-hidden="true"></span>
+                    </a>
+                </td>
+            </tr>
 
-        <tr ng-repeat="show in model.series | orderBy:model.predicate:model.reverse">
-            <td>{{show.title}}</td>
-            <td>{{show.imageUrl}}</td>
-            <td>{{show._id}}</td>
-            <td>
-                <a href="" ng-click="model.deleteSeries(show)"><span
-                        class="glyphicon glyphicon-remove removeicon pull-left"
-                        aria-hidden="true"></span>
-                </a>
-                <a href="" ng-click="model.select_hotel(u)"><span
-                        class="glyphicon glyphicon-cog pencilicon pull-right" aria-hidden="true"></span>
-                </a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-
+            <tr ng-repeat="show in model.series | orderBy:model.predicate:model.reverse">
+                <td>{{show.title}}</td>
+                <td>{{show.imageUrl}}</td>
+                <td>{{show._id}}</td>
+                <td>
+                    <a href="" ng-click="model.deleteSeries(show)"><span
+                            class="glyphicon glyphicon-remove removeicon pull-left"
+                            aria-hidden="true"></span>
+                    </a>
+                    <a href="" ng-click="model.select_hotel(u)"><span
+                            class="glyphicon glyphicon-cog pencilicon pull-right" aria-hidden="true"></span>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
 
     <div class="row table-responsive col-sm-10">
@@ -240,28 +237,6 @@
             </tr>
             </thead>
             <tbody>
-            <tr class="forms-input-row">
-                <!--<td>
-                    <input type="text" class="form-control" id="seriesName" placeholder="series name"
-                           ng-model="model.inputReview.seriesTitle">
-                </td>
-
-                <td>
-                    <input type="text" class="form-control" id="reviewusername" placeholder="username"
-                           ng-model="model.inputReview.username">
-                </td>
-                <td>
-                    <input type="text" class="form-control" id="title" placeholder="review title"
-                           ng-model="model.inputReview.title">
-                </td>
-                <td>
-                    <input type="text" class="form-control" id="description" placeholder="review description"
-                           ng-model="model.inputReview.description">
-                </td>
-                <td>
-
-                </td>-->
-            </tr>
 
             <tr ng-repeat="r in model.reviews | orderBy:model.predicate:model.reverse">
                 {{r.seriesName}}
@@ -279,7 +254,48 @@
             </tr>
             </tbody>
         </table>
-</div>
+    </div>
+    <div class="row table-responsive col-sm-10">
+        <h3>Actor Status Details</h3>
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr class="theadrow">
+
+                <th ng-click="model.order('model.seriesName')" class="nowrap">
+                        <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"
+                              ng-show="(model.predicate == 'hotelName') && (model.reverse == true)"></span>
+                    <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"
+                          ng-show="(model.predicate == 'seriesName') && (model.reverse == false)"></span>
+                    Actor username
+                </th>
+
+                <th ng-click="model.order('model.review.description')" class="nowrap">
+                        <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"
+                              ng-show="(model.predicate == 'comment') && (model.reverse == true)"></span>
+                    <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"
+                          ng-show="(model.predicate == 'comment') && (model.reverse == false)"></span>
+                    Status description
+                </th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr ng-repeat="s in model.statusList | orderBy:model.predicate:model.reverse">
+                {{s.seriesName}}
+                <td>{{s.username}}</td>
+                <td>{{s.description}}</td>
+                <td>
+                    <a href="" ng-click="model.deleteStatus(s)"><span
+                            class="glyphicon glyphicon-remove removeicon pull-left"
+                            aria-hidden="true"></span>
+                    </a>
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 

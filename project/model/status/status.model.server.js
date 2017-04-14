@@ -9,7 +9,8 @@ module.exports = function () {
         setModel:setModel,
         getAllStatusByActorId:getAllStatusByActorId,
         editStatus:editStatus,
-        deleteStatus:deleteStatus
+        deleteStatus:deleteStatus,
+        getAllActorStatus:getAllActorStatus
     };
 
     var mongoose = require('mongoose');
@@ -41,6 +42,11 @@ module.exports = function () {
 
     function deleteStatus(statusId) {
         return StatusModel.remove({_id:statusId});
+
+    }
+
+    function getAllActorStatus() {
+        return StatusModel.find();
 
     }
 

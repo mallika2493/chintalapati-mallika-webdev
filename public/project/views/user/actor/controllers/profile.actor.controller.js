@@ -161,7 +161,7 @@
                     if (response.data) {
                         vm.selectedIndex = -1;
 
-                        //vm.review = {};
+                        vm.status = {};
                         vm.statusList.push(response.data);
                         return //findUserBySeriesReviewUserId(vm.reviews);
 

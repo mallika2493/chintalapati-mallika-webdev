@@ -7,7 +7,7 @@
         .module("SeriesAppMaker")
         .controller("adminController", adminController);
 
-    function adminController($routeParams,UserService,SeriesService,ReviewService,TvShowService, $location,$rootScope) {
+    function adminController($routeParams,UserService,SeriesService,ReviewService,TvShowService,StatusService,ActorService, $location,$rootScope) {
         var vm = this;
         vm.getAllRegUsers = getAllRegUsers;
         vm.deleteUserAdmin=deleteUserAdmin;
@@ -19,6 +19,8 @@
         vm.deleteSeries=deleteSeries;
         vm.getAllReviews=getAllReviews;
         vm.deleteReview=deleteReview;
+        vm.getAllActorStatus=getAllActorStatus;
+        vm.deleteStatus=deleteStatus;
 
         function init() {
             vm.userId=$routeParams['uid'];
@@ -35,6 +37,7 @@
             getAllRegUsers();
             getAllSeries();
             getAllReviews();
+            getAllActorStatus();
             
         }
         
@@ -166,6 +169,33 @@
                     getAllReviews();
 
                 });
+        }
+        
+        function getAllActorStatus() {
+            StatusService.getAllActorStatus()
+                .success(function (statusList) {
+                    statusList.forEach(function (element, index, array) {
+                        ActorService.findActorByActorId(statusList[index].actorId)
+                            .then(function (response) {
+                                UserService.findUserById(response.data.userId)
+                                    .then(function (response1) {
+                                        statusList[index].username=response1.data.username;
+
+                                    })
+                            });
+                    });
+                vm.statusList = statusList;
+            })
+        }
+
+        function deleteStatus(status) {
+            var statusId = status._id;
+            StatusService
+                .deleteStatus(statusId)
+                .then(function (response) {
+                    getAllActorStatus();
+                });
+
         }
     }
 })();

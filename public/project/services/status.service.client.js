@@ -13,6 +13,7 @@
             "findAllStatusByActorId":findAllStatusByActorId,
             "editStatus":editStatus,
             "deleteStatus":deleteStatus,
+            "getAllActorStatus":getAllActorStatus
 
 
         };
@@ -35,6 +36,10 @@
 
         function deleteStatus(status_id) {
             return $http.delete("/api/actor/status/" + status_id);
+        }
+
+        function getAllActorStatus() {
+            return $http.get('/api/getAllActorStatus/');
         }
 
 

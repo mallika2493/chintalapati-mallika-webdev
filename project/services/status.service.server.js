@@ -8,6 +8,7 @@ module.exports = function (app, model) {
     app.get("/api/actor/status/:aid",getAllStatusByActorId);
     app.put("/api/actor/status/:status_id",editStatus);
     app.delete("/api/actor/status/:status_id",deleteStatus);
+    app.get("/api/getAllActorStatus/",getAllActorStatus);
 
 
 
@@ -70,6 +71,14 @@ module.exports = function (app, model) {
             },function (err) {
                 res.status(400).send(err);
 
+            })
+
+    }
+
+    function getAllActorStatus(req,res) {
+        StatusModel.getAllActorStatus()
+            .then(function (statusList) {
+                res.send(statusList);
             })
 
     }
