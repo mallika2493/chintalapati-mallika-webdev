@@ -48,8 +48,7 @@
             vm.choice = null;
             vm.userId=loggedin.data._id;
 
-            vm.actorId=null;
-            vm.shows=[];
+
             UserService
                 .findUserById(vm.userId)
                 .success(function (user) {
@@ -76,6 +75,9 @@
         
         function getSeries() {
             var show={};
+            var series=[];
+            vm.shows=[];
+
             for(var i in vm.actor.series){
             TvShowService.searchShowById(vm.actor.series[i])
                 .then(function (response) {
@@ -85,11 +87,12 @@
                         "image":response.data.image.original,
                         "id":response.data.id
                     }
-                    vm.shows.push(show);
+                    series.push(show);
 
                 });
 
             }
+            vm.shows=series;
 
             
         }
@@ -132,6 +135,7 @@
 
             else {
             return "views/user/actor/templates/profile-actor-" + choice + ".view.client.html";
+
 
             }
 

@@ -122,17 +122,18 @@
                     loggedin: checkLoggedin
                 }
             })
-            .when("/user/actor/SERIES", {
-                templateUrl: 'views/user/actor/templates/profile-actor-SERIES.view.client.html',
+
+
+            .when("/user/actor/STATUS", {
+                templateUrl: 'views/user/actor/templates/profile-actor-STATUS.view.client.html',
                 controller: "profileActorController",
                 controllerAs: "model",
                 resolve: {
                     loggedin: checkLoggedin
                 }
             })
-
-            .when("/user/actor/STATUS", {
-                templateUrl: 'views/user/actor/templates/profile-actor-STATUS.view.client.html',
+            .when("/user/actor/SERIES", {
+                templateUrl: 'views/user/actor/templates/profile-actor-SERIES.view.client.html',
                 controller: "profileActorController",
                 controllerAs: "model",
                 resolve: {
