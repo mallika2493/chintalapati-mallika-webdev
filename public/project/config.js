@@ -131,7 +131,6 @@
                 }
             })
 
-
             .when("/user/actor/STATUS", {
                 templateUrl: 'views/user/actor/templates/profile-actor-STATUS.view.client.html',
                 controller: "profileActorController",
@@ -142,6 +141,30 @@
             })
             .when("/user/actor/SERIES", {
                 templateUrl: 'views/user/actor/templates/profile-actor-SERIES.view.client.html',
+                controller: "profileActorController",
+                controllerAs: "model",
+                resolve: {
+                    loggedin: checkLoggedin
+                }
+            })
+            .when("/user/actor/LIKE", {
+                templateUrl: 'views/user/actor/templates/profile-actor-LIKE.view.client.html',
+                controller: "profileActorController",
+                controllerAs: "model",
+                resolve: {
+                    loggedin: checkLoggedin
+                }
+            })
+            .when("/user/actor/FOLLOWER", {
+                templateUrl: 'views/user/actor/templates/profile-actor-FOLLOWER.view.client.html',
+                controller: "profileActorController",
+                controllerAs: "model",
+                resolve: {
+                    loggedin: checkLoggedin
+                }
+            })
+            .when("/user/actor/FOLLOWING", {
+                templateUrl: 'views/user/actor/templates/profile-actor-FOLLOWING.view.client.html',
                 controller: "profileActorController",
                 controllerAs: "model",
                 resolve: {

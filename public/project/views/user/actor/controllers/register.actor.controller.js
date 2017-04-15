@@ -50,6 +50,7 @@
 
                 });
 
+            vm.confirm='empty';
         }
 
         init();
@@ -71,7 +72,7 @@
 
 
             });
-
+            vm.confirm='true';
 
             }
         }

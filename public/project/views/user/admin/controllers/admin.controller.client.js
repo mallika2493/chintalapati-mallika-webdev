@@ -24,6 +24,7 @@
         vm.logout=logout;
 
         function init() {
+            if(loggedin.data.currentUser.role=="admin"){
             vm.userId=loggedin.data._id;
             UserService
                 .findUserById(vm.userId)
@@ -39,6 +40,7 @@
             getAllSeries();
             getAllReviews();
             getAllActorStatus();
+            }
             
         }
         

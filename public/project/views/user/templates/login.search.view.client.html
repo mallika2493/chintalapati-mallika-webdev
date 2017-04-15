@@ -36,6 +36,9 @@
 <div class="container-fluid">
 
     <div class="row container-fluid">
+        <div ng-show="model.error" class="alert alert-danger" role="alert">
+            {{model.error}}
+        </div>
         <div class="panel panel-default">
             <div class="col-sm-11 ng-binding" style="..." ng-repeat="sho in model.shows">
 

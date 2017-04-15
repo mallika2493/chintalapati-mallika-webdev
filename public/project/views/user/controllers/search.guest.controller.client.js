@@ -33,23 +33,29 @@
             TvShowService
                 .searchShow(searchTerm)
                 .then(function (response) {
-                    var data = response.data;
-                    var sh = [data[0]];
-                    var summary = sh[0].show.summary;
-                    cleanText = summary.replace(/<\/?[^>]+(>|$)/g, "");
-                    sh[0].show.summary=cleanText;
-                    id = sh[0].show.id;
-                    vm.shows = sh;
-                    console.log(vm.shows)
-                    vm.id=id;
-                    TvShowService.getCastDetails(id)
-                        .then(function (response) {
-                            var cast = response.data;
-                            vm.cast = cast;
-                            findAllReviewsBySeriesId(id);
+                    if(response.data.length==0){
+                        vm.error="Sorry show not found!!";
+
+                    }
+                    else {
+                        var data = response.data;
+                        var sh = [data[0]];
+                        var summary = sh[0].show.summary;
+                        cleanText = summary.replace(/<\/?[^>]+(>|$)/g, "");
+                        sh[0].show.summary = cleanText;
+                        id = sh[0].show.id;
+                        vm.shows = sh;
+                        console.log(vm.shows)
+                        vm.id = id;
+                        TvShowService.getCastDetails(id)
+                            .then(function (response) {
+                                var cast = response.data;
+                                vm.cast = cast;
+                                findAllReviewsBySeriesId(id);
 
 
-                        });
+                            });
+                    }
                 });
 
         }

@@ -29,6 +29,7 @@
         vm.addShow=addShow;
         vm.getlikeDetails = getLikeDetails;
         vm.logout=logout;
+        vm.shows=[];
 
 
         vm.update = function (newUser) {
@@ -58,8 +59,8 @@
                         vm.actor=actor;
                         vm.actorId=actor._id;
                         findAllStatusByActorId(vm.actor._id);
-                        getSeries();
                         getLikeDetails();
+                        getSeries();
                         getFollowers();
                         getFollowing();
                     })
@@ -78,8 +79,9 @@
             var series=[];
             vm.shows=[];
 
-            for(var i in vm.actor.series){
-            TvShowService.searchShowById(vm.actor.series[i])
+            //for(var i in vm.actor.series){
+            for(var index in vm.actor.series){
+            TvShowService.searchShowById(vm.actor.series[index])
                 .then(function (response) {
 
                     show={
@@ -87,12 +89,13 @@
                         "image":response.data.image.original,
                         "id":response.data.id
                     }
-                    series.push(show);
+                    vm.shows.push(show);
+
 
                 });
 
             }
-            vm.shows=series;
+
 
             
         }
@@ -130,13 +133,11 @@
         }
 
         function getChoiceView(choice) {
-            if(choice!='STATUS' && choice!='SERIES')
+            if(choice=='EDIT'){
                 return "views/user/templates/profile-" + choice + ".view.client.html";
-
-            else {
+            }
+            else{
             return "views/user/actor/templates/profile-actor-" + choice + ".view.client.html";
-
-
             }
 
         }
@@ -271,12 +272,12 @@
         }
 
         function getLikeDetails() {
-            vm.series=[];
+            vm.ser=[];
             for (var like in vm.user.likes) {
                 var series_id = vm.user.likes[like];
                 SeriesService.findSeriesById(series_id)
                     .then(function (series) {
-                        vm.series.push(series);
+                        vm.ser.push(series);
 
 
                     });

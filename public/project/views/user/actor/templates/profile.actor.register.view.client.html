@@ -40,7 +40,7 @@
                     <li class="list-group-item" ng-repeat="s in model.series">
                         {{s}}
 
-                        <a ng-click="model.undoSeries(s,$index)" class="pull-right">
+                        <a ng-click="model.undoSeries(s,$index)" ng-if="model.confirm!='true'" class="pull-right">
                             <span class="glyphicon glyphicon-remove"></span>
 
                         </a>
@@ -50,18 +50,18 @@
             </div>
 
         <span class="input-group-btn">
-                <input ng-model="model.s" type="text" placeholder="series" class="form-control">
+                <input ng-model="model.s" ng-if="model.confirm!='true'" type="text" placeholder="series" class="form-control">
 
-                <a ng-click="model.saveSeries(model.s)" class="btn btn-default" type="button">
+                <a ng-click="model.saveSeries(model.s)" ng-if="model.confirm!='true'" class="btn btn-default" type="button">
                     <span class="glyphicon glyphicon-plus"></span>
                 </a>
             </span>
 
 
         <br>
-        <a ng-if="model.series.length>0" ng-click="model.registerActor()"
+        <a ng-if="model.series.length>0 && model.confirm!='true'" ng-click="model.registerActor()"
            class="btn btn-warning btn-block">Confirm Series</a>
-        <a ng-if="model.series.length>0" ng-click="model.createActor()"
+        <a ng-if="model.series.length>0 && model.confirm=='true'" ng-click="model.createActor()"
            class="btn btn-primary btn-block"
         >Register Actor</a>
     </div>
