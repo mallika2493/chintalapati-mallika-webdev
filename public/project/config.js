@@ -47,10 +47,18 @@
             })
             .when("/search/:searchTerm", {
                 templateUrl: 'views/user/templates/search.view.client.html',
+                controller: "searchGuestController",
+                controllerAs: "model"
+            })
+            .when("/user/search/:searchTerm", {
+                templateUrl: 'views/user/templates/search.view.client.html',
                 controller: "searchController",
                 controllerAs: "model",
                 resolve: {
-                    loggedin: checkLoggedin
+                    loggedin: checkLoggedin,
+                    resolve: {
+                        loggedin: checkLoggedin
+                    }
                 }
             })
             .when("/register", {
