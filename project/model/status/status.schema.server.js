@@ -8,10 +8,9 @@ module.exports = function () {
     var StatusSchema = mongoose.Schema({
         actorId: String,
         description: String,
+        url: String,
         dateCreated: {type: Date, default: Date.now()}
-        //image
 
-        //rating: String
     },{collections:'project.mongo.status'});
 
 

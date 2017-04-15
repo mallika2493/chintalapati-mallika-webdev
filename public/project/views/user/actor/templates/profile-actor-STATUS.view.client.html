@@ -24,15 +24,18 @@
                     </div>
                     <div class="media">
 
-                        <!--img u="image" ng-src="../../../img/profile-icon.png" />-->
+
 
 
 
                         <div class="media-body">
-
-                            <p class="text-justify">
+                            <div></div><img ng-src="{{status.url}}" width="80%"/></div>
+                            <br>
+                            <div class="well well-sm col-sm-10">
+                            <strong><p class="text-justify text-info">
                                 {{status.description}}
-                            </p>
+                            </p></strong>
+                            </div>
                         </div>
 
 
@@ -75,7 +78,7 @@
             <div class="well">
                 <h3>Write Status</h3>
 
-                <form>
+                <form action="/api/upload/"   method="post" enctype="multipart/form-data">
 
                     <div class="form-group">
 
@@ -84,12 +87,23 @@
                                           placeholder="Write a status"
                                           class="form-control"
                                           id="status-description"></textarea>
+                        <input  name="myFile" type="file" class="form-control"/>
+                        <input  name="actorId"  value="{{model.actor._id}}"   style="display: none"/>
+                        <input  name="description"  value="{{model.status.description}}"   style="display: none"/>
 
-                        <div class="form-group">
-                            <a ng-click="model.addStatus(model.status)" class="btn btn-success">
+                        <!--<div class="form-group">
+                            <a  class="btn btn-success">
                                 Submit
                             </a>
                         </div>
+
+                            -->
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-warning">
+                                Upload Status
+                            </button>
+                        </div>
+
                     </div>
                 </form>
 

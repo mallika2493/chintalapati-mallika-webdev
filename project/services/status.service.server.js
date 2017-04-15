@@ -10,6 +10,21 @@ module.exports = function (app, model) {
     app.delete("/api/actor/status/:status_id",deleteStatus);
     app.get("/api/getAllActorStatus/",getAllActorStatus);
 
+    var multer = require('multer');
+
+    var storage = multer.diskStorage({
+        destination: function (req, file, cb) {
+            cb(null, __dirname + "/../../public/project/uploads")
+        },
+        filename: function (req, file, cb) {
+            var extArray = file.mimetype.split("/");
+            var extension = extArray[extArray.length - 1];
+            cb(null, 'status_image_' + Date.now() + '.' + extension)
+        }
+    });
+    var upload = multer({storage: storage});
+    app.post("/api/upload/", upload.single('myFile'), uploadImage);
+
 
 
     function createStatus(req, res) {
@@ -85,50 +100,56 @@ module.exports = function (app, model) {
 
 
 
-    //var upload = multer({storage: storage});
-    //app.post("/api/upload", upload.single('myFile'), uploadImage);
-
-    /*function uploadImage(req, res) {
-        var status
-        var imgWidget ={
-            width:width,
-            _id:widgetId
+    function uploadImage(req, res) {
+        var actorId = req.body.actorId;
+        var description = req.body.description;
+        console.log(description);
+        var status = {
+            description:description,
+            actorId:actorId
         }
-        if(req.file!=null) {
-            var myFile = req.file;
-            var destination = myFile.destination;
-
-            imgWidget.url = req.protocol + '://' + req.get('host') + "/uploads/" + myFile.filename;
-
-            WidgetModel
-                .updateWidget(widgetId, imgWidget)
-                .then(function (response) {
-                    if(response.ok===1&&response.n===1){
 
 
-                        WidgetModel
-                            .findWidgetById(widgetId)
-                            .then(function (newResponse) {
+        var myFile = req.file;
+        var destination = myFile.destination;
 
-                                pageId = newResponse._page;
-                                res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget");
+        status.url = req.protocol + '://' + req.get('host') + "/project/uploads/" + myFile.filename;
+        console.log(status);
+        StatusModel.createStatus(actorId, status)
+            .then(function (status) {
 
-                            });
-                    }
-                    else{
-                        res.sendStatus(404);
-                    }
-                },function(err){
-                    res.sendStatus(404);
+
+                    //res.send(status);
+                    res.redirect("/project/index.html#/user/actor/");
+                },
+                function (error) {
+
+                    res.sendStatus(400).send(error);
+
                 });
 
-        }
-        else{
-            pageId = req.body.pageId;
-            res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/"+widgetId);
-        }
-    }*/
+
+        /*.then(function (response) {
+         if (response.ok === 1 && response.n === 1) {
 
 
+         WidgetModel
+         .findWidgetById(widgetId)
+         .then(function (newResponse) {
+
+         pageId = newResponse._page;
+         res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget");
+
+         });
+         }
+         else {
+         res.sendStatus(404);
+         }
+         }, function (err) {
+         res.sendStatus(404);
+         });*/
+
+
+    }
 }
 

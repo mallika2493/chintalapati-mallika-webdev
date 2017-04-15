@@ -10,7 +10,7 @@
         .module("SeriesAppMaker")
         .controller("actorStatusController", actorStatusController);
 
-    function actorStatusController($routeParams, UserService,StatusService,ActorService,$rootScope,loggedin,RouteService) {
+    function actorStatusController($routeParams, UserService,StatusService,ActorService,$rootScope,loggedin,RouteService,$location) {
         var vm = this;
         vm.seriesId = $routeParams.seriesId;
         vm.userId =  loggedin.data._id;

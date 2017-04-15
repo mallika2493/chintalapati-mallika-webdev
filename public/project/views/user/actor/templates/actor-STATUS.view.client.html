@@ -36,7 +36,7 @@
             <h3 class="col-sm-4">
                 <div >
                     <span class="glyphicon glyphicon-user"></span>
-                    <a href="">{{model.actorUser.firstName}}</a>
+                    <a ng-if="model.userId!=model.actorUser._id" href="#/user1/secondUser/{{model.actorUser._id}}">{{model.actorUser.firstName}}</a>
                 </div>
             </h3>
             </div>
@@ -50,14 +50,20 @@
 
 
                         <div class="media-body">
+                            <div></div><img ng-src="{{status.url}}" width="80%"/></div>
+                        <br>
 
-                            <strong><p class="text-justify">
+                        <div class="well well-sm col-sm-10">
+                            <strong><p class="text-justify text-info">
                                 {{status.description}}
-                        </p></strong>
+                            </p></strong>
                             <small>
 
                                 {{status.dateCreated | date : 'mediumDate'}}
                             </small>
+                        </div>
+                        <div>
+
                         </div>
 
                     </div>
