@@ -17,18 +17,18 @@
         function searchShow(searchTerm) {
             var key = "6e4c4b4ec35b896428861536de916f68";
 
-            var urlBase = "http://api.tvmaze.com/search/shows?q=TEXT";
+            var urlBase = "https://api.tvmaze.com/search/shows?q=TEXT";
             var url = urlBase.replace("TEXT", searchTerm);
             return $http.get(url);
         }
 
         function getCastDetails(id) {
-            var urlBase = "http://api.tvmaze.com/shows/ID/cast";
+            var urlBase = "https://api.tvmaze.com/shows/ID/cast";
             var url = urlBase.replace("ID", id);
             return $http.get(url);
         }
         function searchShowById(id) {
-            var urlBase = "http://api.tvmaze.com/shows/ID";
+            var urlBase = "https://api.tvmaze.com/shows/ID";
             var url = urlBase.replace("ID", id);
             return $http.get(url);
 
