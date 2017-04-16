@@ -25,6 +25,8 @@ module.exports = function (app, model) {
     app.get ('/api/loggedin', loggedin);
     app.post ('/api/register', register);
 
+
+    app.get("/api/user/username/:username", findUserByUsernameDup);
     app.get("/api/user", findUserByCredentials);
     app.get("/api/user/:userId", findUserById);
     app.get("/api/user ", findUser);
@@ -328,6 +330,7 @@ module.exports = function (app, model) {
     function findUserByUsername(req, res) {
 
         var username = req.query['username'];
+        console.log(username);
 
         UserModel
             .findUserByUsername(username)
@@ -337,6 +340,35 @@ module.exports = function (app, model) {
                     if (users.length > 0) {
                         res.json(users[0]);
                     } else {
+                        res.sendStatus(400).send(error);
+                    }
+                },
+                function (error) {
+                    res.sendStatus(400).send(error);
+                }
+            );
+    }
+
+    function findUserByUsernameDup(req, res) {
+
+        var username = req.params['username'];
+
+
+        UserModel
+            .findUserByUsername(username)
+            .then(
+                function (users) {
+                    console.log(users);
+
+                    /*if (users.length > 0) {
+                        res.json(users[0]);
+                    } else {
+                        res.sendStatus(400).send(error);
+                    }*/
+                    if(users!=null){
+                        res.send(users)
+                    }
+                    else {
                         res.sendStatus(400).send(error);
                     }
                 },

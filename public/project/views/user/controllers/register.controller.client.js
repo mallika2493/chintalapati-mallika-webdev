@@ -12,7 +12,7 @@
 
         function register(user) {
 
-            UserService.findUserByUsername(user.username)
+            UserService.findUserByUsernameDup(user.username)
                 .success(function (user) {
                     vm.error="sorry username is taken";
                 })

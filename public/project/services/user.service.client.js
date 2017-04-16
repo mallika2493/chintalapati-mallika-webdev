@@ -26,7 +26,8 @@
                 "findUsersToDeleteFromFollowers":findUsersToDeleteFromFollowers,
                 "findUsersToDeleteFromFollowing":findUsersToDeleteFromFollowing,
                 "removeFromFollowers":removeFromFollowers,
-                "removeFromFollowing":removeFromFollowing
+                "removeFromFollowing":removeFromFollowing,
+                "findUserByUsernameDup":findUserByUsernameDup
             };
             return api;
 
@@ -69,6 +70,10 @@
             function findUserByUsername(username) {
 
                 return $http.get("/api/user?username="+username);
+            }
+            function findUserByUsernameDup(username) {
+
+                return $http.get("/api/user/username/"+username);
             }
 
             function createUser(user) {
