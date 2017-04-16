@@ -19,15 +19,26 @@
             {{model.error}}
         </div>
         <form>
-            <div class="form-group">
+            <label>Username *</label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-user"></span>
+                </div>
+
                 <input ng-model="user.username"
                        id="username"
                        type="text"
                        class="form-control"
                        placeholder="username"/>
-            </div>
 
-            <div class="form-group">
+            </div>
+            <br>
+
+            <label>Password *</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-lock"></span>
+                    </div>
                 <input ng-model="user.password"
                        id="password"
                        type="password"
@@ -35,10 +46,13 @@
                        placeholder="password"
                        required/>
             </div>
+            <br>
+
             <div class="form-group">
                 <a ng-click="model.login(user)"
-                   class="btn btn-primary btn-block"
+                   class="btn btn-success btn-block"
                 >Login</a>
+                <br>
 
                 <a href="/auth/facebook" class="btn btn-primary btn-block">
                     <span class="fa fa-facebook"></span>

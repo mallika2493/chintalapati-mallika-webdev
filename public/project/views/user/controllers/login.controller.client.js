@@ -15,13 +15,15 @@
                         $location.url('/admin');
                     }
                 else if(user != null && user.role!="admin") {
+                        $rootScope.currentUser = user;
                     $location.url('/home/login');
                 } else {
+                        $rootScope.currentUser = user;
                     vm.error = 'user not found';
                 }
             })
                 .error(function(err) {
-                    vm.error = 'user not found';
+                    vm.error = 'invalid username/password';
                 });
 
         }

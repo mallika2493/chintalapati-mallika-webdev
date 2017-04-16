@@ -11,7 +11,7 @@
         </div>
     </div>
 </nav>
-<div class="container">
+<!--<div class="container">
     <h2>Register</h2>
     <div class="alert alert-danger" ng-show="model.error">
         {{model.error}}
@@ -84,5 +84,108 @@
             <a class="btn btn-danger btn-block"
                href="#/login">Cancel</a>
         </div>
+    </form>-->
+<div class="container">
+    <div ng-show="register.$invalid && register.$submitted || model.veryPasswordAlert" class="alert alert-danger">
+        {{model.alert}}
+        There were the following errors in the form:
+        <ul>
+            <li ng-show="register.username.$invalid">Username is required</li>
+            <li ng-show="register.password.$invalid">Password is required</li>
+            <li ng-show="model.veryPasswordAlert">{{model.veryPasswordAlert}}</li>
+        </ul>
+    </div>
+    <h1>Register</h1>
+    <div class="alert alert-danger" ng-show="model.error">
+        {{model.error}}
+    </div>
+    <form name="register" novalidate ng-submit="model.register(model.user)">
+        <label>Username *</label>
+        <div class="input-group">
+            <div class="input-group-addon">
+                <span class="glyphicon glyphicon glyphicon-user"></span>
+            </div>
+
+            <input type="text"
+                   ng-model="model.user.username"
+                   class="form-control"
+                   placeholder="username" name="username" required/>
+        </div>
+        <div ng-show="register.username.$invalid && register.$submitted" class="error">Username is required</div>
+        <br>
+        <label>Password *</label>
+        <div class="input-group">
+            <div class="input-group-addon">
+                <span class="glyphicon glyphicon glyphicon-lock"></span>
+            </div>
+        <input type="password"
+               ng-model="model.user.password"
+               class="form-control"
+               placeholder="password" name="password" required/>
+        </div>
+        <div ng-show="register.password.$invalid && register.$submitted" class="error">Password is required</div>
+        <br>
+
+        <label>Confirm Password *</label>
+        <div class="input-group">
+            <div class="input-group-addon">
+                <span class="glyphicon glyphicon glyphicon-lock"></span>
+            </div>
+        <input type="password"
+               ng-model="model.user.veryPassword"
+               class="form-control"
+               placeholder="verify password" name="veryPassword" required/>
+        </div>
+        <div ng-show="model.veryPasswordAlert" class="error">Password fields not matching</div>
+
+        <br>
+        <label>Email</label>
+        <div class="input-group">
+            <div class="input-group-addon">
+                <span class="glyphicon glyphicon-envelope"></span>
+            </div>
+            <input ng-model="model.user.email" type="email"
+                   class="form-control"
+                   placeholder="email" name="email"/>
+        </div>
+
+        <!--<div ng-show="register.email.$invalid && register.email.$submitted" class="error">Email format is not valid</div>-->
+        <br>
+        <label>First Name</label>
+        <div class="input-group">
+            <div class="input-group-addon">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </div>
+            <input ng-model="model.user.firstName" type="text"
+                   class="form-control"
+                   placeholder="First Name" name="FirstName" />
+        </div>
+        <!--<div ng-show="register.FirstName.$invalid && register.FirstName.$submitted" class="error">First Name is required</div>-->
+        <br>
+        <label>Last Name</label>
+        <div class="input-group">
+            <div class="input-group-addon">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </div>
+            <input ng-model="model.user.lastName" type="text"
+                   class="form-control"
+                   placeholder="Last Name" name="LastName" />
+        </div>
+
+        <br>
+        <div class="form-group">
+            <input type="radio" ng-model="model.user.role" value="actor"> Actor&nbsp;
+            <input type="radio" ng-model="model.user.role" value="user"> User
+            <input type="radio" ng-model="model.user.role" value="admin"> Admin
+        </div>
+        <!--<div ng-show="register.LastName.$invalid && register.LastName.$submitted" class="error">Last Name is required</div>-->
+        <!--input type="submit" class="btn btn-primary btn-block" value="Register"/!-->
+        <a ng-click="model.register(model.user)"
+           class="btn btn-primary btn-block">
+            Register
+        </a>
     </form>
+    <br>
+    <a class="btn btn-danger  btn-block"
+       href="#/home">Cancel</a>
 </div>
