@@ -73,6 +73,12 @@ module.exports = function (app, model) {
             failureRedirect: '/project/index.html#/login'
         }));
 
+    var googleConfig = {
+        clientID     : "962785213951-fhlq3ac2pkqbr2vneoa5sb5rvae0lacg.apps.googleusercontent.com",
+        clientSecret : "kXNdFOqa9UnfMz7iu4tr9j6a",
+        callbackURL  : "http://localhost:3000/google/oauth/callback"
+    };
+
     var facebookConfig = {
         clientID     : process.env.FACEBOOK_CLIENT,
         clientSecret : process.env.FACEBOOK_SECRET,
@@ -191,7 +197,7 @@ module.exports = function (app, model) {
     }
 
     function checkAdmin(req, res) {
-
+        c
         var loggedIn = req.isAuthenticated();
         var isAdmin = req.user.role == 'ADMIN';
 
