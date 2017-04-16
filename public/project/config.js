@@ -203,6 +203,14 @@
                     loggedin: checkLoggedin
                 }
             })
+            .when("/user/actor/:actorId/loggedInUserId/series", {
+                templateUrl: 'views/user/actor/templates/actor-STATUS.view.client.html',
+                controller: "actorStatusController",
+                controllerAs: "model",
+                resolve: {
+                    loggedin: checkLoggedin
+                }
+            })
             .when("/admin", {
                 templateUrl: 'views/user/admin/templates/admin.view.client.html',
                 controller: "adminController",

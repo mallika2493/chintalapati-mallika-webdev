@@ -111,9 +111,14 @@ module.exports = function (app, model) {
 
 
         var myFile = req.file;
-        var destination = myFile.destination;
+        if(myFile!=null) {
+            var destination = myFile.destination;
 
-        status.url = req.protocol + '://' + req.get('host') + "/project/uploads/" + myFile.filename;
+            status.url = req.protocol + '://' + req.get('host') + "/project/uploads/" + myFile.filename;
+        }
+        else{
+
+        }
         console.log(status);
         StatusModel.createStatus(actorId, status)
             .then(function (status) {

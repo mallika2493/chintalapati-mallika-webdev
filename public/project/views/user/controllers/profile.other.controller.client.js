@@ -18,6 +18,7 @@
         vm.getFollowing=getFollowing;
         vm.logout=logout;
         vm.routeChoice=routeChoice;
+        vm.getStatusPage=getStatusPage;
 
 
         function init() {
@@ -157,7 +158,14 @@
 
             }
         }
+//"/user/actor/:actorId/loggedInUserId/series"
 
+        function getStatusPage(actor) {
+
+            //RouteService.setParam(actor._id);
+            $location.url("/user/actor/"+actor._id+"/loggedInUserId/series");
+
+        }
         function logout(){
             UserService
                 .logout()

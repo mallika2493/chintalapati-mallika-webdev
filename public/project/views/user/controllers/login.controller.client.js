@@ -19,11 +19,12 @@
                     $location.url('/home/login');
                 } else {
                         $rootScope.currentUser = user;
-                    vm.error = 'user not found';
+                        vm.error = 'invalid username/password';
+
                 }
             })
                 .error(function(err) {
-                    vm.error = 'invalid username/password';
+                    vm.error = 'user not found';
                 });
 
         }
