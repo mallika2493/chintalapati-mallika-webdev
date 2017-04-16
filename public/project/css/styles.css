@@ -126,3 +126,8 @@ a {
 .profile-title{
     color: gray;
 }
+
+div.contain{
+    overflow-x: hidden;
+
+}

@@ -17,6 +17,7 @@
         vm.unfollow = unfollow;
         vm.getFollowing=getFollowing;
         vm.logout=logout;
+        vm.routeChoice=routeChoice;
 
 
         function init() {
@@ -76,6 +77,16 @@
             else
             url = "views/user/templates/profile-other-" + choice + ".view.client.html";
             return url;
+
+        }
+
+        function routeChoice(choice) {
+            if(vm.userId==vm.secondUserId)
+                $location.url("/user/"+choice);
+            else
+                $location.url("/user/other/"+choice);
+
+
 
         }
 

@@ -210,6 +210,31 @@
                 resolve: {
                     loggedin: checkLoggedin
                 }
+            })
+
+            .when("/user/other/LIKE", {
+                templateUrl: 'views/user/templates/profile-other-LIKE.view.client.html',
+                controller: "profileOtherController",
+                controllerAs: "model",
+                resolve: {
+                    loggedin: checkLoggedin
+                }
+            })
+            .when("/user/other/FOLLOWER", {
+                templateUrl: 'views/user/templates/profile-other-FOLLOWER.view.client.html',
+                controller: "profileOtherController",
+                controllerAs: "model",
+                resolve: {
+                    loggedin: checkLoggedin
+                }
+            })
+            .when("/user/other/FOLLOWING", {
+                templateUrl: 'views/user/templates/profile-other-FOLLOWING.view.client.html',
+                controller: "profileOtherController",
+                controllerAs: "model",
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             });
 
 

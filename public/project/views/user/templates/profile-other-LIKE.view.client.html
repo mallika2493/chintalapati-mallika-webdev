@@ -1,21 +1,61 @@
-<div>
-    <h2>LIKES <a href="">
-        <span class="glyphicon glyphicon-heart like-button-color"></span>
-    </a></h2>
-    <br>
-    <div class="row">
-        <div class="col-sm-3"></div>
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
-        <div class="row col-sm-6 well">
-            <div ng-switch="model.series.length">
+        <div class="navbar-text pull-left page-text">
 
-                <div ng-switch-when=0>
+            <a href="#/user">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+        </div>
+        <div class="navbar-text pull-right page-text">
+
+            <a ng-if="model.user.role=='actor'" href="#/user/actor/">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+            <a ng-if="model.user.role!='actor'" href="#/user/">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+
+            <a ng-if="model.user.role=='actor'" href="#/user/actor/">
+                <span>{{model.user.firstName}}&nbsp;&nbsp;&nbsp;</span>
+            </a>
+            <a ng-if="model.user.role!='actor'" href="#/user/">
+                <span>{{model.user.firstName}}&nbsp;&nbsp;&nbsp;</span>
+            </a>
+
+            <a href="" ng-click="model.logout()">
+                <span class="glyphicon glyphicon-log-out"></span>
+            </a>
+            <a href="" ng-click="model.logout()">
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+        <div class="navbar-header page-text">
+            <a class="navbar-brand" href="#/home/login">Showcity</a>
+        </div>
+    </div>
+</nav>
+<div>
+    <h2>LIKES
+        <span class="glyphicon glyphicon-heart like-button-color"></span>
+    </h2>
+    <br>
+
+        <div class="col-sm-3"></div>
 
 
-                        <p class="text-danger text-center">User has not liked anything yet!!</p>
+
+                <div ng-if="model.series.length==0">
+
+
+                        <p class="well text-danger text-center">User has not liked anything yet!!</p>
 
                 </div>
-                <div ng-switch-default>
+
+
+                <div ng-if="model.series.length>0">
+                    <div class="col-sm-6 container-fluid well">
                     <div ng-repeat="show in model.series">
 
                         <div class="well media center-block">
@@ -31,10 +71,20 @@
 
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+
+
+
     </div>
         <div class="col-sm-3"></div>
     </div>
 </div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+
+        <a href="#/user/" class="navbar-link navbar-brand pull-right">
+          <span class="glyphicon glyphicon-user">
+          </span>
+        </a>
+
+    </div>
+</nav>

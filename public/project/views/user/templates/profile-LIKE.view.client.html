@@ -1,4 +1,35 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left page-text">
+            <a href="#/user/">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+        </div>
+        <div class="navbar-text pull-right page-text">
+            <a href="#/user/">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+
+            <a href="#/user/">
+                <span>{{model.user.firstName}}&nbsp;&nbsp;&nbsp;</span>
+            </a>
+
+            <a href=href="" ng-click="model.logout()">
+                <span class="glyphicon glyphicon-log-out"></span>
+            </a>
+            <a href="" ng-click="model.logout()">
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+        <div class="navbar-header page-text">
+            <a class="navbar-brand" href="#/home/login">Showcity</a>
+        </div>
+    </div>
+</nav>
 <div>
+    <div class="container-fluid">
     <h2>LIKES <a href="">
         <span class="glyphicon glyphicon-heart like-button-color"></span>
     </a></h2>
@@ -38,3 +69,14 @@
         <div class="col-sm-3"></div>
     </div>
 </div>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+
+        <a href="#/user/" class="navbar-link navbar-brand pull-right">
+          <span class="glyphicon glyphicon-user">
+          </span>
+        </a>
+
+    </div>
+</nav>

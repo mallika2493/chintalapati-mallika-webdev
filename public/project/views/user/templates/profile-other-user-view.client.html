@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-text pull-left page-text">
-            <a href="#/home">
+            <a href="#/user1/secondUser/{{model.secondUser._id}}">
                 <span class="glyphicon glyphicon-chevron-left"></span>
             </a>
         </div>
@@ -31,12 +31,80 @@
         </div>
 
         <div class="navbar-header page-text">
-            <a class="navbar-brand" href="#/home/{{model.user._id}}">Showcity</a>
+            <a class="navbar-brand" href="#/home/login">Showcity</a>
         </div>
     </div>
 </nav>
 
-<div class="row container-fluid">
+
+    <div class="col-sm-4 visible-xs">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <div class="row text-center">
+                    <h3>{{model.secondUser.firstName}}</h3>
+                    <div ng-if="model.secondUser._id!=model.user._id">
+                        <a ng-if=!model.following ng-click="model.follow()"
+                           class="btn btn-success">
+                            <i class="glyphicon glyphicon-plus"/> follow {{model.secondUser.firstName}}
+                        </a>
+                        <a ng-if=model.following ng-click="model.unfollow()"
+                           class="btn btn-warning">
+                            <i class="glyphicon glyphicon-minus"/> unfollow {{model.secondUser.firstName}}
+                        </a>
+                    </div>
+
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-10">
+                        <a href="" ng-click="model.routeChoice('LIKE')" class="active profile-title">
+                            Likes
+                        </a>
+
+                    </div>
+                    <div class="col-xs-2">
+                        <a href="" ng-click="model.routeChoice('LIKE')" class="pull-right">
+                            <span class="glyphicon glyphicon-heart like-button-color"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-10">
+                        <a href="" ng-click="model.routeChoice('FOLLOWER')" class="active profile-title">
+                            Followers
+                        </a>
+
+                    </div>
+                    <div class="col-xs-2">
+                        <a href="" ng-click="model.routeChoice('FOLLOWER')" class="pull-right">
+                            <span class="glyphicon glyphicon-eye-open follower-button-color"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-10">
+                        <a href="" ng-click="model.routeChoice('FOLLOWING')" class="active profile-title">
+                            Following
+                        </a>
+
+                    </div>
+                    <div class="col-xs-2">
+                        <a href="" ng-click="model.routeChoice('FOLLOWING')" class="pull-right">
+                            <span class="glyphicon glyphicon-eye-open following-button-color"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+
+
     <div class="col-sm-4 hidden-xs">
         <ul class="list-group">
             <li class="list-group-item">
@@ -103,7 +171,7 @@
 
         </ul>
     </div>
-    <div class="col-sm-8 col-xs-12 wbdv-right-pane">
+    <div class="col-sm-8 col-xs-12 wbdv-right-pane hidden-xs">
         <div>
             <div ng-switch="model.choice">
 
@@ -119,12 +187,12 @@
             </div>
         </div>
     </div>
-</div>
+
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
 
-        <a href="#/user/{{model.user._id}}" class="navbar-link navbar-brand pull-right">
+        <a href="#/user/" class="navbar-link navbar-brand pull-right">
           <span class="glyphicon glyphicon-user">
           </span>
         </a>

@@ -1,10 +1,5 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
-        <div class="navbar-text pull-left page-text">
-            <a href="../../../index.html">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-            </a>
-        </div>
 
         <div class="navbar-text pull-right page-text">
 
@@ -17,7 +12,7 @@
             <a ng-if="model.user.role!='actor'" href="#/user/">
                 <span>{{model.user.firstName}}&nbsp;&nbsp;&nbsp;</span>
             </a>
-            <a href="index.html#/home">
+            <a href="" ng-click="model.logout()">
                 <span class="glyphicon glyphicon-log-out"></span>
             </a>
             <a href="" ng-click="model.logout()">

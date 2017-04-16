@@ -1,23 +1,61 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left page-text">
+            <a href="#/user">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+        </div>
+        <div class="navbar-text pull-right page-text">
+
+            <a ng-if="model.user.role=='actor'" href="#/user/actor/">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+            <a ng-if="model.user.role!='actor'" href="#/user/">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+
+            <a ng-if="model.user.role=='actor'" href="#/user/actor/">
+                <span>{{model.user.firstName}}&nbsp;&nbsp;&nbsp;</span>
+            </a>
+            <a ng-if="model.user.role!='actor'" href="#/user/">
+                <span>{{model.user.firstName}}&nbsp;&nbsp;&nbsp;</span>
+            </a>
+
+            <a href="" ng-click="model.logout()">
+                <span class="glyphicon glyphicon-log-out"></span>
+            </a>
+            <a href="" ng-click="model.logout()">
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+        <div class="navbar-header page-text">
+            <a class="navbar-brand" href="#/home/login">Showcity</a>
+        </div>
+    </div>
+</nav>
 <div>
     <h2>Followers <a href="">
         <span class="glyphicon glyphicon-eye-open follower-button-color"></span>
     </a></h2>
 
     <br>
-    <div class="row">
+
         <div class="col-sm-3"></div>
-        <div class="container-fluid">
-            <div class="row col-sm-6 well">
+
+            <div class="">
                 <div ng-switch="model.followers.length">
 
                     <div ng-switch-when=0>
 
 
-                        <p class="text-danger text-center">User has no followers!!</p>
+                        <p class="well text-danger text-center">User has no followers!!</p>
 
                     </div>
                     <div ng-switch-default>
-
+                        <div class="container-fluid">
+                            <div class="row col-sm-6 well">
                         <div ng-repeat="f in model.followers">
 
                             <div ng-if="model.user._id!=f._id">
@@ -36,9 +74,19 @@
                         </div>
                     </div>
                 </div>
-            </div>
+
             <div class="col-sm-3"></div>
         </div>
-    </div>
 
+</div>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+
+            <a href="#/user/" class="navbar-link navbar-brand pull-right">
+          <span class="glyphicon glyphicon-user">
+          </span>
+            </a>
+
+        </div>
+    </nav>
 

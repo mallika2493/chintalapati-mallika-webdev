@@ -2,7 +2,7 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-text pull-left page-text">
-                <a href="/user/actor/list/view/{{model.seriesId}}/name/{{model.seriesName}}">
+                <a href="#/user/actor/list/view/{{model.seriesId}}/name/{{model.seriesName}}">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
@@ -30,7 +30,7 @@
         </div>
     </nav>
 
-    <div class="row container-fluid">
+
         <div class="col-sm-11 panel-body">
             <div class="row">
             <h3 class="col-sm-4">
@@ -40,7 +40,10 @@
                 </div>
             </h3>
             </div>
-            <div class="well" ng-repeat="status in model.statusList">
+            <div ng-if="model.statusList.length==0" class="alert alert-warning" role="alert">
+                Sorry actor {{model.actorUser.firstName}} has no status uploaded
+            </div>
+            <div ng-if="model.statusList.length>0" class="well" ng-repeat="status in model.statusList">
                 <div class="panel-body">
 
                     <div class="media">
@@ -50,10 +53,11 @@
 
 
                         <div class="media-body">
+
                             <div></div><img ng-src="{{status.url}}" width="80%"/></div>
                         <br>
 
-                        <div class="well well-sm col-sm-10">
+                        <div class="well well-sm col-sm-10 center-block">
                             <strong><p class="text-justify text-info">
                                 {{status.description}}
                             </p></strong>
@@ -71,7 +75,7 @@
             </div>
 
 
-        </div>
+
     </div>
 
     <nav class="navbar navbar-default navbar-fixed-bottom">

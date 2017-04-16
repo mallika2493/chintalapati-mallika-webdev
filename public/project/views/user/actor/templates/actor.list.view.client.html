@@ -2,7 +2,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-text pull-left page-text">
-            <a href="/user/search/{{model.seriesName}}">
+            <a href="#/user/search/{{model.seriesName}}">
                 <span class="glyphicon glyphicon-chevron-left"></span>
             </a>
         </div>
@@ -30,12 +30,12 @@
     </div>
 </nav>
 
-<div class="row container-fluid">
+
     <div class="col-sm-2"></div>
     <div ng-if="model.actors.length==0" class="alert alert-warning" role="alert">
         Sorry no actor of {{model.seriesName}} is registered in the system
     </div>
-    <ul ng-if="model.actors.length>0" class="col-sm-8 list-group center-block">
+    <ul ng-if="model.actors.length>0" class="col-sm-8 list-group">
         <h3 class="text-center">Actors of {{model.seriesName}}</h3>
         <li class="list-group-item text-center" ng-repeat="actor in model.actors">
 
@@ -48,7 +48,8 @@
         </li>
     </ul>
     <div class="col-sm-2"></div>
-</div>
+
+
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
