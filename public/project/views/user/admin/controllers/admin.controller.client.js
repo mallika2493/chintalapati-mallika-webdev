@@ -24,8 +24,9 @@
         vm.logout=logout;
 
         function init() {
-            if(loggedin.data.currentUser.role=="admin"){
             vm.userId=loggedin.data._id;
+            if(loggedin.data.role=="admin"){
+
             UserService
                 .findUserById(vm.userId)
                 .success(function (user) {

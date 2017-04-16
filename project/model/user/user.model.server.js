@@ -74,7 +74,6 @@ module.exports = function () {
         return UserModel.update({_id:userId},{$set:updatedUser});
     }
     function deleteUser(userId) {
-        console.log("I am deleting")
         return UserModel.remove({_id: userId})
             .then(function (response) {
                 if(response.result.n == 1 && response.result.ok == 1){

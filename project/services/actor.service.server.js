@@ -13,16 +13,13 @@ module.exports = function (app, model) {
 
     function createActor(req, res) {
         var newActor = req.body;
-        console.log("after " + newActor);
         ActorModel
             .addActor(newActor)
             .then(
                 function (actor) {
-                    console("after susscessfull" + actor);
                     res.send(actor);
                 },
                 function (err) {
-                    console.log("something went wrong");
                     res.sendStatus(400).send(err);
 
                 }
@@ -32,7 +29,7 @@ module.exports = function (app, model) {
 
     function getActorByUserId(req, res) {
         var userId = req.params.uid;
-        console.log(userId);
+
         ActorModel.getActorByUserId(userId)
             .then(function (actor) {
                     res.send(actor);
@@ -46,7 +43,7 @@ module.exports = function (app, model) {
     function getActorByActorId(req, res) {
 
         var actorId = req.params.aid;
-        console.log(actorId);
+
 
         ActorModel.getActorByActorId(actorId)
             .then(function (actor) {
@@ -61,8 +58,7 @@ module.exports = function (app, model) {
     function addToSeriesForActor(req, res) {
         var seriesId = req.params['seriesId'];
         var actorId = req.params['aid'];
-        console.log("addSeries"+seriesId);
-        console.log("addSeriesactorID"+actorId);
+
         ActorModel.addtoSeriesForActor(seriesId, actorId)
             .then(function (actor) {
                     res.send(actor);

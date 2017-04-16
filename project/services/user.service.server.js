@@ -90,16 +90,15 @@ module.exports = function (app, model) {
     passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
 
     function facebookStrategy(token, refreshToken, profile, done) {
-        console.log(profile.id);
         UserModel
             .findUserByFacebookId(profile.id)
             .then(function (user) {
-                console.log(user);
+
                 if(user) {
-                    console.log(111);
+
                     done(null, user);
                 } else {
-                    console.log(profile);
+
                     var displayname = profile.displayName;
                     var user = {
 
@@ -114,13 +113,13 @@ module.exports = function (app, model) {
                     return UserModel.createUser(user);
                 }
             }, function (err) {
-                console.log(err);
+
                 done(err, null);
             })
             .then(function (user) {
                 done(null, user);
             }, function (err) {
-                console.log(err);
+
                 done(err, null);
             });
     }
@@ -188,7 +187,7 @@ module.exports = function (app, model) {
     }
 
     function loggedin(req, res) {
-        console.log(req.body);
+
         res.send(req.isAuthenticated() ? req.user : '0');
     }
 
@@ -268,7 +267,7 @@ module.exports = function (app, model) {
     }
 
     function login(req, res) {
-        console.log("Login");
+
         var user  = req.user;
         res.json(user);
     }
@@ -330,7 +329,7 @@ module.exports = function (app, model) {
     function findUserByUsername(req, res) {
 
         var username = req.query['username'];
-        console.log(username);
+
 
         UserModel
             .findUserByUsername(username)
@@ -358,7 +357,7 @@ module.exports = function (app, model) {
             .findUserByUsername(username)
             .then(
                 function (users) {
-                    console.log(users);
+
 
                     /*if (users.length > 0) {
                         res.json(users[0]);
@@ -386,7 +385,7 @@ module.exports = function (app, model) {
         UserModel
             .createUser(user)
             .then(function (User){
-                console.log(User);
+
                 if(User){
                     req.login(User, function (err) {
                         if(err){

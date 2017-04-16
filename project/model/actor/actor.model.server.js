@@ -24,7 +24,6 @@ module.exports = function () {
 
     function addActor(actor) {
         //var deferred = q.defer();
-        console.log("hi", actor);
         return ActorModel
             .create(actor);/*, function (err, doc){
             if(err)

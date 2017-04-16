@@ -85,7 +85,7 @@
                href="#/login">Cancel</a>
         </div>
     </form>-->
-<div class="container">
+<div class="container-fluid">
     <div ng-show="register.$invalid && register.$submitted || model.veryPasswordAlert" class="alert alert-danger">
         {{model.alert}}
         There were the following errors in the form:
@@ -95,7 +95,7 @@
             <li ng-show="model.veryPasswordAlert">{{model.veryPasswordAlert}}</li>
         </ul>
     </div>
-    <h1>Register</h1>
+    <h2>Register</h2>
     <div class="alert alert-danger" ng-show="model.error">
         {{model.error}}
     </div>
