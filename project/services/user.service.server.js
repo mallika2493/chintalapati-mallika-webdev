@@ -80,9 +80,9 @@ module.exports = function (app, model) {
     };
 
     var facebookConfig = {
-        clientID     : "757475197750913",
-        clientSecret : "0f9a7a17b4055f6b5928904caf769821",
-        callbackURL  : "http://localhost:3000/auth/facebook/callback"
+        clientID     : process.env.FACEBOOK_CLIENT,
+        clientSecret : process.env.FACEBOOK_SECRET,
+        callbackURL  : process.env.FACEBOOK_CALLBACK
     };
     //console.log("Inside user service server js");
 
