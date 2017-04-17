@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="00f0d394-06f9-47da-8407-8724cc140359" name="Default" comment="" />
+    <list default="true" id="00f0d394-06f9-47da-8407-8724cc140359" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/views/user/templates/register.view.client.html" afterPath="$PROJECT_DIR$/public/project/views/user/templates/register.view.client.html" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -72,7 +74,7 @@
         <entry file="file://$PROJECT_DIR$/public/project/views/user/templates/register.view.client.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="334">
-              <caret line="179" column="0" lean-forward="false" selection-start-line="179" selection-start-column="0" selection-end-line="179" selection-end-column="0" />
+              <caret line="179" column="14" lean-forward="true" selection-start-line="179" selection-start-column="14" selection-end-line="179" selection-end-column="14" />
               <folding>
                 <element signature="e#6745#6751#0" expanded="true" />
               </folding>
@@ -213,7 +215,6 @@
         <option value="$PROJECT_DIR$/project/model/actor/actor.model.server.js" />
         <option value="$PROJECT_DIR$/project/model/user/user.model.server.js" />
         <option value="$PROJECT_DIR$/project/services/actor.service.server.js" />
-        <option value="$PROJECT_DIR$/public/project/views/user/templates/register.view.client.html" />
         <option value="$PROJECT_DIR$/public/project/views/user/admin/controllers/admin.controller.client.js" />
         <option value="$PROJECT_DIR$/public/project/views/user/admin/templates/admin.view.client.html" />
         <option value="$PROJECT_DIR$/public/project/views/user/controllers/login.controller.client.js" />
@@ -222,6 +223,7 @@
         <option value="$PROJECT_DIR$/public/project/views/user/controllers/profile.other.controller.client.js" />
         <option value="$PROJECT_DIR$/public/project/views/user/templates/profile-other-user-view.client.html" />
         <option value="$PROJECT_DIR$/project/services/user.service.server.js" />
+        <option value="$PROJECT_DIR$/public/project/views/user/templates/register.view.client.html" />
       </list>
     </option>
   </component>
@@ -751,7 +753,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="706391000" />
+    <option name="totallyTimeSpent" value="706489000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="725" extended-state="6" />
@@ -1209,7 +1211,7 @@
     <entry file="file://$PROJECT_DIR$/public/project/views/user/templates/register.view.client.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="334">
-          <caret line="179" column="0" lean-forward="false" selection-start-line="179" selection-start-column="0" selection-end-line="179" selection-end-column="0" />
+          <caret line="179" column="14" lean-forward="true" selection-start-line="179" selection-start-column="14" selection-end-line="179" selection-end-column="14" />
           <folding>
             <element signature="e#6745#6751#0" expanded="true" />
           </folding>
