@@ -1,7 +1,10 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-text pull-left page-text">
-            <a href="#/user1/secondUser/{{model.secondUser._id}}">
+            <a ng-if="model.user.role=='actor'" href="#/user/actor/">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a ng-if="model.user.role!='actor'" href="#/user/">
                 <span class="glyphicon glyphicon-chevron-left"></span>
             </a>
         </div>
