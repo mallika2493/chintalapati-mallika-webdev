@@ -168,6 +168,7 @@
             var editedStatusObject = {
                 "_id": vm.statusList[index]._id,
                 "description": vm.statusList[index]["description"],
+                "url":vm.statusList[index].url,
                 "actorId": vm.statusList[index].actorId
 
 
