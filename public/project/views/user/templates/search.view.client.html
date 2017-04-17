@@ -89,10 +89,12 @@
                                     <p class="text-justify">
                                         {{review.description}}
                                     </p>
+                                    <div ng-if="review.userFirstName">
                                     <small>By
-                                        <a ui-sref="profile.reviews({userId: review.userId})">{{review.userFirstName}}</a>
+                                        <a>{{review.userFirstName}}</a>
 
                                     </small>
+                                    </div>
                                 </div>
                             </div>
                         </div>
