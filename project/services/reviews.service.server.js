@@ -14,7 +14,7 @@ module.exports = function (app, model) {
         var userId = req.params.userId;
         var seriesId = req.params.series_id;
         var review = req.body;
-        console.log("userId"+userId+" seriesId"+seriesId+" review"+review);
+
         ReviewModel
             .addReview(userId, seriesId, review)
             .then(

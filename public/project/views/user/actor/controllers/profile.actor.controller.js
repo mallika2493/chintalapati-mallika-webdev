@@ -158,7 +158,7 @@
                     }
                 })
                 .then(function (response) {
-                    console.log("Series Inserted !");
+
                 });
 
         }
@@ -182,7 +182,7 @@
                 .editStatus(editStatusObj)
                 .then(function (response) {
                     var status = response.data;
-                    console.log(status);
+
                     if ((status.n == 1 || status.nModified == 1) && status.ok == 1) {
                         vm.statusList[vm.selectedIndex] = editStatusObj;
                         vm.selectedIndex = -1;
@@ -254,7 +254,7 @@
                             }
                         })
                         .then(function (response) {
-                            console.log("Series Inserted !");
+
                         });
 
                 });

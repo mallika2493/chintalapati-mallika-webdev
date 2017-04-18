@@ -119,7 +119,7 @@
                 .follow(vm.userId, vm.secondUserId)
                 .then(function (response) {
                     var status = response.data;
-                    console.log(status);
+
                     if ((status.n == 1 || status.nModified == 1) && status.ok == 1) {
                         //vm.allFollowing.push(vm.secondUserId);
                         vm.following=true;
@@ -136,7 +136,7 @@
                 .unfollow(vm.userId, vm.secondUserId)
                 .then(function (response) {
                     var status = response.data;
-                    console.log(status);
+
                     if ((status.n == 1 || status.nModified == 1) && status.ok == 1) {
                         //vm.allFollowing.push(vm.secondUserId);
                         vm.following=false;

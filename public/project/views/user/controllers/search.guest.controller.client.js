@@ -45,7 +45,7 @@
                         sh[0].show.summary = cleanText;
                         id = sh[0].show.id;
                         vm.shows = sh;
-                        console.log(vm.shows)
+
                         vm.id = id;
                         TvShowService.getCastDetails(id)
                             .then(function (response) {

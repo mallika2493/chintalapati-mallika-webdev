@@ -90,7 +90,7 @@
                     UserService
                         .getAllRegUsers()
                         .then(function (users) {
-                            console.log("set user");
+
                             vm.users = users;
                             getAllRegUsers();
                         },function (err) {
@@ -143,7 +143,7 @@
         }
 
         function update(user) {
-            console.log(user._id);
+
             UserService.updateUser(user._id,user)
                 .success(function (user) {
                     vm.user = user;

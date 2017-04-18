@@ -126,16 +126,16 @@ module.exports = function (app, model) {
 
 
     function googleStrategy(token, refreshToken, profile, done) {
-        console.log(profile.id);
+
         UserModel
             .findUserByGoogleId(profile.id)
             .then(function (user) {
-                console.log(user);
+
                 if(user) {
-                    console.log(111);
+
                     done(null, user);
                 } else {
-                    console.log(222);
+
                     var user = {
                         username: profile.emails[0].value,
                         //photo: profile.photos[0].value,
@@ -146,18 +146,18 @@ module.exports = function (app, model) {
                             id:    profile.id
                         }
                     };
-                    console.log("google authentication" + user.username);
+
                     return UserModel.createUser(user);
                 }
             }, function (err) {
-                console.log(err);
+
                 done(err, null);
             })
             .then(function (user) {
-                console.log("##########"+user);
+
                 done(null, user);
             }, function (err) {
-                console.log(err);
+
                 done(err, null);
             });
     }

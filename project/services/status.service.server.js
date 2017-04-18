@@ -103,7 +103,7 @@ module.exports = function (app, model) {
     function uploadImage(req, res) {
         var actorId = req.body.actorId;
         var description = req.body.description;
-        console.log(description);
+
         var status = {
             description:description,
             actorId:actorId
@@ -119,7 +119,7 @@ module.exports = function (app, model) {
         else{
 
         }
-        console.log(status);
+
         StatusModel.createStatus(actorId, status)
             .then(function (status) {
 

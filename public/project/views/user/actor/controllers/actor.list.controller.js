@@ -26,7 +26,7 @@
 
 
                 });
-            console.log("im in actorlist");
+
             ActorService.getAllActorsForSeriesId(vm.seriesId)
                 .success(function (actors) {
 

@@ -29,7 +29,7 @@
 
         function getAllSeries() {
             var request = $http.get("/api/getAllSeries/");
-            console.log("REQUEST")
+
             return request;
 
         }

@@ -32,7 +32,7 @@
             return api;
 
             function register(user) {
-                console.log("user called client");
+
                 var url = '/api/register/';
                 return $http.post(url,user);
             }
@@ -77,7 +77,7 @@
             }
 
             function createUser(user) {
-                console.log(user);
+
                 return $http.post("/api/user",user);
 
             }

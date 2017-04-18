@@ -56,7 +56,7 @@
                         sh[0].show.summary = cleanText;
                         id = sh[0].show.id;
                         vm.shows = sh;
-                        console.log(vm.shows)
+
                         vm.id = id;
                         TvShowService.getCastDetails(id)
                             .then(function (response) {
@@ -98,12 +98,12 @@
 
                     if ((status.n == 1 || status.nModified == 1) && status.ok == 1) {
                         vm.user.status=likeStatus;
-                        console.log(vm.shows);
+
                         return SeriesService.addSeries(vm.shows);
                     }
                 })
                 .then(function (response) {
-                    console.log("Series Inserted !");
+
                 });
 
         }
@@ -115,13 +115,13 @@
                 .then(function (response) {
                     var user = response.data;
                     if (user) {
-                        console.log(user);
+
                         vm.user.status = 'like';
-                        console.log(vm.user.status);
+
                     }
                     else {
                         vm.user.status = 'unlike';
-                        console.log(vm.user.status);
+
                     }
                 });
         }
@@ -141,7 +141,7 @@
                     }
                 })
                 .then(function (response) {
-                    console.log("Series Inserted !");
+
                 });
 
         }
@@ -182,7 +182,7 @@
                 .follow(vm.userId, secondUserId.userId)
                 .then(function (response) {
                     var status = response.data;
-                    console.log(status);
+
                     if ((status.n == 1 || status.nModified == 1) && status.ok == 1) {
                         vm.allFollowing.push(secondUserId)
                     }
@@ -216,7 +216,7 @@
                 .editReview(editReviewObj)
                 .then(function (response) {
                     var status = response.data;
-                    console.log(status);
+
                     if ((status.n == 1 || status.nModified == 1) && status.ok == 1) {
                         vm.reviews[vm.selectedIndex] = editReviewObj;
                         vm.selectedIndex = -1;
