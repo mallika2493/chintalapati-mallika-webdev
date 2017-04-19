@@ -41,10 +41,12 @@
         </div>
         <div class="panel panel-default">
             <div class="col-sm-11 ng-binding" style="..." ng-repeat="sho in model.shows">
-
-                <img width="60%" height="10%" class="img-responsive margin-top"
+                <div class="row container-fluid">
+                <div class="col-sm-5">
+                <img width="80%" height="10%" class="img-responsive margin-top right"
                      ng-src="{{sho.show.image.original}}">
-
+                </div>
+                <div class="col-sm-6">
                 <h2 class="ng-binding">{{sho.show.name}}
                     <div ng-switch="model.user.status">
                         <span>
@@ -90,8 +92,11 @@
                 {{sho.show.summary}}</p>
 
 
-                <p>Watch every {{sho.show.schedule.days[0]}} at {{sho.show.schedule.time}} hrs</p>
+                <p>Watch every {{sho.show.schedule.days[0]}} at {{sho.show.schedule.time}} hrs on {{sho.show.network.name}}</p>
+                    <p>timezone: {{sho.show.network.country.timezone}}</p>
 
+                </div>
+                </div>
                 <hr>
                 <h3>Cast</h3>
 
