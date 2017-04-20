@@ -29,8 +29,105 @@
     </div>
 </nav>
 
-<div class="row container-fluid">
-    <div class="col-sm-4 hidden-xs">
+<div class="visible-xs hidden-lg hidden-md">
+    <div class="col-sm-4">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-10">
+                        <a href="#/user/actor/EDIT"  class="active profile-title">
+                            Edit Profile
+                        </a>
+
+                    </div>
+                    <div class="col-xs-2">
+                        <a href="#/user/actor/EDIT" class="pull-right">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-10">
+                        <a href="#/user/actor/STATUS"  class="profile-title">
+                            Status
+                        </a>
+
+                    </div>
+                    <div class="col-xs-2">
+                        <a href="#/user/actor/STATUS" class="pull-right">
+                            <span class="glyphicon glyphicon-sunglasses status-button-color"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-10">
+                        <a href="#/user/actor/LIKE" class="active profile-title">
+                            Likes
+                        </a>
+
+                    </div>
+                    <div class="col-xs-2">
+                        <a href="#/user/actor/LIKE" class="pull-right">
+                            <span class="glyphicon glyphicon-heart like-button-color"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-10">
+                        <a href="#/user/actor/FOLLOWER" class="active profile-title">
+                            Fans
+                        </a>
+
+                    </div>
+                    <div class="col-xs-2">
+                        <a href="#/user/actor/FOLLOWER" class="pull-right">
+                            <span class="glyphicon glyphicon-eye-open follower-button-color"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-10">
+                        <a href="#/user/actor/FOLLOWING" class="active profile-title">
+                            Following
+                        </a>
+
+                    </div>
+                    <div class="col-xs-2">
+                        <a href="#/user/actor/FOLLOWING" class="pull-right">
+                            <span class="glyphicon glyphicon-eye-open following-button-color"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-10">
+                        <a href="#/user/actor/SERIES" class="active profile-title">
+                            My Series
+                        </a>
+
+                    </div>
+                    <div class="col-xs-2">
+                        <a href="#/user/actor/SERIES" class="pull-right">
+                            <span class="glyphicon glyphicon-film series-button-color"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+</div>
+    <div class="hidden-xs">
+        <div class="col-sm-4">
         <ul class="list-group">
             <li class="list-group-item">
             <div class="row">
@@ -126,6 +223,7 @@
 
         </ul>
     </div>
+
     <div class="col-sm-8 col-xs-12 wbdv-right-pane">
         <div>
             <div ng-switch="model.choice">
@@ -162,7 +260,8 @@
 
 
     </div>
-</div>
+    </div>
+
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">

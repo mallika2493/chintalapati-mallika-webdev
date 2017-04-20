@@ -16,7 +16,7 @@
     function profileActorController($routeParams, $location, UserService,TvShowService,ActorService,StatusService,SeriesService,loggedin,$rootScope) {
         var vm = this;
         //vm.updateUser = updateUser;
-        //vm.deleteUser = deleteUser;
+        vm.deleteUser = deleteUser;
         vm.getChoiceView = getChoiceView;
         vm.setChoice = setChoice;
         vm.addStatus = addStatus;

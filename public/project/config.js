@@ -139,6 +139,14 @@
                     loggedin: checkLoggedin
                 }
             })
+            .when("/user/actor/EDIT", {
+                templateUrl: 'views/user/actor/templates/profile-actor-EDIT.view.client.html',
+                controller: "profileActorController",
+                controllerAs: "model",
+                resolve: {
+                    loggedin: checkLoggedin
+                }
+            })
             .when("/user/actor/SERIES", {
                 templateUrl: 'views/user/actor/templates/profile-actor-SERIES.view.client.html',
                 controller: "profileActorController",

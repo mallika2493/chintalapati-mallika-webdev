@@ -1,40 +1,82 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left page-text">
+            <a href="#/user/actor">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+        </div>
+        <div class="navbar-text pull-right page-text">
+            <a href="#/user/actor">
+                <span class="glyphicon glyphicon-user"></span>
+            </a>
+
+            <a href="#/user/actor">
+                <span>{{model.user.firstName}}&nbsp;&nbsp;&nbsp;</span>
+            </a>
+
+            <a href=href="" ng-click="model.logout()">
+                <span class="glyphicon glyphicon-log-out"></span>
+            </a>
+            <a href="" ng-click="model.logout()">
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+        <div class="navbar-header page-text">
+            <a class="navbar-brand" href="#/home/login">Showcity</a>
+        </div>
+    </div>
+</nav>
 <div>
-    <h2>LIKES <a href="">
-        <span class="glyphicon glyphicon-heart like-button-color"></span>
-    </a></h2>
-    <br>
-    <div class="row">
-        <div class="col-sm-3"></div>
-        <div class="container-fluid">
-            <div class="row col-sm-6 well">
-                <div ng-switch="model.ser.length">
+    <div class="container-fluid">
+        <h2>LIKES <a href="">
+            <span class="glyphicon glyphicon-heart like-button-color"></span>
+        </a></h2>
+        <br>
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="container-fluid">
+                <div class="row col-sm-6 well">
+                    <div ng-switch="model.ser.length">
 
-                    <div ng-switch-when=0>
+                        <div ng-switch-when=0>
 
 
-                        <p class="text-danger text-center">Sorry you have not liked anything yet!!</p>
+                            <p class="text-danger text-center">Sorry you have not liked anything yet!!</p>
 
-                    </div>
-                    <div ng-switch-default>
-                        <div ng-repeat="show in model.ser">
+                        </div>
+                        <div ng-switch-default>
+                            <div ng-repeat="show in model.ser">
 
-                            <div class="well media center-block">
-                                <div class="media-object center-block">
-                                    <a href="" ng-click="model.searchShow(show.data.title)">
-                                        <img ng-src="{{show.data.imageUrl}}" class="media-object center-block img-thumbnail img-like-width">
-                                        <h4 class="media-heading text-center">
-                                            {{show.data.title}}
-                                        </h4>
-                                    </a>
+                                <div class="well media center-block">
+                                    <div class="media-object center-block">
+                                        <a href="" ng-click="model.searchShow(show.data.title)">
+                                            <img ng-src="{{show.data.imageUrl}}" class="media-object center-block img-thumbnail img-like-width">
+                                            <h4 class="media-heading text-center">
+                                                {{show.data.title}}
+                                            </h4>
+                                        </a>
+                                    </div>
+
+
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="col-sm-3"></div>
         </div>
-        <div class="col-sm-3"></div>
     </div>
 </div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+
+        <a href="#/user/actor" class="navbar-link navbar-brand pull-right">
+          <span class="glyphicon glyphicon-user">
+          </span>
+        </a>
+
+    </div>
+</nav>
